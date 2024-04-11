@@ -57,7 +57,7 @@ const LeaveReview = () => {
     <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
         <div className="top-picks-header">
-          <h1>Leave a Review</h1>
+          <h1 className="montserrat-header">Leave a Review</h1>
         </div>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={() => alert("Submit")}>
             <Card className="review-card">

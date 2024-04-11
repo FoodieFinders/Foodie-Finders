@@ -1,5 +1,6 @@
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -10,6 +11,15 @@
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
+
+
+.montserrat-header {
+  font-family: "Montserrat:900", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
@@ -119,7 +129,7 @@ body {
   font-size: 50px; /* Or whatever size you're aiming for */
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
-  font-weight: bold;
+  font-weight: 900;
   display:flex;
   justify-content:center;
 }
@@ -135,6 +145,14 @@ body {
 
 #login-dropdown {
   color: #fff !important; /* Ensures the color overrides Bootstrap's default styling */
+}
+
+#navbar-current-user {
+  color:#fff;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .custom-review-button {
