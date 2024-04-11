@@ -55,7 +55,6 @@ const App = () => {
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

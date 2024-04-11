@@ -120,7 +120,12 @@ body {
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
   font-weight: bold;
-  padding-right: 200px;
+  display:flex;
+  justify-content:center;
+}
+
+.review-card {
+  padding:15px;
 }
 
 .custom-navbar {
