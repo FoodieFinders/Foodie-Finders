@@ -56,15 +56,15 @@ const LeaveReview = () => {
 
     <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
-        <div className="top-picks-header">
-          <h1 className="montserrat-header">Leave a Review</h1>
-        </div>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={() => alert("Submit")}>
-            <Card className="review-card">
+          <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={() => alert("Submit")}>
+            <Card style={{borderRadius:15}} className="review-card">
               <Card.Body>
-                <Row className="justify-content-center">
-                  <img style={{width:"80%", height:500, objectFit:"cover"}} src="https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg" />
-                </Row>
+                <div className="top-picks-header">
+                  <h1 className="montserrat-header">Leave a Review</h1>
+                </div>
+                <Col className="justify-content-center review-img">
+                  <img src="https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg" />
+                </Col>
                 <h4><b>Rating</b></h4>
                 <RatingField name="rating" />
                 <LongTextField name="comment" />

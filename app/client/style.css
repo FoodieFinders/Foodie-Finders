@@ -1,6 +1,6 @@
 /* Use Open Sans as the default sans serif font. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -12,12 +12,18 @@
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 
-
 .montserrat-header {
-  font-family: "Montserrat:900", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
+  font-weight:600;
+  font-style:normal;
+}
+
+.montserrat-medium {
+  font-family:"Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:600;
+  font-style:normal;
 }
 
 body {
@@ -41,12 +47,6 @@ body {
   background-color: #a2d9a2; /* Replace with the actual background color */
 }
 
-.top-picks-header {
-  background-color: #a2d9a2; /* Replace with the actual header background color */
-  color: white; /* Replace with the actual header text color */
-  padding: 20px 0;
-  margin-bottom: 30px;
-}
 
 .top-pick-list {
   border-radius: 15px;
@@ -124,23 +124,62 @@ body {
   padding-right: 200px;
 }
 
+.top-picks-header {
+  color: white; /* Replace with the actual header text color */
+  padding: 20px 0;
+}
+
 .top-picks-header h1 {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 50px; /* Or whatever size you're aiming for */
+  font-size: 40px; /* Or whatever size you're aiming for */
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
-  font-weight: 900;
   display:flex;
   justify-content:center;
+  font-family:'Montserrat';
+  font-weight:900;
+  font-size:40px;
 }
 
 .review-card {
   padding:15px;
+  width:900px;
+  
+}
+
+.review-form {
+  display:flex;
+  justify-content:center;
+}
+
+.review-img {
+  margin-bottom: 20px;
+  padding:none;
+  display:flex;
+  justify-content:center;
+}
+
+.review-img img {
+  width:80%;
+  height:500;
+  object-fit:cover;
+  border-radius:8px;
 }
 
 .custom-navbar {
   background-color: #124216; /* Custom background color */
   color: #fff; /* Custom text color */
+}
+.custom-navbar-body {
+  display:flex;
+  align-items:center;
+}
+
+.navbar-logo {
+  color: #fff;
+  font-family:'Montserrat';
+  font-weight:900;
+  font-size:30px;
 }
 
 #login-dropdown {
