@@ -49,7 +49,6 @@ body {
 
 
 .top-picks-header {
-  background-color: #a2d9a2; /* Replace with the actual header background color */
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
   margin-bottom: 30px;
@@ -134,7 +133,7 @@ body {
 .top-picks-header {
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
-  
+} 
   
 #Container-User-Profile p {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
