@@ -16,6 +16,7 @@ const NavBar = () => {
     <Navbar className="custom-navbar" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
+
           <h2 className="custom-navbar"> <i className="fas fa-hotdog" />  Foodie Finder</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
