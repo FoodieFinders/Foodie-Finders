@@ -31,6 +31,7 @@ body {
   background-color: #a2d9a2; /* Replace with the actual background color */
 }
 
+
 .top-picks-header {
   background-color: #a2d9a2; /* Replace with the actual header background color */
   color: white; /* Replace with the actual header text color */
@@ -114,6 +115,14 @@ body {
   padding-right: 200px;
 }
 
+#Container-User-Profile p {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 20px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  font-weight: bold;
+}
+
 .top-picks-header h1 {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
   font-size: 50px; /* Or whatever size you're aiming for */
@@ -135,4 +144,16 @@ body {
 .custom-review-button {
   background-color: #124216 !important; /* Example: a green background */
   border: none !important;
+}
+
+#navbar-current-user {
+  color: white;
+}
+
+#view-user-page {
+  background-color: #a2d9a2;
+}
+
+#Card-Profile {
+  background: #e8e8e8;
 }
