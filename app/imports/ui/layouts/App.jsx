@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
@@ -21,10 +20,8 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
-import TopPicks from '../pages/TopPicks'
-import RestaurantsList from '../components/RestaurantsList'
-
-
+import RestaurantsList from '../components/RestaurantsList';
+import FilterMockup from '../pages/FilterMockup';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -51,7 +48,7 @@ const App = () => {
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
           <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
-          <Route path="/top-picks" element={<TopPicks />} />
+          <Route path="/filter-mockup" element={<FilterMockup />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
