@@ -15,5 +15,9 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+  "defaultUsers": [
+    { "firstName": "John", "lastName": "Doe", "title": "Student", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "john@foo.com"},
+    { "firstName": "Admin", "lastName": "DAN", "title": "Vendor", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "admin@foo.com"}
   ]
 }

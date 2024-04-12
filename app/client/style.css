@@ -48,6 +48,13 @@ body {
 }
 
 
+.top-picks-header {
+  background-color: #a2d9a2; /* Replace with the actual header background color */
+  color: white; /* Replace with the actual header text color */
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
 .top-pick-list {
   border-radius: 15px;
   overflow: hidden;
@@ -127,6 +134,14 @@ body {
 .top-picks-header {
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
+  
+  
+#Container-User-Profile p {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 20px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  font-weight: bold;
 }
 
 .top-picks-header h1 {
@@ -197,4 +212,16 @@ body {
 .custom-review-button {
   background-color: #124216 !important; /* Example: a green background */
   border: none !important;
+}
+
+#navbar-current-user {
+  color: white;
+}
+
+#view-user-page {
+  background-color: #a2d9a2;
+}
+
+#Card-Profile {
+  background: #e8e8e8;
 }

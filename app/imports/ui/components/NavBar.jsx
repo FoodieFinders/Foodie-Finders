@@ -16,7 +16,8 @@ const NavBar = () => {
     <Navbar className="custom-navbar" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          <h2 className="custom-navbar montserrat-header"> <i className='fas fa-hotdog'></i>  Foodie Finder</h2>
+
+          <h2 className="custom-navbar"> <i className="fas fa-hotdog" />  Foodie Finder</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -28,7 +29,7 @@ const NavBar = () => {
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
-            ) : ''}*/}
+            ) : ''} */}
 
           </Nav>
           <Nav className="justify-content-end">
@@ -52,6 +53,12 @@ const NavBar = () => {
                   {' '}
                   Sign
                   out
+                </NavDropdown.Item>
+                <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/user">
+                  <PersonFill />
+                  {' '}
+                  My
+                  Profile
                 </NavDropdown.Item>
               </NavDropdown>
             )}

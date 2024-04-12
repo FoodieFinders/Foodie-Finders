@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Restaurants } from '../../api/restaurants/Restaurants'
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import { Users } from '../../api/users/users';
 
 Meteor.publish('restaurants.user', function publishUserRestaurants() {
   if (this.userId) {
@@ -18,14 +19,26 @@ Meteor.publish('restaurants.admin', function publishAllRestaurants() {
   return this.ready();
 });
 
+Meteor.publish(Users.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Users.collection.find({ email: username });
+  }
+  return this.ready();
+});
 
+Meteor.publish(Users.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Users.collection.find();
+  }
+  return this.ready();
+});
 
-
-/*import { Stuffs } from '../../api/stuff/Stuff';
-import { TopPicks } from '../../api/toppicks/TopPicks'*/
+/* import { Stuffs } from '../../api/stuff/Stuff';
+import { TopPicks } from '../../api/toppicks/TopPicks' */
 // Server-side code
 // Server-side code
-/*Meteor.publish(TopPicks.userPublicationName, function () {
+/* Meteor.publish(TopPicks.userPublicationName, function () {
   return TopPicks.collection.find();
 });
 
@@ -33,14 +46,11 @@ if (Meteor.isServer) {
   Meteor.publish('topPicks', function () {
     return TopPicks.find();
   });
-}*/
+} */
 
-
-/*Meteor.publish('topPicks', function () {
+/* Meteor.publish('topPicks', function () {
   return TopPicks.find(); // No filters here, should return all documents
-});*/
-
-
+}); */
 
 /*
 
@@ -75,7 +85,6 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   return this.ready();
 });
 */
-
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
