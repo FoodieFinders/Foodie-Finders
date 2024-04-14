@@ -3,7 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Users } from '../../api/users/users';
 
-Meteor.publish('restaurants.user', function publishUserRestaurants() {
+Meteor.publish(Restaurants.userPublicationName, function publishUserRestaurants() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     // Assuming each restaurant has an 'owner' field with the username
@@ -12,7 +12,7 @@ Meteor.publish('restaurants.user', function publishUserRestaurants() {
   return this.ready();
 });
 
-Meteor.publish('restaurants.admin', function publishAllRestaurants() {
+Meteor.publish(Restaurants.adminPublicationName, function publishAllRestaurants() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Restaurants.collection.find();
   }
@@ -56,7 +56,7 @@ if (Meteor.isServer) {
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-/*Meteor.publish(Stuffs.userPublicationName, function () {
+
 
 import { Stuffs } from '../../api/stuff/Stuff';
 
