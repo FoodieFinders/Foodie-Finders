@@ -9,7 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import '../../../client/style.css'; // Import your custom stylesheet here
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const Landing2 = () => {
+const Home = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, restaurants } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -58,22 +58,9 @@ const Landing2 = () => {
             </Col>
           </Row>
         </Col>
-        <Col md={4} className="mb-4">
-          <div className="cta-container cta-card text-center">
-            <h2>Are you a vendor?</h2>
-            <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
-              Vendor Dashboard
-            </Button>
-
-            <h2>Are you a student?</h2>
-            <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
-              Leave a review!
-            </Button>
-          </div>
-        </Col>
       </Row>
     </Container>
   ) : <LoadingSpinner />);
 };
 
-export default Landing2;
+export default Home;
