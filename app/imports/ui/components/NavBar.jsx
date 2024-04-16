@@ -16,7 +16,6 @@ const NavBar = () => {
     <Navbar className="custom-navbar" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-
           <h2 className="custom-navbar"> <i className="fas fa-hotdog" />  Foodie Finder</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -36,14 +35,19 @@ const NavBar = () => {
             {currentUser === '' ? (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
-                  <PersonFill />
+                  <PersonFill style={{ marginRight: '5px' }} />
                   Sign
                   in
                 </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
-                  <PersonPlusFill />
+                <NavDropdown.Item id="loginVendor-dropdown-sign-up" as={NavLink} to="/signup">
+                  <PersonPlusFill style={{ marginRight: '5px' }} />
                   Sign
-                  up
+                  up Vendor
+                </NavDropdown.Item>
+                <NavDropdown.Item id="loginFoodie-dropdown-sign-up" as={NavLink} to="/signupvendor">
+                  <PersonPlusFill style={{ marginRight: '5px' }} />
+                  Sign
+                  up Foodie
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -55,7 +59,7 @@ const NavBar = () => {
                   out
                 </NavDropdown.Item>
                 <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/user">
-                  <PersonFill />
+                  <PersonFill style={{ marginRight: '5px' }} />
                   {' '}
                   My
                   Profile
