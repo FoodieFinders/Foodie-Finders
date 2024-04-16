@@ -1,3 +1,5 @@
+// To be deleted
+
 import { Meteor } from 'meteor/meteor';
 import { Restaurants } from '/imports/api/restaurants/Restaurants';
 

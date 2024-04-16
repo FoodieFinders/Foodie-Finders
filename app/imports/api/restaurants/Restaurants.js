@@ -10,7 +10,15 @@ class RestaurantsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
+      address: String,
+      description: String,
       rating: String,
+      owner: {
+        optional: true,
+        type: String,
+        allowedValues: ['Student', 'Vendor'],
+        defaultValue: 'Student',
+      },
       hours: String,
       imageSrc: {
         type: String,
@@ -27,5 +35,9 @@ class RestaurantsCollection {
   // Helper methods for this collection can be defined here
 }
 
-// The singleton instance of the RestaurantsCollection.
+/**
+ * The singleton instance of the RestaurantsCollection.
+ * @type {RestaurantsCollection}
+ */
+
 export const Restaurants = new RestaurantsCollection();
