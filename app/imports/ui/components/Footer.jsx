@@ -45,12 +45,10 @@ const Footer = () => {
             </Container>
           </Col>
         </Row>
-        <Row style={{ paddingTop: '30px' }}>
           <hr />
-          <div className="text-center py-3">
+          <div className="text-center" >
             <strong style={{ fontSize: '12px' }}>© {currentYear} Foodie Finders. All rights reserved.</strong>
           </div>
-        </Row>
       </Container>
     </footer>
   );
