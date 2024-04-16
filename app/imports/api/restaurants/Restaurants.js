@@ -9,20 +9,34 @@ class RestaurantsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: String,
-      address: String,
-      description: String,
-      rating: String,
+      name: { 
+        type: String, 
+        index: true, 
+        unique: true
+      },
+      address: { 
+        type: String, 
+        optional: true 
+      },
+      description: { 
+        type: String, 
+        optional: true 
+      },
+      rating: { 
+        type: String, 
+        optional: true 
+      },
       owner: {
         optional: true,
-        type: String,
-        allowedValues: ['Student', 'Vendor'],
-        defaultValue: 'Student',
+        type: String
       },
-      hours: String,
+      hours: { 
+        type: String, 
+        optional: true 
+      },
       imageSrc: {
         type: String,
-        optional: true, // Make optional if some restaurants might not have an image initially
+        optional: true // Make optional if some restaurants might not have an image initially
       },
     });
     // Attach the schema to the collection.

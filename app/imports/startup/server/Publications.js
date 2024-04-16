@@ -40,17 +40,21 @@ Meteor.publish(Users.adminPublicationName, function () {
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-/*Meteor.publish(Restaurants.userPublicationName, function () {
+Meteor.publish(Restaurants.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Restaurants.collection.find(/!*{ owner: username }*!/);
+    return Restaurants.collection.find({ owner: username });
+  } else {
+    return Restaurants.collection.find();
   }
   return this.ready();
-});*/
-
-Meteor.publish(Restaurants.userPublicationName, function () {
-  return Restaurants.collection.find(/*{ owner: username }*/);
 });
+
+/*
+Meteor.publish(Restaurants.userPublicationName, function () {
+  return Restaurants.collection.find(/!*{ owner: username }*!/);
+});
+*/
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.

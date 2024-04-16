@@ -35,17 +35,17 @@ const NavBar = () => {
             {currentUser === '' ? (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
-                  <PersonFill style={{ marginRight: '5px' }} />
+                  <PersonFill style={{ marginRight: '7px' }} />
                   Sign
                   in
                 </NavDropdown.Item>
                 <NavDropdown.Item id="loginVendor-dropdown-sign-up" as={NavLink} to="/signup">
-                  <PersonPlusFill style={{ marginRight: '5px' }} />
+                  <PersonPlusFill style={{ marginRight: '7px' }} />
                   Sign
                   up Vendor
                 </NavDropdown.Item>
-                <NavDropdown.Item id="loginFoodie-dropdown-sign-up" as={NavLink} to="/signupvendor">
-                  <PersonPlusFill style={{ marginRight: '5px' }} />
+                <NavDropdown.Item id="loginFoodie-dropdown-sign-up" as={NavLink} to="/signup">
+                  <PersonPlusFill style={{ marginRight: '7px' }} />
                   Sign
                   up Foodie
                 </NavDropdown.Item>
