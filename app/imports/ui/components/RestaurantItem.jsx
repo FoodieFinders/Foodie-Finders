@@ -1,34 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 
-
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const RestaurantItem = ({ restaurant }) => (
-  <Card className="h-100">
-    <Card.Header>
-      <Image src={restaurant.image} width={75} />
-      <Card.Title>{restaurant.name}</Card.Title>
-      <Card.Subtitle>{restaurant.rating}</Card.Subtitle>
-    </Card.Header>
-    <Card.Body>
-      <Card.Text>{restaurant.tag}</Card.Text>
-      <Card.Text>{restaurant.hours}</Card.Text>
-      <Link to={`/edit/${restaurant._id}`}>Edit</Link>
+  <Container id="Restaurant-Item" fluid className="h-75">
+  <Card className="top-pick-card mb-3">
+    <Card.Body className="d-flex">
+      <Image src={restaurant.imageSrc}  alt={` ${restaurant.name} Restaurant`} style={{ width: '100px' }} className="img-fluid top-pick-image mr-3" />
+      <div>
+        <Card.Title>{restaurant.name}</Card.Title>
+        <Card.Text>{restaurant.rating}</Card.Text>
+        <Card.Text>{restaurant.hours}</Card.Text>
+      </div>
     </Card.Body>
   </Card>
+  </Container>
 );
 
-// Require a document to be passed to this component.
 RestaurantItem.propTypes = {
   restaurant: PropTypes.shape({
     name: PropTypes.string,
+    address: PropTypes.string,
+    description: PropTypes.string,
     rating: PropTypes.string,
-    tag: PropTypes.string,
-    image: PropTypes.string,
+    title: PropTypes.string,
     hours: PropTypes.string,
-    owner: PropTypes.string,
+    imageSrc: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

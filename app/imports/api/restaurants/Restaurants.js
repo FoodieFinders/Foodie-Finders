@@ -9,19 +9,34 @@ class RestaurantsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name:{
-        type: String,
+      name: { 
+        type: String, 
+        index: true, 
         unique: true
       },
-      rating: String,
-      tag: {
-        type: String,
-        optional: true, // Make optional if some restaurants might not have tag initially
+      address: { 
+        type: String, 
+        optional: true 
       },
-      hours: String,
-      image: {
+      description: { 
+        type: String, 
+        optional: true 
+      },
+      rating: { 
+        type: String, 
+        optional: true 
+      },
+      owner: {
+        optional: true,
+        type: String
+      },
+      hours: { 
+        type: String, 
+        optional: true 
+      },
+      imageSrc: {
         type: String,
-        optional: true, // Make optional if some restaurants might not have an image initially
+        optional: true // Make optional if some restaurants might not have an image initially
       },
       owner: {
         type: String,
@@ -39,5 +54,9 @@ class RestaurantsCollection {
   // Helper methods for this collection can be defined here
 }
 
-// The singleton instance of the RestaurantsCollection.
+/**
+ * The singleton instance of the RestaurantsCollection.
+ * @type {RestaurantsCollection}
+ */
+
 export const Restaurants = new RestaurantsCollection();

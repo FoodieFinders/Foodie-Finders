@@ -153,7 +153,6 @@ body {
   justify-content:center;
   font-family:'Montserrat';
   font-weight:900;
-  font-size:40px;
 }
 
 .review-card {
@@ -226,6 +225,9 @@ body {
   background: #e8e8e8;
 }
 
+.footer {
+  background-color: #124216 !important;
+}
 body {
   font-family: 'Open Sans', sans-serif;
 }
