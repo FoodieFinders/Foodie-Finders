@@ -19,5 +19,9 @@
   "defaultUsers": [
     { "firstName": "John", "lastName": "Doe", "title": "Student", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "john@foo.com"},
     { "firstName": "Admin", "lastName": "DAN", "title": "Vendor", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "admin@foo.com"}
+  ],
+  "defaultRestaurants": [
+    { "name": "BurgerINC", "rating": "0", "tag": "", "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","hours": "10 am - 12 pm", "owner": "Student"},
+    { "name": "pizzaINC", "rating": "5", "tag": "", "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","hours": "10 am - 12 pm", "owner": "Vendor"}
   ]
 }

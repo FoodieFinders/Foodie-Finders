@@ -5,24 +5,24 @@ import { Link } from 'react-router-dom';
 
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const Card = ({ card }) => (
+const Cards = ({ cards }) => (
   <Card className="h-100">
     <Card.Header>
-      <Image src={card.image} width={75} />
-      <Card.Title>{card.name}</Card.Title>
-      <Card.Subtitle>{card.rating}</Card.Subtitle>
+      <Image src={cards.image} width={75} />
+      <Card.Title>{cards.name}</Card.Title>
+      <Card.Subtitle>{cards.rating}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
-      <Card.Text>{card.tag}</Card.Text>
-      <Card.Text>{card.hours}</Card.Text>
-      <Link to={`/edit/${card._id}`}>Edit</Link>
+      <Card.Text>{cards.tag}</Card.Text>
+      <Card.Text>{cards.hours}</Card.Text>
+      <Link to={`/edit/${cards._id}`}>Edit</Link>
     </Card.Body>
   </Card>
 );
 
 // Require a document to be passed to this component.
-Card.propTypes = {
-  card: PropTypes.shape({
+Cards.propTypes = {
+  cards: PropTypes.shape({
     name: PropTypes.string,
     rating: PropTypes.string,
     tag: PropTypes.string,
@@ -33,4 +33,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default Cards;
