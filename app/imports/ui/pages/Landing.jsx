@@ -34,7 +34,7 @@ const Landing = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <div className="top-picks-header text-center">
-                <h1>Today's Top Picks</h1>
+                <h1>Today&apos;s Top Picks</h1>
               </div>
             </Col>
           </Row>
@@ -62,7 +62,7 @@ const Landing = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                See all of today's top picks!
+                See all of today&apos;s top picks!
               </Button>
             </Col>
           </Row>
