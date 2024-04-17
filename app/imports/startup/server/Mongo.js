@@ -3,6 +3,7 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/users/users';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 
+
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -18,6 +19,7 @@ const addUser = (user) => {
 const addRestaurant = (restaurant) => {
   console.log(`  Adding Restaurant: ${restaurant.name}`);
  Restaurants.collection.insert(restaurant);
+
 };
 
 // Initialize the StuffsCollection if empty.
@@ -41,3 +43,4 @@ if (Restaurants.collection.find().count() === 0) {
     Meteor.settings.defaultRestaurants.forEach(restaurant => addRestaurant(restaurant));
   }
 }
+

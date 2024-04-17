@@ -9,12 +9,11 @@ const Card = ({ card }) => (
   <Card className="h-100">
     <Card.Header>
       <Image src={card.image} width={75} />
-      <Card.Title>{card.name}</Card.Title>
-      <Card.Subtitle>{card.rating}</Card.Subtitle>
+      <Card.Title>{card.firstName} {contact.lastName}</Card.Title>
+      <Card.Subtitle>{card.address}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
-      <Card.Text>{card.tag}</Card.Text>
-      <Card.Text>{card.hours}</Card.Text>
+      <Card.Text>{card.description}</Card.Text>
       <Link to={`/edit/${card._id}`}>Edit</Link>
     </Card.Body>
   </Card>
@@ -23,11 +22,11 @@ const Card = ({ card }) => (
 // Require a document to be passed to this component.
 Card.propTypes = {
   card: PropTypes.shape({
-    name: PropTypes.string,
-    rating: PropTypes.string,
-    tag: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    address: PropTypes.string,
     image: PropTypes.string,
-    hours: PropTypes.string,
+    description: PropTypes.string,
     owner: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,

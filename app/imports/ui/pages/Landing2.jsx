@@ -8,6 +8,7 @@ import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import '../../../client/style.css'; // Import your custom stylesheet here
 
+
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const Landing2 = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -49,6 +50,7 @@ const Landing2 = () => {
           </Row>
           <ListGroup variant="flush" className="top-pick-list">
             {restaurants.map((restaurant) => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
+
           </ListGroup>
           <Row className="justify-content-center">
             <Col md={8}>

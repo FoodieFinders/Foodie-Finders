@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --light-green: #A2D9A2;
+  --dark-green: #124216;
+  --text-color: #FFFFFF;
+  --gold-color: #ffd700; /* Gold color for stars */
 }
 
 /* Change bootstrap variable values.
@@ -227,3 +228,75 @@ body {
 .footer {
   background-color: #124216 !important;
 }
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Card and Image Styling */
+.hot-item-card, .review-item-card, .spotlight-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hot-item-image, .review-item-avatar, .spotlight-image {
+  width: 100%; /* Adjust width to cover the card area */
+  height: 200px; /* Fixed height */
+  object-fit: cover;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+/* Review Item adjustments */
+.review-item-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Add space between image and name */
+  padding: .75rem; /* Adjust padding */
+}
+
+.review-item-card .card-header img {
+  width: 40px; /* Reduced size for avatar */
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Button Styling */
+.btn-success, .btn-primary {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+  color: var(--text-color);
+}
+
+.btn-success:hover, .btn-primary:hover {
+  background-color: #0e5e0e;
+  border-color: #0e5e0e;
+}
+
+/* Rating Color */
+.hot-item-rating, .review-item-rating, .spotlight-rating {
+  color: var(--gold-color); /* Gold color for stars */
+}
+
+/* Layout Adjustments */
+#whats-hot-page {
+  background-color: var(--light-green);
+}
+
+.top-items-header, .top-reviews-header {
+  font-size: 2rem;
+  color: var(--dark-green);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .hot-item-image, .review-item-avatar, .spotlight-image {
+    height: 150px; /* Adjust for smaller screens */
+  }
+}
+
