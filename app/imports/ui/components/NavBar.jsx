@@ -40,20 +40,25 @@ const NavBar = () => {
             {currentUser === '' ? (
               <NavDropdown id={ComponentIDs.loginDropdown} title="Login">
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin">
-                  <PersonFill />
+                  <PersonFill style={{ marginRight: '5px' }}/>
                   Sign
                   in
                 </NavDropdown.Item>
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
-                  <PersonPlusFill />
+                  <PersonPlusFill style={{ marginRight: '5px' }} />
                   Sign
                   up Foodie
                 </NavDropdown.Item>
+                <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
+                  <PersonPlusFill style={{ marginRight: '5px' }} />
+                  Sign
+                  up Vendor
+                </NavDropdown.Item> {/*need to change the path of this to signupvendor instead*/}
               </NavDropdown>
             ) : (
               <NavDropdown id={ComponentIDs.currentUserDropdown} title={currentUser}>
                 <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout">
-                  <BoxArrowRight />
+                  <BoxArrowRight style={{ marginRight: '5px' }} />
                   {' '}
                   Sign
                   out
