@@ -6,12 +6,15 @@ const RestaurantItem = ({ restaurant }) => (
   <Container id="Restaurant-Item" fluid className="h-75">
   <Card className="top-pick-card mb-3">
     <Card.Body className="d-flex">
-      <Image src={restaurant.imageSrc}  alt={` ${restaurant.name} Restaurant`} style={{ width: '100px' }} className="img-fluid top-pick-image mr-3" />
+      <div>
+        <Image src={restaurant.imageSrc} alt={` ${restaurant.name} Restaurant`} style={{ width: '7rem' }} className="img-fluid top-pick-image mr-3"/>
+      </div>
       <div>
         <Card.Title>{restaurant.name}</Card.Title>
         <Card.Text>{restaurant.rating}</Card.Text>
         <Card.Text>{restaurant.hours}</Card.Text>
       </div>
+
     </Card.Body>
   </Card>
   </Container>

@@ -293,6 +293,28 @@ body {
   margin-bottom: 1rem;
 }
 
+/* styles.css */
+.navbar-custom .nav-link {
+  color: white !important; /* Using !important to override Bootstrap's default styles */
+}
+
+.navbar-custom .navbar-brand {
+  color: white !important;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #ccc !important; /* Lighter color on hover */
+}
+
+.navbar-custom .navbar-toggler {
+  color: white !important;
+}
+
+.navbar-custom .dropdown-menu .nav-link {
+  color: black !important; /* Ensuring dropdown items are readable, change as needed */
+}
+
+
 /* Media Query for Responsiveness */
 @media (max-width: 768px) {
   .hot-item-image, .review-item-avatar, .spotlight-image {
