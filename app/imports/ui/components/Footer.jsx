@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Col, Container, Row, Nav, Image, Button } from 'react-bootstrap';
 import { FaFacebook, FaTwitter, FaPinterest, FaInstagram } from 'react-icons/fa';
 
@@ -6,23 +7,28 @@ const Footer = () => {
   // Get the current year
   const currentYear = new Date().getFullYear();
 
+
+  const navigate = useNavigate();
+  const goToSignUp = () => navigate('signup');
+  const goToSignIn = () => navigate('signin');
+
   return (
     <footer className="mt-auto py-4 text-white" style={{ backgroundColor: '#124216' }}>
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={3} className="mb-3 mb-md-0">
-            <Image src="../images/Manoa_Logo.jpg" fluid style={{ maxWidth: '70%', height: '60px', borderRadius: '50%' }} />
+            <Image src="/images/logo.png" width={50} style={{ marginBottom: 3 }} />
             <div style={{ paddingTop: '20px' }}>
-              <strong>Foodies</strong>
+              <strong>Foodie Finders</strong>
             </div>
           </Col>
           <Col xs={12} md={4}>
             <div style={{ paddingTop: '10px' }}>
-              <strong>Become a Subscriber Your Tummy will Thank you!</strong>
+              <strong>Become a Member Your Tummy will Thank you!</strong>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', paddingTop: '20px' }}>
-              <input type="text" placeholder="Enter Email Address" style={{ flexGrow: 1, marginRight: '10px', padding: '10px', border: 'none', borderRadius: '5px' }} />
-              <Button variant="outline-light">Subscribe!</Button>
+              <Button variant="outline-light" onClick={goToSignUp} style={{ marginRight: '200px' }}>Sign Up!</Button>
+              <Button variant="outline-light" onClick={goToSignIn}>Sign In!</Button>
             </div>
           </Col>
           <Col xs={12} md={5}>
