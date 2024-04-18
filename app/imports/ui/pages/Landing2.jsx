@@ -56,8 +56,8 @@ const Landing2 = () => {
                 <h1>Today's Top Picks</h1>
               </div>
               <ListGroup variant="flush" className="top-pick-list">
-                {restaurants.map(restaurant => (
-                  <RestaurantItem key={restaurant._id} restaurant={restaurant} />
+                {restaurants.map((restaurant, index) => (
+                  <RestaurantItem key={index} restaurant={restaurant} />
                 ))}
               </ListGroup>
             </Col>
