@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, Card } from 'react-bootstrap';
+import { Col, Container, Row, Card, ListGroup } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
@@ -20,15 +20,17 @@ const RestaurantList = () => {
   return (
     ready ? (
       <Container id="landing-page" fluid className="py-3">
-        <Row className="justify-content-center text-center">
-          <div className="page-header">
-            <h1 className="montserrat-header">Our Vendors</h1>
-          </div>
-          <Row>
-            <Col>
-          {restaurants.map((restaurant) => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
-            </Col>
-          </Row>
+        <Row className="justify-content-center">
+          <Col className="text-center">
+            <div className="top-picks-header">
+              <h1>Our Vendors</h1>
+            </div>
+            <ListGroup variant="flush" className="top-pick-list">
+              {restaurants.map(restaurant => (
+                <RestaurantItem key={restaurant._id} restaurant={restaurant} />
+              ))}
+            </ListGroup>
+          </Col>
         </Row>
       </Container>
     ) : <LoadingSpinner />
