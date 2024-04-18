@@ -20,7 +20,7 @@ const AboutUs = () => {
         <div className="about-text">
           <div className="row justify-content-center">
             <div className="col-md-8">
-              <h2 className="text-center mb-5">Foodie Finder Simplifies Your Dining Experience!</h2>
+              <h2 className="text-center mb-5 mt-5">Foodie Finder Simplifies Your Dining Experience!</h2>
 
               <h3 className="text-center mt-5">Specific Menu Items:</h3>
               <p>Curious about today's culinary lineup at campus hotspots? We've got the scoop. Foodie Finders gives you the inside track on the mouthwatering dishes being served at campus center locations, food trucks, and more, all in one <a href="/our-vendors" style={{textDecoration: "none"}}>place</a>.</p>

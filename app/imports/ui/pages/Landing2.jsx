@@ -82,12 +82,12 @@ const Landing2 = () => {
             </Col>
             <Col md={4} className="mb-4 text-center">
               <div className="cta-container cta-card text-center">
-                <h2>Are you a vendor?</h2>
+                <h2 className="text-center">Are you a vendor?</h2>
                 <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
                   Vendor Dashboard
                 </Button>
 
-                <h2>Are you a student?</h2>
+                <h2 className="text-center">Are you a student?</h2>
                 <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
                   Leave a review!
                 </Button>
