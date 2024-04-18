@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 import '../../../client/style.css';
 const RestaurantItem = ({ restaurant }) => (
-  <Container id="Restaurant-Item" fluid className="h-75">
-  <Card className="top-pick-card">
-    <Card.Body className="d-flex">
+  <Container id="Restaurant-Item" fluid className="h-100">
+  <Card className="top-pick-card h-50">
+    <Card.Body className="d-flex align-items-center">
       <div>
         <Image src={restaurant.imageSrc} alt={` ${restaurant.name} Restaurant`} style={{ width: '7rem' }} className="img-fluid top-pick-image mr-3"/>
       </div>
@@ -26,7 +26,7 @@ RestaurantItem.propTypes = {
     address: PropTypes.string,
     description: PropTypes.string,
     rating: PropTypes.string,
-    title: PropTypes.string,
+    owner: PropTypes.string,
     hours: PropTypes.string,
     imageSrc: PropTypes.string,
     _id: PropTypes.string,
