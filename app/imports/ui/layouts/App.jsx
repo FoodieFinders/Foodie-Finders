@@ -21,6 +21,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
 import TopPicks from '../pages/TopPicks';
+import AboutUs from '../pages/AboutUs';
 import RestaurantsList from '../components/RestaurantsList';
 import UserPage from '../pages/UserPage';
 import Home from '../pages/Home';
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
           <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
           <Route path="/top-picks" element={<TopPicks />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

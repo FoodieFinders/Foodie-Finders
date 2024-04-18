@@ -27,7 +27,7 @@ const NavBar = () => {
            {/* {currentUser ? (
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Home</Nav.Link>
             ) : ''}*/}
-            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/profiles" key="profiles">About Us</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/aboutus" key="profiles">About Us</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/projects" key="projects">Our Vendors</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/top-picks" key="top-picks">Whats Hot</Nav.Link>
             {/*<Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Contact Us</Nav.Link>*/}
