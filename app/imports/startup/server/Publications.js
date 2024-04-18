@@ -46,7 +46,12 @@ Meteor.publish(Users.adminPublicationName, function () {
 Meteor.publish(Restaurants.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Restaurants.collection.find({ owner: username });
+    if (Restaurants.collection.find({ owner: username }).count() === 0) {
+      return Restaurants.collection.find();
+    }
+    else {
+      return Restaurants.collection.find({ owner: username });
+    }
   } else {
     return Restaurants.collection.find();
   }
