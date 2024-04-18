@@ -24,7 +24,6 @@ import RestaurantsList from '../components/RestaurantsList';
 import FilterMockup from '../pages/FilterMockup';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
-import RestaurantsList from '../components/RestaurantsList';
 import UserPage from '../pages/UserPage';
 import Home from '../pages/Home';
 
