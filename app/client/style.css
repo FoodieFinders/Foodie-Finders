@@ -131,13 +131,6 @@ body {
   margin: 10px; /* This will center the card if it's within a column */
 }
 
-
-.top-picks-header {
-  color: white; /* Replace with the actual header text color */
-  display:flex;
-  justify-content:center;
-} 
-  
 #Container-User-Profile p {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
   font-size: 20px; /* Or whatever size you're aiming for */
@@ -330,6 +323,17 @@ body {
 
 .top-pick-card:hover .fire-animation {
   opacity: 1;
+}
+
+.page-header h1 {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 40px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  display:flex;
+  justify-content:center;
+  font-family:'Montserrat';
+  font-weight:900;
 }
 
 
