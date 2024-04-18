@@ -46,6 +46,7 @@ body {
 
 #landing-page {
   background-color: #a2d9a2; /* Replace with the actual background color */
+  min-height:750px;
 }
 
 
@@ -53,6 +54,7 @@ body {
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
   margin-bottom: 30px;
+  max-width:700px;
 }
 
 .top-pick-list {
@@ -87,13 +89,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Aligns CTAs to the top */
-  padding-top: 250px;
-  padding-right: 150px;
 }
 
 .cta-card .btn {
   width: 80%;
   margin: 10px auto;
+}
+
+.cta-container h2 {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 45px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  font-weight: bold;
+  font-family:'Montserrat', 'Open Sans';
 }
 
 /* This is the 'See all of today's top picks!' button */
@@ -122,18 +131,11 @@ body {
   margin: 10px; /* This will center the card if it's within a column */
 }
 
-.cta-container h2 {
-  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 50px; /* Or whatever size you're aiming for */
-  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
-  color: black;
-  font-weight: bold;
-  padding-right: 200px;
-}
 
 .top-picks-header {
   color: white; /* Replace with the actual header text color */
-  padding: 20px 0;
+  display:flex;
+  justify-content:center;
 } 
   
 #Container-User-Profile p {
