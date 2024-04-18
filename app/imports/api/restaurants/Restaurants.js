@@ -37,12 +37,7 @@ class RestaurantsCollection {
       imageSrc: {
         type: String,
         optional: true // Make optional if some restaurants might not have an image initially
-      },
-      owner: {
-        type: String,
-        allowedValues: ['Student', 'Vendor'],
-        defaultValue: 'Student',
-      },
+      }
     });
     // Attach the schema to the collection.
     this.collection.attachSchema(this.schema);
