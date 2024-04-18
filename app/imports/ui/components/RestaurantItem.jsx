@@ -4,7 +4,7 @@ import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 import '../../../client/style.css';
 const RestaurantItem = ({ restaurant }) => (
   <Container id="Restaurant-Item" fluid className="h-75">
-  <Card className="top-pick-card mb-3">
+  <Card className="top-pick-card">
     <Card.Body className="d-flex">
       <div>
         <Image src={restaurant.imageSrc} alt={` ${restaurant.name} Restaurant`} style={{ width: '7rem' }} className="img-fluid top-pick-image mr-3"/>

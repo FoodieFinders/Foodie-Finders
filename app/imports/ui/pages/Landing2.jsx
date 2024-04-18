@@ -52,7 +52,7 @@ const Landing2 = () => {
           ) : (
             // If more than one, display them normally
             <Col md={6} className="text-center">
-              <div className="top-picks-header text-center">
+              <div className="top-picks-header">
                 <h1>Today's Top Picks</h1>
               </div>
               <ListGroup variant="flush" className="top-pick-list">
@@ -72,15 +72,13 @@ const Landing2 = () => {
               <ListGroup variant="flush" className="top-pick-list">
                 {restaurants.map(restaurant => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
               </ListGroup>
-              <Row className="justify-content-center">
-                <Col md={8}>
-                  <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                    See all of today's top picks!
-                  </Button>
-                </Col>
-              </Row>
+              <Col md={8} className="top-picks-header">
+                <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
+                  See all of today's top picks!
+                </Button>
+              </Col>
             </Col>
-            <Col md={4} className="mb-4 text-center">
+            <Col md={4} className="mb-4 text-center" style={{display:"flex", alignItems:"center"}}>
               <div className="cta-container cta-card text-center">
                 <h2>Are you a vendor?</h2>
                 <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>

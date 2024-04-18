@@ -69,7 +69,7 @@ SpotlightOfTheWeek.propTypes = {
 };
 
 const MergedItemCard = ({ order, review }) => (
-  <Col lg={4} className="mb-4">
+  <Col lg={4} className="mb-4" >
     <Card className="merged-item-card">
       <Card.Header className="text-center">Top Order This Week</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
