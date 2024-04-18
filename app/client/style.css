@@ -1,15 +1,32 @@
 /* Use Open Sans as the default sans serif font. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --light-green: #A2D9A2;
+  --dark-green: #124216;
+  --text-color: #FFFFFF;
+  --gold-color: #ffd700; /* Gold color for stars */
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
+
+.montserrat-header {
+  font-family:"Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:600;
+  font-style:normal;
+}
+
+.montserrat-medium {
+  font-family:"Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:600;
+  font-style:normal;
+}
+
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
@@ -31,8 +48,8 @@ body {
   background-color: #a2d9a2; /* Replace with the actual background color */
 }
 
+
 .top-picks-header {
-  background-color: #a2d9a2; /* Replace with the actual header background color */
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
   margin-bottom: 30px;
@@ -114,25 +131,194 @@ body {
   padding-right: 200px;
 }
 
-.top-picks-header h1 {
+.top-picks-header {
+  color: white; /* Replace with the actual header text color */
+  padding: 20px 0;
+} 
+  
+#Container-User-Profile p {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 50px; /* Or whatever size you're aiming for */
+  font-size: 20px; /* Or whatever size you're aiming for */
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
   font-weight: bold;
-  padding-right: 200px;
+}
+
+.top-picks-header h1 {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 40px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  display:flex;
+  justify-content:center;
+  font-family:'Montserrat';
+  font-weight:900;
+}
+
+.review-card {
+  padding:15px;
+  width:900px;
+  
+}
+
+.review-form {
+  display:flex;
+  justify-content:center;
+}
+
+.review-img {
+  margin-bottom: 20px;
+  padding:none;
+  display:flex;
+  justify-content:center;
+}
+
+.review-img img {
+  width:80%;
+  height:500;
+  object-fit:cover;
+  border-radius:8px;
 }
 
 .custom-navbar {
   background-color: #124216; /* Custom background color */
   color: #fff; /* Custom text color */
 }
+.custom-navbar-body {
+  display:flex;
+  align-items:center;
+}
+
+.navbar-logo {
+  color: #fff;
+  font-family:'Montserrat';
+  font-weight:900;
+  font-size:30px;
+}
 
 #login-dropdown {
   color: #fff !important; /* Ensures the color overrides Bootstrap's default styling */
+}
+
+#navbar-current-user {
+  color:#fff;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .custom-review-button {
   background-color: #124216 !important; /* Example: a green background */
   border: none !important;
 }
+
+#navbar-current-user {
+  color: white;
+}
+
+#view-user-page {
+  background-color: #a2d9a2;
+}
+
+#Card-Profile {
+  background: #e8e8e8;
+}
+
+.footer {
+  background-color: #124216 !important;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Card and Image Styling */
+.hot-item-card, .review-item-card, .spotlight-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hot-item-image, .review-item-avatar, .spotlight-image {
+  width: 100%; /* Adjust width to cover the card area */
+  height: 200px; /* Fixed height */
+  object-fit: cover;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+/* Review Item adjustments */
+.review-item-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Add space between image and name */
+  padding: .75rem; /* Adjust padding */
+}
+
+.review-item-card .card-header img {
+  width: 40px; /* Reduced size for avatar */
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Button Styling */
+.btn-success, .btn-primary {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+  color: var(--text-color);
+}
+
+.btn-success:hover, .btn-primary:hover {
+  background-color: #0e5e0e;
+  border-color: #0e5e0e;
+}
+
+/* Rating Color */
+.hot-item-rating, .review-item-rating, .spotlight-rating {
+  color: var(--gold-color); /* Gold color for stars */
+}
+
+/* Layout Adjustments */
+#whats-hot-page {
+  background-color: var(--light-green);
+}
+
+.top-items-header, .top-reviews-header {
+  font-size: 2rem;
+  color: var(--dark-green);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* styles.css */
+.navbar-custom .nav-link {
+  color: white !important; /* Using !important to override Bootstrap's default styles */
+}
+
+.navbar-custom .navbar-brand {
+  color: white !important;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #ccc !important; /* Lighter color on hover */
+}
+
+.navbar-custom .navbar-toggler {
+  color: white !important;
+}
+
+.navbar-custom .dropdown-menu .nav-link {
+  color: black !important; /* Ensuring dropdown items are readable, change as needed */
+}
+
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .hot-item-image, .review-item-avatar, .spotlight-image {
+    height: 150px; /* Adjust for smaller screens */
+  }
+}
+

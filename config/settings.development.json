@@ -15,5 +15,14 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+  "defaultUsers": [
+    { "firstName": "John", "lastName": "Doe", "title": "Student", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "john@foo.com"},
+    { "firstName": "Admin", "lastName": "DAN", "title": "Vendor", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "admin@foo.com"}
+  ],
+  "defaultRestaurants": [
+    { "name": "burgerINC", "address": "1020 BlaBLa Street", "description": "Best American Food", "imageSrc": "../images/Burger.jpg","rating": "★★★★★", "hours": "10:00AM - 2:00PM", "owner": "admin@foo.com"},
+    { "name": "pizzaINC", "address": "1020 BlaBLa Street", "description": "Best Pizza Food", "imageSrc": "../images/ultimate-pizza.jpg","rating": "★★★★", "hours": "11:00AM - 7:00PM", "owner": "john@foo.com"},
+    { "name": "sushiINC", "address": "1020 BlaBLa Street", "description": "Best Sushi Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": "★★★★", "hours": "1:00PM - 6:00PM", "owner": "admin@foo.com"}
   ]
 }
