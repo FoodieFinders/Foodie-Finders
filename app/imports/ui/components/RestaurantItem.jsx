@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Card, Col, Row, Image } from 'react-bootstrap';
-
+import '../../../client/style.css';
 const RestaurantItem = ({ restaurant }) => (
   <Container id="Restaurant-Item" fluid className="h-75">
   <Card className="top-pick-card mb-3">
@@ -14,7 +14,7 @@ const RestaurantItem = ({ restaurant }) => (
         <Card.Text>{restaurant.rating}</Card.Text>
         <Card.Text>{restaurant.hours}</Card.Text>
       </div>
-
+      <div className="fire-animation"></div>
     </Card.Body>
   </Card>
   </Container>
