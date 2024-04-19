@@ -1,3 +1,5 @@
+//To be deleted
+
 import { Meteor } from 'meteor/meteor';
 import { TopPicks } from '/imports/api/toppicks/TopPicks'; // Adjust path as necessary
 

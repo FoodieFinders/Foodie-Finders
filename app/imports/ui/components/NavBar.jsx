@@ -13,10 +13,8 @@ const NavBar = () => {
     loggedIn: !!Meteor.user(),
   }), []);
 
-  const menuStyle = { marginBottom: '0px' };
-  const navbarClassName = loggedIn ? 'bg-light' : 'bg-light';
   return (
-    <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
+    <Navbar expand="lg" className="navbar-custom" style={{marginBottom: '0px', backgroundColor: '#124216', color:'white'}} >
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="align-items-center">
           <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo.png" width={50} style={{ marginBottom: 3 }} /> Foodie Finders</span>
@@ -24,28 +22,32 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
-            {currentUser ? (
+           {/* {currentUser ? (
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Home</Nav.Link>
-            ) : ''}
-            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/profiles" key="profiles">About Us</Nav.Link>
+            ) : ''}*/}
+            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/aboutus" key="profiles">About Us</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/projects" key="projects">Our Vendors</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/top-picks" key="top-picks">Whats Hot</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Contact Us</Nav.Link>
+            {/*<Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Contact Us</Nav.Link>*/}
             {currentUser ? (
-              [<Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addProject" key="addP">Add Project</Nav.Link>,
-                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>]
+              [/*<Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addProject" key="addP">Add Project</Nav.Link>,*/
+              <>
+                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>
+                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/vendor-dashboard" key="vendor-dashboard">Vendor Dashboard</Nav.Link>
+              </>
+              ]
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
               <NavDropdown id={ComponentIDs.loginDropdown} title="Login">
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin">
-                  <PersonFill />
+                  <PersonFill style={{ marginRight: '5px' }}/>
                   Sign
                   in
                 </NavDropdown.Item>
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
-                  <PersonPlusFill />
+                  <PersonPlusFill style={{ marginRight: '5px' }} />
                   Sign
                   up
                 </NavDropdown.Item>
@@ -53,7 +55,7 @@ const NavBar = () => {
             ) : (
               <NavDropdown id={ComponentIDs.currentUserDropdown} title={currentUser}>
                 <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout">
-                  <BoxArrowRight />
+                  <BoxArrowRight style={{ marginRight: '5px' }} />
                   {' '}
                   Sign
                   out

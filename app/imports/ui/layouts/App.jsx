@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
@@ -21,9 +20,13 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
-import TopPicks from '../pages/TopPicks';
+import RestaurantPage from '../pages/RestaurantPage';
 import RestaurantsList from '../components/RestaurantsList';
+import FilterMockup from '../pages/FilterMockup';
+import TopPicks from '../pages/TopPicks';
+import AboutUs from '../pages/AboutUs';
 import UserPage from '../pages/UserPage';
+import Home from '../pages/Home';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -43,17 +46,21 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/restaurants" element={<RestaurantsList />} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/user" element={<ProtectedRoute><UserPage /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
+          <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
-          <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
+          <Route path="/leave-review/:_id" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
+          <Route path="/filter-mockup" element={<FilterMockup />} />
           <Route path="/top-picks" element={<TopPicks />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

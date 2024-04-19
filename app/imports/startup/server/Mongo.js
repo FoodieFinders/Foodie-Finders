@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/users/users';
-import { Restaurants } from '../../api/restaurants/Restaurants'
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import { Reviews } from '../../api/reviews/Reviews';
+
 
 /* eslint-disable no-console */
 
@@ -16,8 +18,15 @@ const addUser = (user) => {
 };
 
 const addRestaurant = (restaurant) => {
-  console.log(`  Adding: ${restaurant.name} (${restaurant.name})`);
+  console.log(`  Adding Restaurant: ${restaurant.name}`);
   Restaurants.collection.insert(restaurant);
+
+};
+
+const addReview = (review) => {
+  console.log(`  Adding Review: ${review.name}`);
+  Reviews.collection.insert(review);
+
 };
 
 // Initialize the StuffsCollection if empty.
@@ -37,7 +46,15 @@ if (Users.collection.find().count() === 0) {
 
 if (Restaurants.collection.find().count() === 0) {
   if (Meteor.settings.defaultRestaurants) {
-    console.log('Creating default data.');
+    console.log('Creating default restaurants.');
     Meteor.settings.defaultRestaurants.forEach(restaurant => addRestaurant(restaurant));
+  }
+}
+
+
+if (Reviews.collection.find().count() === 0) {
+  if (Meteor.settings.defaultReviews) {
+    console.log('Creating default reviews.');
+    Meteor.settings.defaultReviews.forEach(review => addReview(review));
   }
 }
