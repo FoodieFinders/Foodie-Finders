@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Footer from '../components/Footer';
+/*  import Footer from '../components/Footer'; */
 import Landing from '../pages/Landing';
 import Landing2 from '../pages/Landing2';
 import ListStuff from '../pages/ListStuff';
@@ -26,6 +26,7 @@ import FilterMockup from '../pages/FilterMockup';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
 import UserPage from '../pages/UserPage';
+import EditUserPage from '../pages/EditUserPage';
 import Home from '../pages/Home';
 import AddRestaurant from '../pages/AddRestaurant';
 import RestaurantList from '../pages/RestaurantList';
@@ -55,6 +56,7 @@ const App = () => {
 
           <Route path="/add-restaurant" element={<ProtectedRoute><AddRestaurant /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/edituser/:_id" element={<ProtectedRoute><EditUserPage /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           
 

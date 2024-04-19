@@ -2,12 +2,16 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { useNavigate } from 'react-router-dom';
 import { Users } from '../../api/users/users';
 import UserProfile from '../components/UserProfile';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const UserPage = () => {
+  const navigate = useNavigate();
+  const goToEditUserPage = () => navigate('/edituser/:_id');
+  const goToLeaveReview = () => navigate('/leave-review');
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -28,7 +32,7 @@ const UserPage = () => {
   const currentUserFirstName = currentUser ? currentUser.firstName : '';
 
   return (ready ? (
-    <Container fluid id="view-user-page" className="py-5">
+    <Container fluid id="view-user-page" className="min-vh-100">
       <Row>
         <Col md={6}>
           <Col md={{ span: 4, offset: 3 }} className="text-center">
@@ -38,7 +42,7 @@ const UserPage = () => {
             <UserProfile key={user._id} user={user} /> // Pass profile instead of stuff
           ))}
           <Col md={{ span: 4, offset: 3 }}>
-            <Button size="lg" block className=" text-center mt-3  custom-review-button">
+            <Button size="lg" block className=" text-center mt-3  custom-review-button" onClick={goToEditUserPage}>
               Edit Your Profile Page
             </Button>
           </Col>
@@ -52,7 +56,7 @@ const UserPage = () => {
           </Col>
           <Col className="text-center py-4">
             <h2>Already Ate?</h2>
-            <Button size="lg" block className=" text-center mt-3 custom-review-button">
+            <Button size="lg" block className=" text-center mt-3 custom-review-button" onClick={goToLeaveReview}>
               Write A Review
             </Button>
           </Col>
