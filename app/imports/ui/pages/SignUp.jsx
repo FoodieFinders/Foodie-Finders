@@ -16,7 +16,7 @@ const SignUp = ({ location }) => {
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
-    email: { type: String, optional: true },
+    email: { type: String },
     password: { type: String, min: 6 },
     firstName: { type: String },
     lastName: { type: String },
