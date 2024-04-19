@@ -1,6 +1,6 @@
 import React from 'react';
 import swal from 'sweetalert';
-import { Card, Col, Container, Row, Button, Image } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button, Image, Link } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -12,28 +12,7 @@ import PropTypes from 'prop-types';
 
 const bridge = new SimpleSchema2Bridge(Restaurants.schema);
 
-/* Renders the EditStuff page for editing a single document. */
-const RestaurantPage = () => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-  const { _id } = useParams();
-  // console.log('EditStuff', _id);
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { doc, ready } = useTracker(() => {
-    // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Restaurants.userPublicationName);
-    // Determine if the subscription is ready
-    const rdy = subscription.ready();
-    // Get the document
-    const document = Restaurants.collection.findOne(_id);
-    return {
-      doc: document,
-      ready: rdy,
-    };
-  }, [_id]);
-  console.log('EditStuff', doc, ready);
-  // On successful submit, insert the data.
-
-const MergedItemCard = ({ order, review }) => (
+const MergedItemCard = ({ order, review, restaurantId }) => (
   <Col lg={5} className="mb-4" >
     <Card className="merged-item-card">
       <Card.Header className="text-center">{order.name}</Card.Header>
@@ -43,7 +22,7 @@ const MergedItemCard = ({ order, review }) => (
         <div className="star-rating">{order.rating}</div>
         <Card.Text>{order.address}</Card.Text>
         <Card.Text>{order.hours}</Card.Text>
-        <Button variant="primary" className="w-100">Leave a Review!</Button>
+        <Button href={`/leave-review/${restaurantId}`} variant="primary" className="w-100">Leave a Review!</Button>
         <hr className="comment-divider" />
         <div className="instagram-style-comment">
           <Image src={`/images/${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
@@ -97,10 +76,33 @@ const sampleReview = {
 
 console.log(sampleReview.review);
 
+
+/* Renders the EditStuff page for editing a single document. */
+const RestaurantPage = () => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const { _id } = useParams();
+  // console.log('EditStuff', _id);
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const restaurantId = _id;
+  const { doc, ready } = useTracker(() => {
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Restaurants.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the document
+    const document = Restaurants.collection.findOne(_id);
+    return {
+      doc: document,
+      ready: rdy,
+    };
+  }, [_id]);
+  console.log('EditStuff', doc, ready);
+  // On successful submit, insert the data.
+
   return ready ? (
     <Col id="landing-page" className="py-3">
       <Row className="justify-content-center">
-        <MergedItemCard order={doc} review={sampleReview.review} />
+        <MergedItemCard order={doc} review={sampleReview.review} restaurantId={restaurantId} />
       </Row>
     </Col>
   ) : <LoadingSpinner />;
