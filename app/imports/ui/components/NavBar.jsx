@@ -13,8 +13,6 @@ const NavBar = () => {
     loggedIn: !!Meteor.user(),
   }), []);
 
-  //const menuStyle = { marginBottom: '0px' };
-  const navbarClassName = loggedIn ? 'bg-dark' : 'bg-light';
   return (
     <Navbar expand="lg" className="navbar-custom" style={{marginBottom: '0px', backgroundColor: '#124216', color:'white'}} >
       <Container>
