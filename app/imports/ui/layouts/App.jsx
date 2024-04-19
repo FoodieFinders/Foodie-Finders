@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-/*  import Footer from '../components/Footer'; */
+import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Landing2 from '../pages/Landing2';
 import ListStuff from '../pages/ListStuff';
