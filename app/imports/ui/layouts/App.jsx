@@ -53,7 +53,7 @@ const App = () => {
           <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
-          <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
+          <Route path="/leave-review/:_id" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
           <Route path="/filter-mockup" element={<FilterMockup />} />
           <Route path="/top-picks" element={<TopPicks />} />
           <Route path="/aboutus" element={<AboutUs />} />

@@ -65,32 +65,30 @@ const Landing2 = () => {
         ) : (
           // Render full page when not logged in
           <>
-            <Col md={8} className="mb-4">
+          <Row className="d-flex flex-row justify-content-center">
+            <Col className="d-flex flex-column align-items-center">
               <div className="top-picks-header text-center">
                 <h1>Today's Top Picks</h1>
               </div>
               <ListGroup variant="flush" className="top-pick-list">
                 {restaurants.map(restaurant => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
               </ListGroup>
-              <Col md={8} className="top-picks-header">
-                <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                  See all of today's top picks!
-                </Button>
-              </Col>
+              <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
+                See all of today's top picks!
+              </Button>
             </Col>
-            <Col md={4} className="mb-4 text-center" style={{display:"flex", alignItems:"center"}}>
-              <div className="cta-container cta-card text-center">
-                <h2>Are you a vendor?</h2>
-                <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
-                  Vendor Dashboard
-                </Button>
+            <Col className="mb-4 d-flex flex-column align-items-center justify-content-center cta-container cta-card text-center">
+              <h2>Are you a vendor?</h2>
+              <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
+                Vendor Dashboard
+              </Button>
 
-                <h2>Are you a student?</h2>
-                <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
-                  Leave a review!
-                </Button>
-              </div>
+              <h2>Are you a student?</h2>
+              <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
+                Leave a review!
+              </Button>
             </Col>
+          </Row>
           </>
         )}
       </Row>
