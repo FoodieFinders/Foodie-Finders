@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, .card, .btn {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --light-green: #A2D9A2;
+  --dark-green: #124216;
+  --text-color: #FFFFFF;
+  --gold-color: #ffd700;
+}
+
+.navbar {
+  background-color: var(--dark-green) !important;
+}
+
+body {
+  background-color: var(--light-green) !important;
+}
+
+
+.card-header {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.btn-primary {
+  background-color: var(--dark-green);
+  border: none;
+}
+
+.comments-section {
+  margin-top: 20px;
+}
+
+.instagram-style-comment {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-avatar {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.star-rating {
+  color: var(--gold-color);
+  font-size: 1.2rem;
+}
+
+.card-img-top, .img-fluid {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.spotlight-card .spotlight-image {
+  margin-top: 0;
+}
+
+.row, .col-md-4 {
+  padding: 0;
+  margin: 0;
+}
+
+.card-body {
+  padding: 0;
+}
+.description-img {
+  width: 55%;
+  height: auto;
+  align-content: center;
+
+}
+
+.spotlight-card, .spotlight-description-card, .comment-card {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.spotlight-card-image, .description-map-image {
+  max-height: 50px;
+  object-fit: cover;
+}
+
+.spotlight-description-card .card-body {
+  overflow-y: auto;
+}
+
+.comments-section {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.spotlight-description-card .card-body {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.btn-outline-primary {
+  color: var(--text-color) !important;
+  border-color: var(--dark-green) !important;
+  background-color: var(--dark-green) !important;
+}
+
+.btn-outline-primary:hover {
+  color: var(--text-color) !important;
+  background-color: var(--light-green) !important;
+  border-color: var(--dark-green) !important;
+}
+
+
+
+.spotlight-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.spotlight-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

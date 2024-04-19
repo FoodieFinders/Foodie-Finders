@@ -25,62 +25,56 @@ const Landing = () => {
   // Function to navigate to the leave review page
   const goToLeaveReview = () => navigate('/leave-review');
 
-  const goToTopPicks = () => navigate('top-picks');
+  const goToFilterMockup = () => navigate('/filter-mockup');
 
   return (
-    <Container id="landing-page" fluid className="py-3">
+    <Container id="landing-page" className="">
       <Row className="justify-content-center">
-        <Col md={8} className="mb-4">
-          <Row className="justify-content-center">
-            <Col md={8}>
-              <div className="top-picks-header text-center">
-                <h1>Today&apos;s Top Picks</h1>
-              </div>
-            </Col>
-          </Row>
-          <ListGroup variant="flush" className="top-pick-list">
-            <TopPick
-              name="BRITO"
-              rating="★★★★★"
-              hours="Today's hours: 10:00AM - 2:00PM"
-              imageSrc="/path/to/image.jpg"
-            />
-            <TopPick
-              name="BRITO"
-              rating="★★★★★"
-              hours="Today's hours: 10:00AM - 2:00PM"
-              imageSrc="/path/to/image.jpg"
-            />
-            <TopPick
-              name="BRITO"
-              rating="★★★★★"
-              hours="Today's hours: 10:00AM - 2:00PM"
-              imageSrc="/path/to/image.jpg"
-            />
-            {/* Repeat TopPick as necessary */}
-          </ListGroup>
-          <Row className="justify-content-center">
-            <Col md={8}>
-              <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                See all of today&apos;s top picks!
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-
-        <Col md={4} className="mb-4">
-          <div className="cta-container cta-card text-center">
-            <h2>Are you a vendor?</h2>
-            <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
-              Vendor Dashboard
+        <Row className="justify-content-center">
+            <div className="top-picks-header text-center">
+              <h1>Today's Top Picks</h1>
+            </div>
+        </Row>
+        <ListGroup variant="flush" className="top-pick-list">
+          <TopPick
+            name="BRITO"
+            rating="★★★★★"
+            hours="Today's hours: 10:00AM - 2:00PM"
+            imageSrc="/path/to/image.jpg"
+          />
+          <TopPick
+            name="BRITO"
+            rating="★★★★★"
+            hours="Today's hours: 10:00AM - 2:00PM"
+            imageSrc="/path/to/image.jpg"
+          />
+          <TopPick
+            name="BRITO"
+            rating="★★★★★"
+            hours="Today's hours: 10:00AM - 2:00PM"
+            imageSrc="/path/to/image.jpg"
+          />
+          {/* Repeat TopPick as necessary */}
+        </ListGroup>
+        <Row className="justify-content-center">
+          <Col>
+            <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToFilterMockup}>
+              Browse Through All Restaurants!
             </Button>
+          </Col>
+        </Row>
 
-            <h2>Are you a student?</h2>
-            <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
-              Leave a review!
-            </Button>
-          </div>
-        </Col>
+        <div className="cta-container cta-card text-center">
+          <h2>Are you a vendor?</h2>
+          <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
+            Vendor Dashboard
+          </Button>
+
+          <h2>Are you a student?</h2>
+          <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
+            Leave a review!
+          </Button>
+        </div>
       </Row>
     </Container>
   );

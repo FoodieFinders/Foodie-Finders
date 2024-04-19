@@ -5,7 +5,11 @@ import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-boots
 import '../../../client/style.css'; // Import your custom stylesheet here
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { useParams } from 'react-router';
+import { useTracker } from 'meteor/react-meteor-data';
 import { HTMLFieldProps, connectField } from 'uniforms';
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 
 
@@ -13,7 +17,6 @@ const formSchema = new SimpleSchema({
   rating: Number,
   comment: String,
 });
-
 
 function Rating({
   className,
@@ -52,18 +55,53 @@ const RatingField = connectField(Rating);
 
 
 const LeaveReview = () => {
-  return (
+
+  const submit = (data, formRef) => {
+    const { rating, comment } = data;
+    const owner = Meteor.user().username;
+    const { _id } = useParams();
+    const restaurantId = _id;
+    Reviews.collection.insert(
+      { rating, comment, owner, restaurantId },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Item added successfully', 'success');
+          formRef.reset();
+        }
+      },
+    );
+  };
+
+  const { _id } = useParams();
+  const restaurantId = _id;
+
+  const { doc, ready } = useTracker(() => {
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Restaurants.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the document
+    const document = Restaurants.collection.findOne(_id);
+    return {
+      doc: document,
+      ready: rdy,
+    };
+  }, [_id]);
+  console.log(doc, ready);
+  return ready ? (
 
     <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
-          <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={() => alert("Submit")}>
+          <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card style={{borderRadius:15}} className="review-card">
               <Card.Body>
-                <div className="top-picks-header">
-                  <h1 className="montserrat-header">Leave a Review</h1>
+                <div className="page-header">
+                  <h1 className="montserrat-header">Leave a review for {doc.name}</h1>
                 </div>
                 <Col className="justify-content-center review-img">
-                  <img src="https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg" />
+                  <Image src={`/images/${doc.imageSrc}`} />
                 </Col>
                 <h4><b>Rating</b></h4>
                 <RatingField name="rating" />
@@ -75,7 +113,8 @@ const LeaveReview = () => {
           </AutoForm>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />
 };
+
 
 export default LeaveReview;
