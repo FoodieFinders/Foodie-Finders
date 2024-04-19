@@ -22,9 +22,9 @@ class RestaurantsCollection {
         type: String, 
         optional: true 
       },
-      rating: { 
-        type: String, 
-        optional: true 
+      rating: {
+        type: String,
+        defaultValue: '☆☆☆☆☆',
       },
       owner: {
         optional: true,

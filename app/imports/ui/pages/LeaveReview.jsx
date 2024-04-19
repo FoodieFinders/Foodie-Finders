@@ -101,7 +101,7 @@ const LeaveReview = () => {
                   <h1 className="montserrat-header">Leave a review for {doc.name}</h1>
                 </div>
                 <Col className="justify-content-center review-img">
-                  <Image src={`/images/${doc.imageSrc}`} />
+                  <Image src={`${doc.imageSrc}`} />
                 </Col>
                 <h4><b>Rating</b></h4>
                 <RatingField name="rating" />

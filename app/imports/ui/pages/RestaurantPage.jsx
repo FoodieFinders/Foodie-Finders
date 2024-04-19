@@ -16,7 +16,7 @@ const MergedItemCard = ({ order, review, restaurantId }) => (
   <Col lg={5} className="mb-4" >
     <Card className="merged-item-card">
       <Card.Header className="text-center">{order.name}</Card.Header>
-      <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
+      <Image src={`${order.imageSrc}`} alt={order.name} className="img-fluid" />
       <Card.Body>
         {/* Display the gold stars for the order rating */}
         <div className="star-rating">{order.rating}</div>
@@ -25,7 +25,7 @@ const MergedItemCard = ({ order, review, restaurantId }) => (
         <Button href={`/leave-review/${restaurantId}`} variant="primary" className="w-100">Leave a Review!</Button>
         <hr className="comment-divider" />
         <div className="instagram-style-comment">
-          <Image src={`/images/${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
+          <Image src={`${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
           <div className="comment-details">
             <strong>{review.reviewerName}</strong>
             <div className="star-rating">{review.rating}</div>
@@ -49,7 +49,7 @@ MergedItemCard.propTypes = {
     name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     imageSrc: PropTypes.string.isRequired,
-    rating: PropTypes.string,
+    rating: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     hours: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -58,7 +58,7 @@ MergedItemCard.propTypes = {
     reviewerName: PropTypes.string.isRequired,
     avatarSrc: PropTypes.string.isRequired,
     reviewText: PropTypes.string.isRequired,
-    rating: PropTypes.string,
+    rating: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
     comments: PropTypes.number.isRequired,
   }).isRequired,

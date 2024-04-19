@@ -1,12 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ComponentIDs } from '../utilities/ids';
 
-const NavBar = () => {
+const NavBar = ({user}) => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { currentUser, loggedIn } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
@@ -29,14 +30,13 @@ const NavBar = () => {
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/restaurants-list" key="projects">Our Vendors</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/top-picks" key="top-picks">What's Hot</Nav.Link>
             {/*<Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Contact Us</Nav.Link>*/}
-            {currentUser ? (
-              [<Nav.Link as={NavLink} id={ComponentIDs.addRestaurantMenuItem} to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>,
+            {currentUser && currentUser.title !== 'Student' && (
               <>
+                <Nav.Link as={NavLink} id={ComponentIDs.addRestaurantMenuItem} to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>
                 <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>
-                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/vendor-dashboard" key="vendor-dashboard">Vendor Dashboard</Nav.Link>
+                <Nav.Link as={NavLink} id={ComponentIDs.vendorDashboardMenuItem} to="/vendor-dashboard" key="vendor-dashboard">Vendor Dashboard</Nav.Link>
               </>
-              ]
-            ) : ''}
+            )}
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
@@ -67,6 +67,17 @@ const NavBar = () => {
       </Container>
     </Navbar>
   );
+};
+
+NavBar.propTypes = {
+  user: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    title: PropTypes.string,
+    picture: PropTypes.string,
+    email: PropTypes.string,
+    _id: PropTypes.string,
+  }).isRequired,
 };
 
 export default NavBar;
