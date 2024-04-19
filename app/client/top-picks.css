@@ -11,33 +11,30 @@ body, .card, .btn {
   --gold-color: #ffd700;
 }
 
-
-.merged-item-card .img-fluid {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  object-fit: cover;
+.navbar {
+  background-color: var(--dark-green) !important;
 }
+
+body {
+  background-color: var(--light-green) !important;
+}
+
 
 .card-header {
   text-align: center;
   font-size: 1.3rem;
   font-weight: bold;
+  padding-top: 0;
+  margin-bottom: 0;
 }
 
 .btn-primary {
-  background-color: #124216;
+  background-color: var(--dark-green);
   border: none;
 }
 
-
 .comments-section {
   margin-top: 20px;
-}
-
-.comment-interaction{
-  font-weight: normal;
 }
 
 .instagram-style-comment {
@@ -45,7 +42,6 @@ body, .card, .btn {
   align-items: flex-start;
   padding: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #000000;
 }
 
 .comment-avatar {
@@ -55,46 +51,12 @@ body, .card, .btn {
   border-radius: 50%;
 }
 
-.comment-details {
-  flex-grow: 1;
-}
-
-.comment-details strong {
-  margin-right: 5px;
-  color: #262626;
-  font-weight: bold;
-}
-
-
-.comment-details span {
-  color: #262626;
-  display: block;
-}
-
-.comment-interaction {
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-  margin-right: 5px;
-  color: black;
-}
-
 .icon-button {
   background: none;
-  border: #124216;
+  border: none;
   cursor: pointer;
   padding: 0;
   margin-right: 10px;
-}
-
-.comment-divider {
-  border-top: 1px solid #000000;;
-  margin: 8px 0;
-}
-
-.merged-item-card .btn-primary {
-  width: 100%;
-  background-color: #124216;
 }
 
 .star-rating {
@@ -102,80 +64,84 @@ body, .card, .btn {
   font-size: 1.2rem;
 }
 
-
-.image-header {
-  background-color: rgba(18, 66, 22, 0.9);
-  color: white;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.spotlight-title {
-  font-size: 10rem;
-  font-weight: bold;
-  color: #124216;
-  margin-bottom: 0.5rem;
-}
-
-.spotlight-description {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-
-.btn .outline-primary {
-  color: #124216;
-  border-color: #124216;
-}
-
-
-.comments-card {
+.card-img-top, .img-fluid {
   width: 100%;
-}
-
-.spotlight-card, .comments-card {
-  max-width: 100%;
-}
-
-
-.comment-interaction .icon-button,
-.comment-interaction .emoji {
-  margin-right: 4px;
-}
-
-.comment-interaction .likes,
-.comment-interaction .comments {
-
-}
-
-.merged-item-card .btn-outline-primary {
-  color: #124216;
-  border-color: #124216;
-}
-
-.merged-item-card .btn-outline-primary:hover {
-  color: #FFFFFF;
-  background-color: #124216;
-  border-color: #124216;
-}
-
-
-.spotlight-section .btn-outline-secondary {
-  color: #124216;
-  border-color: #124216;
-}
-
-.spotlight-section .btn-outline-secondary:hover {
-  color: #FFFFFF;
-  background-color: #124216;
-  border-color: #124216;
-}
-
-.img-fluid {
-  width: 50%;
   height: auto;
-  margin: 0 auto;
+  object-fit: cover;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.spotlight-card .spotlight-image {
+  margin-top: 0;
+}
+
+.row, .col-md-4 {
+  padding: 0;
+  margin: 0;
+}
+
+.card-body {
+  padding: 0;
+}
+.description-img {
+  width: 55%;
+  height: auto;
+  align-content: center;
+
+}
+
+.spotlight-card, .spotlight-description-card, .comment-card {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.spotlight-card-image, .description-map-image {
+  max-height: 50px;
+  object-fit: cover;
+}
+
+.spotlight-description-card .card-body {
+  overflow-y: auto;
+}
+
+.comments-section {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.spotlight-description-card .card-body {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.btn-outline-primary {
+  color: var(--dark-green) !important;
+  border-color: var(--dark-green) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  color: var(--text-color) !important;
+  background-color: var(--light-green) !important;
+  border-color: var(--dark-green) !important;
+}
+.btn-primary {
+  color: var(--text-color) !important;
+  background-color: var(--dark-green) !important;
+  border-color: var(--dark-green) !important;
+}
+
+.btn-primary:hover {
+  color: var(--text-color) !important;
+  background-color: var(--light-green) !important;
+  border-color: var(--dark-green) !important;
+}
+
+
+.spotlight-card-image {
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
