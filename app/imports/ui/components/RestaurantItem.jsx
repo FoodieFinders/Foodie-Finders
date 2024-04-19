@@ -4,6 +4,7 @@ import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 const RestaurantItem = ({ restaurant }) => (
+
   <Link to={`/restaurant-page/${restaurant._id}`} >
     <Container id="Restaurant-Item" fluid className="h-75">
       <Card className="top-pick-card">
@@ -29,7 +30,7 @@ RestaurantItem.propTypes = {
     address: PropTypes.string,
     description: PropTypes.string,
     rating: PropTypes.string,
-    title: PropTypes.string,
+    owner: PropTypes.string,
     hours: PropTypes.string,
     imageSrc: PropTypes.string,
     _id: PropTypes.string,
