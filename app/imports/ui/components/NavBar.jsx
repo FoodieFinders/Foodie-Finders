@@ -14,7 +14,7 @@ const NavBar = () => {
   }), []);
 
   const menuStyle = { marginBottom: '0px' };
-  const navbarClassName = loggedIn ? 'bg-dark' : 'bg-light';
+  const navbarClassName = loggedIn ? 'bg-light' : 'bg-light';
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
