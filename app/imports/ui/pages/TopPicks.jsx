@@ -5,47 +5,46 @@ import '../../../client/top-picks.css'; // Ensure this path is correct for your 
 
 const SpotlightOfTheWeek = ({ spotlight }) => (
   <Row className="mb-4 spotlight-section">
-    <Col md={4} className="mb-3">
-      <Card className="spotlight-card h-100">
+    <Col md={4} className="mb-4 d-flex flex-column">
+      <Card className="spotlight-card flex-grow-1">
         <Card.Header className="spotlight-header">Spotlight of The Week</Card.Header>
-        <Card.Img variant="top" src={`/images/${spotlight.imageSrc}`} alt={spotlight.name} className="img-fluid" />
+        <Card.Img variant="top" src={`/images/${spotlight.imageSrc}`} alt={spotlight.name} className="img-fluid spotlight-card-image" />
       </Card>
     </Col>
-    <Col md={4} className="mb-3 d-flex flex-column">
-      <Card className="spotlight-description-card mb-3 flex-grow-1">
+    <Col md={4} className="mb-4 d-flex flex-column">
+      <Card className="spotlight-description-card flex-grow-1">
         <Card.Header className="spotlight-description-header">
           <h1>{spotlight.name}</h1>
         </Card.Header>
         <Card.Body>
           <p>{spotlight.description}</p>
         </Card.Body>
+        <Image src="/images/foodtruckmap.jpg" alt="Food Truck Location Map" className="img-fluid mt-auto description-map-image" />
       </Card>
-      <div className="mt-auto">
-        <img src="/images/foodtruckmap.jpg" alt="Food Truck Location Map" className="img-fluid" />
-      </div>
     </Col>
-    <Col md={4} className="mb-3">
-      <div className="comments-section">
+    <Col md={4} className="mb-4 d-flex flex-column">
+      <div className="comments-section flex-grow-1">
         {spotlight.comments.map((comment, index) => (
-          <Card key={index} className="mb-3 comment-card">
+          <Card key={index} className="comment-card mb-3 flex-grow-1">
             <Card.Body>
-              <div className="d-flex align-items-center">
-                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.author}'s avatar`} className="comment-avatar rounded-circle mr-2" />
-                <div className="flex-grow-1">
-                  <strong>{comment.author}</strong>
-                  <p>{comment.text}</p>
-                  <div className="comment-interaction mb-2">
+              <div className="instagram-style-comment">
+                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.reviewerName}'s avatar`} className="comment-avatar rounded-circle"/>
+                <div className="comment-details">
+                  <strong>{comment.reviewerName}</strong>
+                  <div className="star-rating">{comment.rating}</div>
+                  <span>{comment.reviewText}</span>
+                  <div className="comment-interaction">
                     <button className="icon-button emoji" aria-label="Like">👍</button>
                     <span className="likes">{comment.likes} Likes</span>
                     <button className="icon-button emoji" aria-label="Comment">💬</button>
-                    <span className="comments-count">{comment.commentsCount} Comments</span>
+                    <span className="comments">{comment.comments} Comments</span>
                   </div>
-                  <Button variant="outline-secondary" className="w-100">View More Replies</Button>
                 </div>
               </div>
             </Card.Body>
           </Card>
         ))}
+        <Button variant="outline-primary" size="sm" className="mt-auto w-100">View more Comments</Button>
       </div>
     </Col>
   </Row>
@@ -58,18 +57,19 @@ SpotlightOfTheWeek.propTypes = {
     description: PropTypes.string.isRequired,
     comments: PropTypes.arrayOf(
       PropTypes.shape({
-        author: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
+        reviewerName: PropTypes.string.isRequired,
+        reviewText: PropTypes.string.isRequired,
         avatarSrc: PropTypes.string,
+        rating: PropTypes.string,
         likes: PropTypes.number,
-        commentsCount: PropTypes.number,
+        comments: PropTypes.number, // Changed from commentsCount to comments
       }),
     ).isRequired,
   }).isRequired,
 };
 
 const MergedItemCard = ({ order, review }) => (
-  <Col lg={4} className="mb-4">
+  <Col lg={4} className="mb-4" >
     <Card className="merged-item-card">
       <Card.Header className="text-center">Top Order This Week</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
@@ -80,7 +80,7 @@ const MergedItemCard = ({ order, review }) => (
         <Card.Text>{order.store}</Card.Text>
         <Card.Text>{order.orders}</Card.Text>
         <Card.Text>{order.hours}</Card.Text>
-        <Button variant="primary" className="w-100">Order Now</Button>
+        <Button variant="primary" className="w-100">View Store</Button>
         <hr className="comment-divider" />
         <div className="instagram-style-comment">
           <Image src={`/images/${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
@@ -107,7 +107,7 @@ MergedItemCard.propTypes = {
     name: PropTypes.string.isRequired,
     store: PropTypes.string.isRequired,
     imageSrc: PropTypes.string.isRequired,
-    rating: PropTypes.string,
+    rating: PropTypes.string.isRequired,
     orders: PropTypes.string.isRequired,
     hours: PropTypes.string.isRequired,
   }).isRequired,
@@ -121,17 +121,85 @@ MergedItemCard.propTypes = {
   }).isRequired,
 };
 
+const TodayTopPickCard = ({ order }) => (
+  <Col lg={4} className="mb-4">
+    <Card className="merged-item-card">
+      <Card.Header className="text-center">Todays Top Picks</Card.Header>
+      <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
+      <Card.Body>
+        <Card.Title>{order.name}</Card.Title>
+        {/* Display the gold stars for the order rating */}
+        <div className="star-rating">{order.rating}</div>
+        <Card.Text>{order.store}</Card.Text>
+        <Card.Text>{order.orders}</Card.Text>
+        <Card.Text>{order.hours}</Card.Text>
+        <Button variant="primary" className="w-100">View Store</Button>
+      </Card.Body>
+    </Card>
+  </Col>
+);
+
+TodayTopPickCard.propTypes = {
+  order: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    store: PropTypes.string.isRequired,
+    imageSrc: PropTypes.string.isRequired,
+    rating: PropTypes.string,
+    orders: PropTypes.string.isRequired,
+    hours: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 // WhatsHot component contains the entire feature set
 const WhatsHot = () => {
   const spotlightData = {
     name: 'Soul Fusion',
     imageSrc: 'Soul-fusion.jpg',
-    description: 'Located near Legacy Path closest to the Dole Street crosswalk. Soul Fusion is a veteran owned and operated business ' +
-      'that was started to bring together those who miss the taste of home. We offer southern rooted food with a fusion ' +
-      'twist of the islands. As our motto says, “Follow your Soul, It Knows The Way.”',
+    description: 'Located near Legacy Path closest to the Dole Street crosswalk. Soul Fusion is a veteran ' +
+      'owned and operated business that was started to bring together those who miss the taste of home. ' +
+      'We offer southern rooted food with a fusion twist of the islands. As our motto says, “Follow your ' +
+      'Soul, It Knows The Way.”',
     comments: [
-      { author: 'Joshuah D. Jones', text: 'Absolutely the best food truck in town!', avatarSrc: 'ME.jpeg', likes: 12, comments: 3 },
-      { author: 'Joshuah D. Jones', text: 'Great service and even better food!', avatarSrc: 'ME.jpeg', likes: 12, comments: 3 },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
     ],
   };
 
@@ -194,16 +262,54 @@ const WhatsHot = () => {
 
   ];
 
+  const todayTopPicksData = [
+    {
+      order: {
+        name: 'Caramel Frappuccino',
+        store: 'Starbucks',
+        rating: '★★★★★',
+        hours: "Today's hours: 10:00AM - 2:00PM",
+        imageSrc: 'Starbs.jpg',
+        orders: '124 orders today!',
+      },
+    },
+    {
+      order: {
+        name: 'Caramel Frappuccino',
+        rating: '★★★★★',
+        store: 'Starbucks',
+        hours: "Today's hours: 10:00AM - 2:00PM",
+        imageSrc: 'Starbs.jpg',
+        orders: '124 orders today!',
+      },
+    },
+    {
+      order: {
+        name: 'Caramel Frappuccino',
+        rating: '★★★★★',
+        store: 'Starbucks',
+        hours: "Today's hours: 10:00AM - 2:00PM",
+        imageSrc: 'Starbs.jpg',
+        orders: '124 orders  Today!',
+      },
+    },
+
+  ];
+
   return (
     <Container fluid className="py-3">
       <SpotlightOfTheWeek spotlight={spotlightData} />
       <Row>
         {orderReviewData.map((data, index) => (
-          <MergedItemCard key={index} order={data.order} review={data.review} />
+          <React.Fragment key={`merged-${index}`}> {/* Fixed key to be unique */}
+            <MergedItemCard order={data.order} review={data.review} />
+          </React.Fragment>
+        ))}
+        {todayTopPicksData.map((data, index) => ( // Renamed variable used here
+          <TodayTopPickCard key={`today-${index}`} order={data.order} /> // Use the renamed TodayTopPickCard component
         ))}
       </Row>
     </Container>
   );
 };
-
 export default WhatsHot;

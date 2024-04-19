@@ -20,12 +20,14 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
+import RestaurantPage from '../pages/RestaurantPage';
 import RestaurantsList from '../components/RestaurantsList';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
 import UserPage from '../pages/UserPage';
 import Home from '../pages/Home';
-import SeeAll from '../pages/SeeAll';
+import AddRestaurant from '../pages/AddRestaurant';
+import RestaurantList from '../pages/RestaurantList';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -44,15 +46,22 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
-          <Route path="/restaurants" element={<RestaurantsList />} />
+          <Route path="/restaurants-list" element={<RestaurantList />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/user" element={<ProtectedRoute><UserPage /></ProtectedRoute>} />
+          <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
+
+          <Route path="/add-restaurant" element={<ProtectedRoute><AddRestaurant /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          
+
+          <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
-          <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
           <Route path="/see-all" element={<SeeAll />} />
+          <Route path="/leave-review/:_id" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
           <Route path="/top-picks" element={<TopPicks />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

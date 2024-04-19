@@ -24,5 +24,9 @@
     { "name": "burgerINC", "address": "1020 BlaBLa Street", "description": "Best American Food", "imageSrc": "../images/Burger.jpg","rating": "★★★★★", "hours": "10:00AM - 2:00PM", "owner": "admin@foo.com"},
     { "name": "pizzaINC", "address": "1020 BlaBLa Street", "description": "Best Pizza Food", "imageSrc": "../images/ultimate-pizza.jpg","rating": "★★★★", "hours": "11:00AM - 7:00PM", "owner": "john@foo.com"},
     { "name": "sushiINC", "address": "1020 BlaBLa Street", "description": "Best Sushi Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": "★★★★", "hours": "1:00PM - 6:00PM", "owner": "admin@foo.com"}
+  ],
+
+  "defaultReviews": [
+    { "comment": "Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!", "rating": 5, "owner": "john@foo.com", "restaurantId": "37uoprkLwZg5uabAe"}
   ]
 }

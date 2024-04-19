@@ -16,14 +16,14 @@
 .montserrat-header {
   font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight:600;
+  font-weight:700;
   font-style:normal;
 }
 
 .montserrat-medium {
   font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight:600;
+  font-weight:500;
   font-style:normal;
 }
 
@@ -46,6 +46,7 @@ body {
 
 #landing-page {
   background-color: #a2d9a2; /* Replace with the actual background color */
+  min-height:750px;
 }
 
 
@@ -53,6 +54,9 @@ body {
   color: white; /* Replace with the actual header text color */
   padding: 20px 0;
   margin-bottom: 30px;
+  max-width:700px;
+  display: flex;
+  justify-content:center;
 }
 
 .top-pick-list {
@@ -87,13 +91,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Aligns CTAs to the top */
-  padding-top: 250px;
-  padding-right: 150px;
 }
 
 .cta-card .btn {
-  width: 80%;
+  width: 70%;
   margin: 10px auto;
+}
+
+.cta-container h2 {
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  font-size: 35px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  font-weight: bold;
+  font-family:'Montserrat', 'Open Sans';
 }
 
 /* This is the 'See all of today's top picks!' button */
@@ -118,24 +129,11 @@ body {
   background-color: transparent; /* Make card background transparent */
   border: none; /* Remove card border if not needed */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add some shadow to lift the card off the page */
-  max-width: 700px; /* Adjust this value to suit your design */
+  width: 600px; /* Adjust this value to suit your design */
+  max-width:700px;
   margin: 10px; /* This will center the card if it's within a column */
 }
 
-.cta-container h2 {
-  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 50px; /* Or whatever size you're aiming for */
-  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
-  color: black;
-  font-weight: bold;
-  padding-right: 200px;
-}
-
-.top-picks-header {
-  color: white; /* Replace with the actual header text color */
-  padding: 20px 0;
-} 
-  
 #Container-User-Profile p {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
   font-size: 20px; /* Or whatever size you're aiming for */
@@ -175,7 +173,7 @@ body {
 
 .review-img img {
   width:80%;
-  height:500;
+  height:300px;
   object-fit:cover;
   border-radius:8px;
 }
@@ -328,6 +326,16 @@ body {
 
 .top-pick-card:hover .fire-animation {
   opacity: 1;
+}
+
+.page-header h1 {
+  font-size: 30px; /* Or whatever size you're aiming for */
+  margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
+  color: black;
+  display:flex;
+  justify-content:center;
+  font-family:'Montserrat';
+  font-weight:900;
 }
 
 
