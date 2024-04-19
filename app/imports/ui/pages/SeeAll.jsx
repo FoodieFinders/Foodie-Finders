@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Dropdown, Col, Row, Button, ButtonGroup, DropdownButton, Card, Image, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
-const FilterMockup = () => (
+const SeeAll = () => (
   <Container fluid>
     <Row>
       <Col sm="2">
@@ -99,4 +99,4 @@ const FilterMockup = () => (
   </Container>
 );
 
-export default FilterMockup;
+export default SeeAll;

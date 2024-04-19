@@ -21,11 +21,11 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
 import RestaurantsList from '../components/RestaurantsList';
-import FilterMockup from '../pages/FilterMockup';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
 import UserPage from '../pages/UserPage';
 import Home from '../pages/Home';
+import SeeAll from '../pages/SeeAll';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/vendor-dashboard" element={<ProtectedRoute><VendorDashboard /></ProtectedRoute>} />
           <Route path="/leave-review" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
-          <Route path="/filter-mockup" element={<FilterMockup />} />
+          <Route path="/see-all" element={<SeeAll />} />
           <Route path="/top-picks" element={<TopPicks />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

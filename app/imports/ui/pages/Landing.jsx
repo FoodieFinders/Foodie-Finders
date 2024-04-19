@@ -25,7 +25,7 @@ const Landing = () => {
   // Function to navigate to the leave review page
   const goToLeaveReview = () => navigate('/leave-review');
 
-  const goToFilterMockup = () => navigate('/filter-mockup');
+  const goToSeeAll = () => navigate('/see-all');
 
   return (
     <Container id="landing-page" fluid className="py-3">
@@ -61,7 +61,7 @@ const Landing = () => {
           </ListGroup>
           <Row className="justify-content-center">
             <Col md={8}>
-              <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToFilterMockup}>
+              <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToSeeAll}>
                 Browse Through All Restaurants!
               </Button>
             </Col>
