@@ -51,7 +51,7 @@ const EditStuff = () => {
                 <SelectField name="condition" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="owner" />
+                {/* <HiddenField name="owner" /> */}
               </Card.Body>
             </Card>
           </AutoForm>

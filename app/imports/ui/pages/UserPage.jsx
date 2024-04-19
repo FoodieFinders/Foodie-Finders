@@ -11,6 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const UserPage = () => {
   const navigate = useNavigate();
   const goToEditUserPage = () => navigate('/edituser/:_id');
+  const goToLeaveReview = () => navigate('/leave-review');
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -55,7 +56,7 @@ const UserPage = () => {
           </Col>
           <Col className="text-center py-4">
             <h2>Already Ate?</h2>
-            <Button size="lg" block className=" text-center mt-3 custom-review-button">
+            <Button size="lg" block className=" text-center mt-3 custom-review-button" onClick={goToLeaveReview}>
               Write A Review
             </Button>
           </Col>

@@ -1,29 +1,36 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
+import SimpleSchema from 'simpl-schema';
 import { Users } from '../../api/users/users';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const bridge = new SimpleSchema2Bridge(Users.schema);
-
 /* Renders the EditStuff page for editing a single document. */
-const EditStuff = () => {
+const EditUserPage = () => {
+  const schema2 = new SimpleSchema({
+    firstName: { type: String, optional: true },
+    lastName: { type: String, optional: true },
+    title: { type: String, allowedValues: ['Student', 'Vendor'], defaultValue: 'Student', optional: true },
+    picture: { type: String, optional: true },
+  });
+  const bridge = new SimpleSchema2Bridge(schema2);
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
   // console.log('EditStuff', _id);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
-    // Get access to Stuff documents.
+    // Get access to Users documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
     const document = Users.collection.findOne(_id);
+    // Ensure the document contains the email field
     return {
       doc: document,
       ready: rdy,
@@ -42,7 +49,7 @@ const EditStuff = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center"><h2>Edit Stuff</h2></Col>
+          <Col className="text-center"><h2>Edit Profile</h2></Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
@@ -52,7 +59,6 @@ const EditStuff = () => {
                 <TextField name="picture" placeholder="Picture URL " />
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="owner" />
               </Card.Body>
             </Card>
           </AutoForm>
@@ -62,4 +68,4 @@ const EditStuff = () => {
   ) : <LoadingSpinner />;
 };
 
-export default EditStuff;
+export default EditUserPage;
