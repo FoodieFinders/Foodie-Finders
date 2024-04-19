@@ -70,7 +70,7 @@ Meteor.publish(Restaurants.userPublicationName, function () {
       return Restaurants.collection.find();
     }
     else {
-      return Restaurants.collection.find({ owner: username });
+      return Restaurants.collection.find({ /*owner: username*/ });
     }
   } else {
     return Restaurants.collection.find();
