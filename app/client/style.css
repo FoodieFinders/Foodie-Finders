@@ -16,14 +16,14 @@
 .montserrat-header {
   font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight:600;
+  font-weight:700;
   font-style:normal;
 }
 
 .montserrat-medium {
   font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight:600;
+  font-weight:500;
   font-style:normal;
 }
 
@@ -55,6 +55,8 @@ body {
   padding: 20px 0;
   margin-bottom: 30px;
   max-width:700px;
+  display: flex;
+  justify-content:center;
 }
 
 .top-pick-list {
@@ -92,13 +94,13 @@ body {
 }
 
 .cta-card .btn {
-  width: 80%;
+  width: 70%;
   margin: 10px auto;
 }
 
 .cta-container h2 {
   white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 45px; /* Or whatever size you're aiming for */
+  font-size: 35px; /* Or whatever size you're aiming for */
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
   font-weight: bold;
@@ -127,7 +129,8 @@ body {
   background-color: transparent; /* Make card background transparent */
   border: none; /* Remove card border if not needed */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add some shadow to lift the card off the page */
-  max-width: 700px; /* Adjust this value to suit your design */
+  width: 600px; /* Adjust this value to suit your design */
+  max-width:700px;
   margin: 10px; /* This will center the card if it's within a column */
 }
 
@@ -170,7 +173,7 @@ body {
 
 .review-img img {
   width:80%;
-  height:500;
+  height:300px;
   object-fit:cover;
   border-radius:8px;
 }
@@ -326,8 +329,7 @@ body {
 }
 
 .page-header h1 {
-  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  font-size: 40px; /* Or whatever size you're aiming for */
+  font-size: 30px; /* Or whatever size you're aiming for */
   margin-bottom: 0.5rem; /* Adjust the bottom margin as needed */
   color: black;
   display:flex;
