@@ -21,7 +21,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import VendorDashboard from '../pages/VendorDashboard';
 import LeaveReview from '../pages/LeaveReview';
 import RestaurantPage from '../pages/RestaurantPage';
-import RestaurantsList from '../components/RestaurantsList';
 import FilterMockup from '../pages/FilterMockup';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
