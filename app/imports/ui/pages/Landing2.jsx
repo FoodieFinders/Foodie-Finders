@@ -23,7 +23,7 @@ const Landing2 = () => {
 
   const navigate = useNavigate();
 
-  const goToVendorDashboard = () => navigate('/vendor-dashboard');
+  const goToSignIn = () => navigate('signin');
   const goToLeaveReview = () => navigate('/leave-review');
   const goToTopPicks = () => navigate('top-picks');
 
@@ -80,7 +80,7 @@ const Landing2 = () => {
             </Col>
             <Col className="mb-4 d-flex flex-column align-items-center justify-content-center cta-container cta-card text-center">
               <h2>Are you a vendor?</h2>
-              <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
+              <Button size="lg" className="custom-review-button" onClick={goToSignIn}>
                 Vendor Dashboard
               </Button>
 
