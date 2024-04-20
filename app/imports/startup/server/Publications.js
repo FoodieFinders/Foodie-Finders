@@ -4,6 +4,7 @@
   import { Restaurants } from '../../api/restaurants/Restaurants';
   import { Users } from '../../api/users/users';
   import { Reviews } from '../../api/reviews/Reviews';
+  import '../../api/methods/restaurants'
 
   // User-level publication.
   // If logged in, then publish documents owned by this user. Otherwise, publish nothing.

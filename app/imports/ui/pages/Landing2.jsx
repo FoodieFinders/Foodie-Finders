@@ -9,7 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import '../../../client/style.css'; // Import your custom stylesheet here
 
 const Landing2 = () => {
-  const { ready, restaurants, loggedIn } = useTracker(() => {
+  const { ready, restaurants, loggedIn, currentUser } = useTracker(() => {
     const subscription = Meteor.subscribe(Restaurants.userPublicationName);
     const rdy = subscription.ready();
     const restaurantItems = Restaurants.collection.find({}).fetch();
@@ -17,6 +17,7 @@ const Landing2 = () => {
       restaurants: restaurantItems,
       ready: rdy,
       loggedIn: !!Meteor.user(),
+      currentUser: Meteor.user() ? Meteor.user().username : null,
     };
   }, []);
 
@@ -41,7 +42,7 @@ const Landing2 = () => {
               <div className="top-picks-header text-center">
                 <h1>Today's Top Picks</h1>
               </div>
-              <RestaurantItem key={restaurants[0]._id} restaurant={restaurants[0]}/>
+              <RestaurantItem key={restaurants[0]._id} restaurant={restaurants[0]} currentUser={currentUser}/>
               <div className="top-picks-header text-center">
               </div>
               <div className="top-picks-header text-center">
@@ -57,7 +58,7 @@ const Landing2 = () => {
               </div>
               <ListGroup variant="flush" className="top-pick-list">
                 {restaurants.map((restaurant, index) => (
-                  <RestaurantItem key={index} restaurant={restaurant} />
+                  <RestaurantItem key={index} restaurant={restaurant} currentUser={currentUser}/>
                 ))}
               </ListGroup>
             </Col>
@@ -71,7 +72,7 @@ const Landing2 = () => {
                 <h1>Today's Top Picks</h1>
               </div>
               <ListGroup variant="flush" className="top-pick-list">
-                {restaurants.map(restaurant => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
+                {restaurants.map(restaurant => <RestaurantItem key={restaurant._id} restaurant={restaurant} currentUser={currentUser}/>)}
               </ListGroup>
               <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
                 See all of today's top picks!
