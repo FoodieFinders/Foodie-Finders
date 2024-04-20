@@ -43,7 +43,7 @@ Meteor.publish(Reviews.adminPublicationName, function () {
     return Stuffs.collection.find();
   }
   return this.ready();
-})
+});
 
 Meteor.publish(Users.userPublicationName, function () {
   if (this.userId) {
@@ -60,7 +60,6 @@ Meteor.publish(Users.adminPublicationName, function () {
   return this.ready();
 });
 
-
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
 Meteor.publish(Restaurants.userPublicationName, function () {
@@ -69,12 +68,12 @@ Meteor.publish(Restaurants.userPublicationName, function () {
     if (Restaurants.collection.find({ owner: username }).count() === 0) {
       return Restaurants.collection.find();
     }
-    else {
-      return Restaurants.collection.find({ owner: username });
-    }
-  } else {
-    return Restaurants.collection.find();
+
+    return Restaurants.collection.find({ owner: username });
+
   }
+  return Restaurants.collection.find();
+
   return this.ready();
 });
 
@@ -100,4 +99,17 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.publish(null, function () {
+  if (!this.userId) return this.ready();
+  return Meteor.users.find(this.userId, {
+    fields: {
+      username: 1,
+      'profile.firstName': 1,
+      'profile.lastName': 1,
+      'profile.title': 1,
+      'profile.picture': 1,
+    },
+  });
 });

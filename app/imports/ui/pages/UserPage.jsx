@@ -10,7 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const UserPage = () => {
   const navigate = useNavigate();
-  const goToEditUserPage = () => navigate('/edituser/:_id');
+  const goToEditUserPage = (userId) => navigate(`/edituser/${userId}`);
   const goToLeaveReview = () => navigate('/leave-review');
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, users } = useTracker(() => {
@@ -42,7 +42,7 @@ const UserPage = () => {
             <UserProfile key={user._id} user={user} /> // Pass profile instead of stuff
           ))}
           <Col md={{ span: 4, offset: 3 }}>
-            <Button size="lg" block className=" text-center mt-3  custom-review-button" onClick={goToEditUserPage}>
+            <Button size="lg" block className=" text-center mt-3  custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
               Edit Your Profile Page
             </Button>
           </Col>
