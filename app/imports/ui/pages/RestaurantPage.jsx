@@ -25,7 +25,7 @@ const MergedItemCard = ({ order, review, restaurantId }) => (
         <Button href={`/leave-review/${restaurantId}`} variant="primary" className="w-100">Leave a Review!</Button>
         <hr className="comment-divider" />
         <div className="instagram-style-comment">
-          <Image src={`${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
+          <Image src={`/images/${review.avatarSrc}`} alt={`${review.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
           <div className="comment-details">
             <strong>{review.reviewerName}</strong>
             <div className="star-rating">{review.rating}</div>
