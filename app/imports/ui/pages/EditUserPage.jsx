@@ -54,7 +54,7 @@ const EditUserPage = () => {
                   <SubmitField value="Update Profile" />
                 </div>
                 <ErrorsField />
-                <HiddenField name="email" value="test@gmail.com" />
+                <HiddenField name="email" />
               </Card.Body>
             </Card>
           </AutoForm>
