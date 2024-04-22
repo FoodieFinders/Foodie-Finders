@@ -1,25 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Meteor } from 'meteor/meteor';
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
 import '../../../client/style.css'; // Import your custom stylesheet here
 import SimpleSchema from 'simpl-schema';
+import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import { useTracker } from 'meteor/react-meteor-data';
-import { HTMLFieldProps, connectField } from 'uniforms';
+import { connectField } from 'uniforms';
 import { Restaurants } from '../../api/restaurants/Restaurants';
+import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
-
-
 
 const formSchema = new SimpleSchema({
   rating: Number,
   comment: String,
 });
 
+const bridge = new SimpleSchema2Bridge(formSchema);
+
 function Rating({
-  className,
   disabled,
   max = 5,
   onChange,
@@ -50,19 +51,24 @@ function Rating({
   );
 }
 
-const bridge = new SimpleSchema2Bridge(formSchema);
 const RatingField = connectField(Rating);
 
 
 const LeaveReview = () => {
+  const { _id } = useParams();
+  const restaurantId = _id;
+  
+  owner = Meteor.user()?.username;
 
-  const submit = (data, formRef) => {
+  const submit = (data, formRef, rev) => {
     const { rating, comment } = data;
-    const owner = Meteor.user().username;
-    const { _id } = useParams();
-    const restaurantId = _id;
+    console.log(owner);
+    if (rev) {
+      swal('Error', 'You have already submitted a review for this restaurant', 'error');
+      return; // Exit the function if a review already exists
+    }
     Reviews.collection.insert(
-      { rating, comment, owner, restaurantId },
+      { comment, rating, owner, restaurantId },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -74,8 +80,16 @@ const LeaveReview = () => {
     );
   };
 
-  const { _id } = useParams();
-  const restaurantId = _id;
+  const { rev, ready2 } = useTracker(() => {
+    const subscription = Meteor.subscribe(Reviews.userPublicationName);
+    const rdy = subscription.ready();
+    const review = Reviews.collection.findOne({owner, restaurantId});
+    return {
+      rev: review,
+      ready2: rdy,
+    };
+  }, []);
+
 
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
@@ -89,12 +103,13 @@ const LeaveReview = () => {
       ready: rdy,
     };
   }, [_id]);
-  console.log(doc, ready);
+  
+  let fRef = null;
   return ready ? (
 
     <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
-          <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+          <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef, rev)}>
             <Card style={{borderRadius:15}} className="review-card">
               <Card.Body>
                 <div className="page-header">

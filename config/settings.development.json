@@ -27,6 +27,7 @@
   ],
 
   "defaultReviews": [
-    { "comment": "Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!", "rating": 5, "owner": "john@foo.com", "restaurantId": "37uoprkLwZg5uabAe"}
+    { "comment": "Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!", "rating": 3, "owner": "john@foo.com", "restaurantId": "3LSwR3AGZNSDcXoPb"},
+    { "comment": "Absolutely loved the other Frappuccino, perfect blend of coffee and sweetness!", "rating": 4, "owner": "admin@foo.com", "restaurantId": "yfBq65XwZuHPvKFj7"}
   ]
 }
