@@ -49,12 +49,12 @@ Meteor.publish(Reviews.userPublicationName, function () {
   }
   return this.ready();
 });
-
+/*
     if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
       return Stuffs.collection.find();
     }
     return this.ready();
-  });
+  };*/
 
   Meteor.publish(null, function () {
     if (!this.userId) return this.ready();
@@ -70,7 +70,7 @@ Meteor.publish(Reviews.userPublicationName, function () {
   });
 
 
-  Meteor.publish(Users.userPublicationName, function () {
+/*  Meteor.publish(Users.userPublicationName, function () {
     if (this.userId) {
       return Meteor.users.find(this.userId, {
         fields: {
@@ -80,15 +80,16 @@ Meteor.publish(Reviews.userPublicationName, function () {
       });
     }
     return this.ready();
-  });
+  });*/
 
-  /*Meteor.publish(Users.userPublicationName, function () {
+
+  Meteor.publish(Users.userPublicationName, function () {
     if (this.userId) {
       const username = Meteor.users.findOne(this.userId).username;
       return Users.collection.find({ email: username });
     }
     return this.ready();
-  });*/
+  });
 
   Meteor.publish(Users.adminPublicationName, function () {
     if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
@@ -96,6 +97,7 @@ Meteor.publish(Reviews.userPublicationName, function () {
     }
     return this.ready();
   });
+
 
 
   // User-level publication.

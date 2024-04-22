@@ -27,6 +27,7 @@ import UserPage from '../pages/UserPage';
 import EditUserPage from '../pages/EditUserPage';
 import Home from '../pages/Home';
 import AddRestaurant from '../pages/AddRestaurant';
+import RestaurantList from '../pages/RestaurantList';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/edituser/:_id" element={<ProtectedRoute><EditUserPage /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
+          <Route path="/restaurants-list" element={<RestaurantList />} />
           <Route path="/leave-review/:_id" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
           <Route path="/top-picks" element={<TopPicks />} />
           <Route path="/aboutus" element={<AboutUs />} />

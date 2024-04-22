@@ -48,7 +48,6 @@ const EditUserPage = () => {
               <Card.Body>
                 <TextField name="firstName" placeholder="First Name" />
                 <TextField name="lastName" placeholder="Last Name" />
-                <SelectField name="title" />
                 <TextField name="picture" placeholder="Picture URL" />
                 <div className="text-center">
                   <SubmitField value="Update Profile" />
