@@ -314,6 +314,9 @@ body {
 .navbar-custom .navbar-toggler {
   color: white !important;
 }
+.navbar-custom .navbar-toggler-icon {
+  color: white !important;
+}
 
 .navbar-custom .dropdown-menu .nav-link {
   color: black !important; /* Ensuring dropdown items are readable, change as needed */
