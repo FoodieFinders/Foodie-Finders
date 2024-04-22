@@ -6,7 +6,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
-import '../../../client/style.css'; // Import your custom stylesheet here
+import '../../../client/style.css';
 
 const Landing2 = () => {
   const { ready, restaurants, loggedIn, currentUser } = useTracker(() => {

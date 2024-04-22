@@ -57,7 +57,8 @@ const RestaurantItem = ({ restaurant, currentUser }) => {
           </div>
           </Link>
           <div>
-            <Card.Title>{restaurant.name}</Card.Title>
+
+            <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
             <Card.Text>{restaurant.rating}</Card.Text>
             <Card.Text>{restaurant.hours}</Card.Text>
             {isOwner && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
