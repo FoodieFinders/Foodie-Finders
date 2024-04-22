@@ -12,6 +12,13 @@
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
+a {
+  text-decoration: none;
+}
+
+Link {
+  text-decoration:none;
+}
 
 .montserrat-header {
   font-family:"Montserrat", sans-serif;

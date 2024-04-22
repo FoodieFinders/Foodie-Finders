@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import '../../../client/style.css'; // Import your custom stylesheet here
 import SimpleSchema from 'simpl-schema';
 import swal from 'sweetalert';
@@ -12,6 +13,7 @@ import { connectField } from 'uniforms';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { useNavigate } from 'react-router-dom';
 
 const formSchema = new SimpleSchema({
   rating: Number,
@@ -54,11 +56,16 @@ function Rating({
 const RatingField = connectField(Rating);
 
 
+
+
 const LeaveReview = () => {
   const { _id } = useParams();
   const restaurantId = _id;
   
-  owner = Meteor.user()?.username;
+  const navigate = useNavigate();
+  const goBack = () => navigate(`/restaurant-page/${restaurantId}`);
+
+  const owner = Meteor.user()?.username;
 
   const submit = (data, formRef, rev) => {
     const { rating, comment } = data;
@@ -73,7 +80,9 @@ const LeaveReview = () => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Item added successfully', 'success').then(function() {
+            goBack();
+          });
           formRef.reset();
         }
       },
@@ -113,10 +122,10 @@ const LeaveReview = () => {
             <Card style={{borderRadius:15}} className="review-card">
               <Card.Body>
                 <div className="page-header">
-                  <h1 className="montserrat-header">Leave a review for {doc.name}</h1>
+                  <Link style={{textDecoration:"none"}} to={`/restaurant-page/${restaurantId}`}><h1 className="montserrat-header">Leave a review for {doc.name}</h1></Link>
                 </div>
                 <Col className="justify-content-center review-img">
-                  <Image src={`/images/${doc.imageSrc}`} />
+                  <Image src={`${doc.imageSrc}`} />
                 </Col>
                 <h4><b>Rating</b></h4>
                 <RatingField name="rating" />
