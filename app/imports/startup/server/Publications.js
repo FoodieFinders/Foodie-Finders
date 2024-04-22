@@ -27,10 +27,11 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 });
 
 Meteor.publish(Reviews.userPublicationName, function () {
-
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
+    return Reviews.collection.find({});
+  } else {
+    return Reviews.collection.find({});
   }
   return this.ready();
 });
@@ -40,7 +41,7 @@ Meteor.publish(Reviews.userPublicationName, function () {
 Meteor.publish(Reviews.adminPublicationName, function () {
 
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
+    return Reviews.collection.find();
   }
   return this.ready();
 })
