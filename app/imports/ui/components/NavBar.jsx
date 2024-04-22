@@ -31,10 +31,9 @@ const NavBar = () => {
             {/* <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Contact Us</Nav.Link> */}
             {currentUser ? (
               [<Nav.Link as={NavLink} id={ComponentIDs.addRestaurantMenuItem} to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>,
-                <>
-                  <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>
-                  <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/vendor-dashboard" key="vendor-dashboard">Vendor Dashboard</Nav.Link>
-                </>,
+
+              <>
+              </>
               ]
             ) : ''}
           </Nav>
