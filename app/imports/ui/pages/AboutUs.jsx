@@ -29,7 +29,7 @@ const AboutUs = () => {
               <p>Craving a quick bite? With Foodie Finders, you can easily discover what's available to devour right now. No more wandering aimlessly – just pull up the app and let your cravings lead the way.</p>
 
               <h3 className="mt-5">Your Favorite Finds:</h3>
-              <p>Love a particular style of cuisine? Never miss out on your <a href="/our-vendors" style={{textDecoration: "none"}}>favorite</a> dishes again. Foodie Finders keeps you in the loop, notifying you exactly when your preferred food fares are on the menu.</p>
+              <p>Love a particular style of cuisine? Never miss out on your <a href="top-picks" style={{textDecoration: "none"}}>favorite</a> dishes again. Foodie Finders keeps you in the loop, notifying you exactly when your preferred food fares are on the menu.</p>
             </div>
           </div>
         </div>

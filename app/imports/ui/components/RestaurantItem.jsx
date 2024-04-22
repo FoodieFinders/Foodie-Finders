@@ -81,7 +81,7 @@ RestaurantItem.propTypes = {
     imageSrc: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  currentUser: PropTypes.string.isRequired,
+  currentUser: PropTypes.string,
 };
 
 export default RestaurantItem;

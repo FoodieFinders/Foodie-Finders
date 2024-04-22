@@ -6,7 +6,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 
 const Landing = () => {
@@ -58,7 +57,7 @@ const Landing = () => {
             </ListGroup>
             </div>
             <div>
-            <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
+            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
               See all of today's top picks!
             </Button>
             </div>
@@ -74,16 +73,16 @@ const Landing = () => {
           <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
             <h2>Are you a vendor?</h2>
             <div>
-            <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToSignIn} style={{width:300}}>
+            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToSignIn} style={{width:300}}>
               Vendor Dashboard
             </Button>
             </div>
             <br/>
             <h2>Are you a student?</h2>
             <div>
-              <Link to={`/leave-review/${._id}`}><Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToLeaveReview} style={{width:300}}>
+              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToLeaveReview} style={{width:300}}>
               Leave a review!
-            </Button></Link>
+            </Button>
             </div>
           </Col>
         )}
