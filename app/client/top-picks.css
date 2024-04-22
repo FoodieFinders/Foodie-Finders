@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 body, .card, .btn {
   font-family: 'Montserrat', sans-serif;
 }
@@ -72,14 +73,6 @@ body {
   padding-top: 0;
 }
 
-.spotlight-card .spotlight-image {
-  margin-top: 0;
-}
-
-.row, .col-md-4 {
-  padding: 0;
-  margin: 0;
-}
 
 .card-body {
   padding: 0;
@@ -91,14 +84,14 @@ body {
 
 }
 
-.spotlight-card, .spotlight-description-card, .comment-card {
-  max-height: 400px;
-  overflow: hidden;
+.like-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border-color: var(--dark-green);
 }
 
-.spotlight-card-image, .description-map-image {
-  max-height: 50px;
-  object-fit: cover;
+.like-button.liked {
+  color: var(--dark-green);
 }
 
 .spotlight-description-card .card-body {
@@ -111,7 +104,7 @@ body {
 }
 
 .spotlight-description-card .card-body {
-  max-height: 400px;
+  max-height: 700px;
   overflow: auto;
 }
 
@@ -123,7 +116,7 @@ body {
 
 .btn-outline-primary:hover {
   color: var(--text-color) !important;
-  background-color: var(--light-green) !important;
+  background-color: var(--dark-green) !important;
   border-color: var(--dark-green) !important;
 }
 .btn-primary {
@@ -133,15 +126,40 @@ body {
 }
 
 .btn-primary:hover {
-  color: var(--text-color) !important;
+  color: var(--dark-green) !important;
   background-color: var(--light-green) !important;
   border-color: var(--dark-green) !important;
 }
 
 
 .spotlight-card-image {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
+.description-map-image {
+  max-width: 100%; /* ensures the image is not wider than its container */
+  height: auto; /* maintains the aspect ratio of the image */
+  max-height: 250px; /* reduces the maximum height of the image */
+  object-fit: cover; /* ensures the image is scaled properly within its constraints */
+  transition: transform 0.3s ease-in-out;
+}
+
+.description-map-image:hover {
+  transform: scale(1.1); /* Adjust scale value as needed */
+}
+
+
+.section-header {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 10px 0;
+  margin: 20px 0;
+  background-color: var(--dark-green);
+  color: var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

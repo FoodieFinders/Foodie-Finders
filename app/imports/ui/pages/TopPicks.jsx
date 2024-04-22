@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
-import '../../../client/top-picks.css'; // Ensure this path is correct for your styles
+import { ChatRightText, HandThumbsUp } from 'react-bootstrap-icons';
+import '../../../client/top-picks.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { AuthProvider } from '../../startup/client/AuthContext';
 
 const SpotlightOfTheWeek = ({ spotlight }) => (
   <Row className="mb-4 spotlight-section">
@@ -19,8 +22,8 @@ const SpotlightOfTheWeek = ({ spotlight }) => (
         <Card.Body>
           <p>{spotlight.description}</p>
         </Card.Body>
-        <Image src="/images/foodtruckmap.jpg" alt="Food Truck Location Map" className="img-fluid mt-auto description-map-image" />
       </Card>
+      <Image src="/images/foodtruckmap.jpg" alt="Food Truck Location Map" className="img-fluid mt-auto description-map-image" />
     </Col>
     <Col md={4} className="mb-4 d-flex flex-column">
       <div className="comments-section flex-grow-1">
@@ -28,16 +31,18 @@ const SpotlightOfTheWeek = ({ spotlight }) => (
           <Card key={index} className="comment-card mb-3 flex-grow-1">
             <Card.Body>
               <div className="instagram-style-comment">
-                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.reviewerName}'s avatar`} className="comment-avatar rounded-circle"/>
+                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
                 <div className="comment-details">
                   <strong>{comment.reviewerName}</strong>
                   <div className="star-rating">{comment.rating}</div>
                   <span>{comment.reviewText}</span>
                   <div className="comment-interaction">
-                    <button className="icon-button emoji" aria-label="Like">👍</button>
-                    <span className="likes">{comment.likes} Likes</span>
-                    <button className="icon-button emoji" aria-label="Comment">💬</button>
-                    <span className="comments">{comment.comments} Comments</span>
+                    <Button variant="link" className="icon-button" style={{ color: 'var(--dark-green)' }} aria-label="Like">
+                      <HandThumbsUp />
+                    </Button>
+                    <Button variant="link" className="icon-button" style={{ color: 'var(--dark-green)' }} aria-label="Comment">
+                      <ChatRightText />
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -69,13 +74,12 @@ SpotlightOfTheWeek.propTypes = {
 };
 
 const MergedItemCard = ({ order, review }) => (
-  <Col lg={4} className="mb-4" >
+  <Col lg={4} className="mb-4">
     <Card className="merged-item-card">
       <Card.Header className="text-center">Top Order This Week</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
       <Card.Body>
         <Card.Title>{order.name}</Card.Title>
-        {/* Display the gold stars for the order rating */}
         <div className="star-rating">{order.rating}</div>
         <Card.Text>{order.store}</Card.Text>
         <Card.Text>{order.orders}</Card.Text>
@@ -89,10 +93,12 @@ const MergedItemCard = ({ order, review }) => (
             <div className="star-rating">{review.rating}</div>
             <span>{review.reviewText}</span>
             <div className="comment-interaction">
-              <button className="icon-button emoji" aria-label="Like">👍</button>
-              <span className="likes">{review.likes} Likes</span>
-              <button className="icon-button emoji" aria-label="Comment">💬</button>
-              <span className="comments">{review.comments} Comments</span>
+              <Button variant="link" className="icon-button" style={{ color: 'var(--dark-green)' }} aria-label="Like">
+                <HandThumbsUp />
+              </Button>
+              <Button variant="link" className="icon-button" style={{ color: 'var(--dark-green)' }} aria-label="Comment">
+                <ChatRightText />
+              </Button>
             </div>
             <Button variant="outline-primary" size="sm" className="mt-2">View more Comments</Button>
           </div>
@@ -124,11 +130,10 @@ MergedItemCard.propTypes = {
 const TodayTopPickCard = ({ order }) => (
   <Col lg={4} className="mb-4">
     <Card className="merged-item-card">
-      <Card.Header className="text-center">Todays Top Picks</Card.Header>
+      <Card.Header className="text-center">Whats Hot Today!</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
       <Card.Body>
         <Card.Title>{order.name}</Card.Title>
-        {/* Display the gold stars for the order rating */}
         <div className="star-rating">{order.rating}</div>
         <Card.Text>{order.store}</Card.Text>
         <Card.Text>{order.orders}</Card.Text>
@@ -150,8 +155,8 @@ TodayTopPickCard.propTypes = {
   }).isRequired,
 };
 
-// WhatsHot component contains the entire feature set
 const WhatsHot = () => {
+  // Detailed data for Spotlight of the Week
   const spotlightData = {
     name: 'Soul Fusion',
     imageSrc: 'Soul-fusion.jpg',
@@ -192,17 +197,10 @@ const WhatsHot = () => {
         likes: 192,
         comments: 72,
       },
-      {
-        reviewerName: 'Joshuah D. Jones',
-        reviewText: 'Best food truck in town!',
-        rating: '★★★★★',
-        avatarSrc: 'ME.jpeg',
-        likes: 192,
-        comments: 72,
-      },
     ],
   };
 
+  // Detailed data for order reviews this week
   const orderReviewData = [
     {
       order: {
@@ -222,12 +220,11 @@ const WhatsHot = () => {
         comments: 72,
       },
     },
-
     {
       order: {
         name: 'Caramel Frappuccino',
-        rating: '★★★★★',
         store: 'Starbucks',
+        rating: '★★★★★',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
         orders: '5028 orders this week',
@@ -244,8 +241,8 @@ const WhatsHot = () => {
     {
       order: {
         name: 'Caramel Frappuccino',
-        rating: '★★★★★',
         store: 'Starbucks',
+        rating: '★★★★★',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
         orders: '5028 orders this week',
@@ -259,9 +256,9 @@ const WhatsHot = () => {
         comments: 72,
       },
     },
-
   ];
 
+  // Detailed data for today's top picks
   const todayTopPicksData = [
     {
       order: {
@@ -270,46 +267,54 @@ const WhatsHot = () => {
         rating: '★★★★★',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
-        orders: '124 orders today!',
+        orders: '5028 orders this week',
       },
     },
     {
       order: {
         name: 'Caramel Frappuccino',
-        rating: '★★★★★',
         store: 'Starbucks',
+        rating: '★★★★★',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
-        orders: '124 orders today!',
+        orders: '5028 orders this week',
       },
     },
     {
       order: {
         name: 'Caramel Frappuccino',
-        rating: '★★★★★',
         store: 'Starbucks',
+        rating: '★★★★★',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
-        orders: '124 orders  Today!',
+        orders: '5028 orders this week',
       },
     },
-
   ];
 
   return (
-    <Container fluid className="py-3">
-      <SpotlightOfTheWeek spotlight={spotlightData} />
-      <Row>
-        {orderReviewData.map((data, index) => (
-          <React.Fragment key={`merged-${index}`}> {/* Fixed key to be unique */}
-            <MergedItemCard order={data.order} review={data.review} />
-          </React.Fragment>
-        ))}
-        {todayTopPicksData.map((data, index) => ( // Renamed variable used here
-          <TodayTopPickCard key={`today-${index}`} order={data.order} /> // Use the renamed TodayTopPickCard component
-        ))}
-      </Row>
-    </Container>
+    <AuthProvider> {/* Authentication context provider */}
+      <Container fluid className="py-3">
+        <SpotlightOfTheWeek spotlight={spotlightData} />
+        <Row>
+          <Col xs={12}>
+            <div className="section-header">Whats Hot This Week!</div>
+          </Col>
+          {orderReviewData.map((data, index) => (
+            <MergedItemCard key={`week-${index}`} order={data.order} review={data.review} />
+          ))}
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <div className="section-header">Todays Top Picks</div>
+          </Col>
+          {todayTopPicksData.map((data, index) => (
+            <TodayTopPickCard key={`today-${index}`} order={data.order} />
+          ))}
+        </Row>
+      </Container>
+    </AuthProvider>
   );
 };
+
 export default WhatsHot;
