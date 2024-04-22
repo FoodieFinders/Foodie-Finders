@@ -14,15 +14,17 @@ const bridge = new SimpleSchema2Bridge(Users.schema);
 const EditUserPage = () => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
+  console.log('User ID from URL:', _id);
   // console.log('EditStuff', _id);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Users.userPublicationName);
+    const subscription = Meteor.subscribe(Users.userPublicationName, _id);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
     const document = Users.collection.findOne(_id);
+    console.log('Document fetched:', document);
     return {
       doc: document,
       ready: rdy,
