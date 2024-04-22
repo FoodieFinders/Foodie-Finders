@@ -42,6 +42,7 @@ const RestaurantList = () => {
                 <Form.Control
                   aria-label="Search"
                   aria-describedby="basic-addon2"
+                  name="search"
                 />
                 <Button variant="primary" id="button-addon2"><Search /></Button>
               </InputGroup>
