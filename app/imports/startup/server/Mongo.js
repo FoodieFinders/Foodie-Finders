@@ -13,7 +13,7 @@ const addData = (data) => {
   Stuffs.collection.insert(data);
 };
 const addUser = (user) => {
-  console.log(`  Adding: ${user.lastName} (${user.email})`);
+  console.log(`  Adding: ${user.email} (${user.owner})`);
   Users.collection.insert(user);
 };
 

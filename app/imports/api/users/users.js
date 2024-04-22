@@ -1,7 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-/** Encapsulates state and variable values for this collection. */
 class UsersCollection {
   constructor() {
     // The name of this collection.

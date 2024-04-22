@@ -5,7 +5,8 @@ import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { Users } from '../../api/users/users';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -15,26 +16,39 @@ const SignUp = ({ location }) => {
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
-    email: String,
-    password: String,
+    email: { type: String },
+    password: { type: String, min: 6 },
+    firstName: { type: String },
+    lastName: { type: String },
+    title: { type: String, allowedValues: ['Student', 'Vendor'], defaultValue: 'Student' },
+    picture: { type: String },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { email, password, firstName, lastName, title, picture } = doc;
+    Accounts.createUser({ 
+      email, 
+      username: email, password,
+      profile: { firstName, lastName, title, picture }
+    }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
-        setError('');
-        setRedirectToRef(true);
+        Users.collection.insert({ email, firstName, lastName, title, picture }, (err2) => {
+          if (err2) {
+            setError(err2.reason);
+          } else {
+            setRedirectToRef(true);
+          }
+        });
       }
     });
   };
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
+  const { from } = location?.state || { from: { pathname: '/' } };
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
     return <Navigate to={from} />;
@@ -42,28 +56,26 @@ const SignUp = ({ location }) => {
   return (
     <Container id="signup-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center">
-            <h2>Register your account</h2>
-          </Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+        <Col xs={12} md={6} lg={5}>
+          <h2 className="text-center mb-4">Register your account</h2>
+          <AutoForm schema={bridge} onSubmit={submit}>
             <Card>
               <Card.Body>
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
+                <TextField name="firstName" placeholder="First Name" />
+                <TextField name="lastName" placeholder="Last Name" />
+                <SelectField name="title" placeholder="Title" allowedValues={['Student', 'Vendor']} />
+                <TextField name="picture" placeholder="Picture URL " />
                 <ErrorsField />
-                <SubmitField />
+                <SubmitField className="mt-3" value="Register" />
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
+          <Alert variant="light" className="text-center mt-3">
+            Already have an account? <Link to="/signin">Login here</Link>
           </Alert>
-          {error === '' ? (
-            ''
-          ) : (
+          {error && (
             <Alert variant="danger">
               <Alert.Heading>Registration was not successful</Alert.Heading>
               {error}
@@ -75,7 +87,6 @@ const SignUp = ({ location }) => {
   );
 };
 
-/* Ensure that the React Router location object is available in case we need to redirect. */
 SignUp.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.string,
