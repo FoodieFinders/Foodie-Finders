@@ -39,7 +39,7 @@ const EditUserPage = () => {
   };
 
   return ready ? (
-    <Container className="mt-5">
+    <Container id="edit-user-page" className="mt-5">
       <Row className="justify-content-md-center">
         <Col md={6}>
           <h2 className="text-center">Edit Profile</h2>

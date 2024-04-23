@@ -2,7 +2,7 @@ import { Selector, t } from 'testcafe';
 
 class AddRestaurantPage {
   constructor() {
-    this.pageId = '#add-restaurant-page';  // Ensure this ID is correct based on your actual HTML
+    this.pageId = '#add-restaurant-page';  
     this.pageSelector = Selector(this.pageId);
     this.nameInput = Selector('input[name="name"]');
     this.hoursSelect = Selector('select[name="hours"]');

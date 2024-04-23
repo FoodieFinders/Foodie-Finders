@@ -1,15 +1,7 @@
 import { Selector } from 'testcafe';
 
-class NavBar {
+/*class NavBar {
 
-  /** If someone is logged in, then log them out, otherwise do nothing. */
-  async ensureLogout(testController) {
-    const loggedInUser = await Selector('#navbar-current-user').exists;
-    if (loggedInUser) {
-      await testController.click('#navbar-current-user');
-      await testController.click('#navbar-sign-out');
-    }
-  }
 
   async gotoSignInPage(testController) {
     await this.ensureLogout(testController);
@@ -19,6 +11,25 @@ class NavBar {
     }
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-in');
+  }*/
+
+class NavBar {
+  constructor() {
+    this.toggler = Selector('button.navbar-toggler');
+    this.loginDropdown = Selector('#login-dropdown');
+  }
+
+  async ensureMenuVisible(testController) {
+    if (await this.toggler.visible) {
+      await testController.click(this.toggler);
+    }
+  }
+
+  async gotoSignInPage(testController) {
+    await this.ensureLogout(testController);
+    await this.ensureMenuVisible(testController);
+    await testController.click(this.loginDropdown);
+    await testController.click('#signin-button');
   }
 
   /** Check that the specified user is currently logged in. */
@@ -41,6 +52,16 @@ class NavBar {
     await testController.click('#navbar-current-user');
     await testController.click('#navbar-sign-out');
   }
+
+  /** If someone is logged in, then log them out, otherwise do nothing. */
+  async ensureLogout(testController) {
+    const loggedInUser = await Selector('#navbar-current-user').exists;
+    if (loggedInUser) {
+      await testController.click('#navbar-current-user');
+      await testController.click('#navbar-sign-out');
+    }
+  }
+
 
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {

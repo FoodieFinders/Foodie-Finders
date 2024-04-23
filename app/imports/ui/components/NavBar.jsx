@@ -5,17 +5,20 @@ import { NavLink } from 'react-router-dom';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ComponentIDs } from '../utilities/ids';
-import { Users } from '../../api/users/users';  // Assuming the path to Users import is correct
+import { Users } from '../../api/users/users';
+import { Roles } from 'meteor/alanning:roles';
 
 const NavBar = () => {
   // Subscribe to the user data and access the necessary fields
-  const { currentUser, loggedIn, isVendor } = useTracker(() => {
+  const { currentUser, loggedIn, canAddRestaurant } = useTracker(() => {
     const handle = Meteor.subscribe(Users.userPublicationName);
     const user = Meteor.user();
+    const isVendor = user && user.profile && user.profile.title === 'Vendor';
+    const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
     return {
       currentUser: user ? user.username : '',
       loggedIn: !!user,
-      isVendor: user && user.profile && user.profile.title === 'Vendor'  // Checking if the title is 'Vendor'
+      canAddRestaurant: isVendor || isAdmin  // Checking if the title is 'Vendor'
     };
   }, []);
 
@@ -25,39 +28,39 @@ const NavBar = () => {
         <Navbar.Brand as={NavLink} to="/" className="align-items-center">
           <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo.png" width={50} style={{ marginBottom: 3 }} /> Foodie Finders</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
-        <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
 
             <Nav.Link as={NavLink} id="navbar-about-us" to="/aboutus" key="profiles">About Us</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/restaurants-list" key="projects">Our Vendors</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/top-picks" key="top-picks">What's Hot</Nav.Link>
-            {isVendor && [
-              <Nav.Link as={NavLink} id={ComponentIDs.addRestaurantMenuItem} to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>
+            <Nav.Link as={NavLink} id="list-restaurant-nav" to="/restaurants-list" key="projects">Our Vendors</Nav.Link>
+            <Nav.Link as={NavLink} id="top-picks-nav" to="/top-picks" key="top-picks">What's Hot</Nav.Link>
+            {canAddRestaurant && [
+              <Nav.Link as={NavLink} id="add-restaurant-nav" to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>
             ]}
 
           </Nav>
           <Nav className="justify-content-end">
             {!loggedIn ? (
-              <NavDropdown id={ComponentIDs.loginDropdown} title="Login">
-                <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin">
+              <NavDropdown id="login-dropdown" title="Login">
+                <NavDropdown.Item id="signin-button" as={NavLink} to="/signin">
 
                   <PersonFill style={{ marginRight: '5px' }} />
                   Sign
                   in
                 </NavDropdown.Item>
-                <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
+                <NavDropdown.Item id="login-dropdown-sign-up"  as={NavLink} to="/signup">
                   <PersonPlusFill style={{ marginRight: '5px' }} />
                   Sign up
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <NavDropdown id={ComponentIDs.currentUserDropdown} title={currentUser}>
-                <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout">
+              <NavDropdown id="navbar-current-user" title={currentUser}>
+                <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
                   <BoxArrowRight style={{ marginRight: '5px' }} />
                   Sign out
                 </NavDropdown.Item>
-                <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/user">
+                <NavDropdown.Item id="navbar-user" as={NavLink} to="/user">
                   <BoxArrowRight style={{ marginRight: '5px' }} />
                   {' '}
                   My
