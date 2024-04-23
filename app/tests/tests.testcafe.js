@@ -21,7 +21,7 @@ test('Test that landing page shows up', async (testController) => {
 });
 
 test.only('Test that Our Vendors page shows up', async (testController) => {
-  await navBar.gotoOurVendorsPage(testController);
+  await navBar.goToOurVendorsPage(testController);
   await restaurantlistPage.isDisplayed(testController);
   
 });
