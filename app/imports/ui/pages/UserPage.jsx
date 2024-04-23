@@ -42,7 +42,7 @@ const UserPage = () => {
             <UserProfile key={user._id} user={user} /> // Pass profile instead of stuff
           ))}
           <Col md={{ span: 4, offset: 3 }}>
-            <Button size="lg" block className=" text-center mt-3  custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
+            <Button size="lg" block className=" text-center mt-3  custom-review-button" id="editprofile-button" onClick={() => goToEditUserPage(currentUser._id)}>
               Edit Your Profile Page
             </Button>
           </Col>

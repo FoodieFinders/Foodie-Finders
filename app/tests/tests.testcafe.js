@@ -5,7 +5,7 @@ import { aboutUs } from './aboutus.page'
 import { navBar } from './navbar.component';
 import { addRestaurantPage } from './addrestaurant.page';
 import { editUserPage } from './edituserpage.page';
-
+import { Selector } from 'testcafe';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -46,7 +46,7 @@ test('Test the Add Restaurant page', async (testController) => {
     name: 'Test Restaurant',
     hours: '10:00 AM - 6:00 PM',
     address: '123 Main St',
-    imageSrc: 'http://example.com/image.png',
+    imageSrc: 'https://example.com/image.png',
     description: 'Great new place to try!'
   });
 });
@@ -55,14 +55,28 @@ test('Test the Add Restaurant page', async (testController) => {
 test.only('Edit user information', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
-  await testController.click('#edit-button');
+  await testController.click('#navbar-current-user')
+  await testController.click('#navbar-user-profile');
+  await testController.click('#editprofile-button')
   await editUserPage.isDisplayed(testController);
   await editUserPage.fillForm(testController, {
     firstName: 'John',
     lastName: 'Doe',
-    title: 'Vendor',
-    picture: 'http://example.com/johndoe.png'
+    picture: 'https://example.com/johndoe.png'
   });
+  const sweetAlert = Selector('.swal-text');
+  await testController.expect(sweetAlert.exists).ok();
+
+  // Now you can interact with the SweetAlert, for example, clicking the OK button
+  const okButton = Selector('.swal-button');
+  await testController.click(okButton);
+  
+  const updateProfileButton = Selector('#update-profile-button');
+  await testController.click(updateProfileButton);
+
+  // Wait for the SweetAlert to appear
+
+
 });
 
 

@@ -6,14 +6,13 @@ class EditUserPage {
     this.pageSelector = Selector(this.pageId);
     this.firstNameInput = Selector('input[name="firstName"]');
     this.lastNameInput = Selector('input[name="lastName"]');
-    this.titleSelect = Selector('select[name="title"]'); // 
     this.pictureInput = Selector('input[name="picture"]');
     this.submitButton = Selector('input[type="submit"]');
   }
 
   /** Check if the Edit User page is displayed */
   async isDisplayed(testController) {
-    await testController.expect(this.pageSelector.exists).ok();
+    await testController.wait(5000).expect(this.pageSelector.exists).ok();
   }
 
   /** Fill the form on the Edit User page */

@@ -60,7 +60,7 @@ const NavBar = () => {
                   <BoxArrowRight style={{ marginRight: '5px' }} />
                   Sign out
                 </NavDropdown.Item>
-                <NavDropdown.Item id="navbar-user" as={NavLink} to="/user">
+                <NavDropdown.Item id="navbar-user-profile" as={NavLink} to="/user">
                   <BoxArrowRight style={{ marginRight: '5px' }} />
                   {' '}
                   My
