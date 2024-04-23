@@ -82,6 +82,10 @@ class NavBar {
     await testController.click('#top-picks-nav'); // Ensure the correct selector for the About Us link
   }
   
+  async goToOurVendorsPage(testController){
+    await testController.click('#list-restaurant-nav');
+  }
+  
 }
 
 
