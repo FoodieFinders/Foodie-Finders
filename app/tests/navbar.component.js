@@ -78,6 +78,9 @@ class NavBar {
   async gotoAboutUsPage(testController) {
     await testController.click('#navbar-about-us'); // Ensure the correct selector for the About Us link
   }
+  async gotoTopPicksPage(testController) {
+    await testController.click('#top-picks-nav'); // Ensure the correct selector for the About Us link
+  }
   
 }
 

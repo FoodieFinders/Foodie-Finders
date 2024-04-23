@@ -5,7 +5,10 @@ import { aboutUs } from './aboutus.page'
 import { navBar } from './navbar.component';
 import { addRestaurantPage } from './addrestaurant.page';
 import { editUserPage } from './edituserpage.page';
+import { leaveReview } from './leavereview.page';
+import { restaurantPage } from './restaurantpage.page';
 import { Selector } from 'testcafe';
+import { topPicks } from './toppicks.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -16,18 +19,25 @@ fixture('Foodie Finder localhost test with default db')
   await t.resizeWindow(1280, 800);
 });
 
-test('Test that landing page shows up', async (testController) => {
+test.only('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test the About Us page', async (testController) => {
+test.only('Test the About Us page', async (testController) => {
 /*  await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);*/
   await navBar.gotoAboutUsPage(testController); // Ensure this method is added to the NavBar class
   await aboutUs.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
+test.only('Test the Top Picks page', async (testController) => {
+/*  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);*/
+  await navBar.gotoTopPicksPage(testController); // Ensure this method is added to the NavBar class
+  await topPicks.isDisplayed(testController);
+});
+
+test.only('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
@@ -37,7 +47,7 @@ test('Test that signin and signout work', async (testController) => {
 
 
 // Add a new test for the Add Restaurant page
-test('Test the Add Restaurant page', async (testController) => {
+test.only('Test the Add Restaurant page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await testController.navigateTo('/add-restaurant'); // Direct navigation or update navBar class to include a method for this
@@ -50,7 +60,6 @@ test('Test the Add Restaurant page', async (testController) => {
     description: 'Great new place to try!'
   });
 });
-
 
 test.only('Edit user information', async (testController) => {
   await navBar.gotoSignInPage(testController);
@@ -79,6 +88,42 @@ test.only('Edit user information', async (testController) => {
 
 });
 
+test.only('Testing entering restaurant page', async(testController) =>{
 
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+
+  await testController.navigateTo('/');
+  const firstRestaurant = Selector('.top-pick-image');
+  await testController.click(firstRestaurant);
+  await restaurantPage.isDisplayed(testController);
+
+});
+
+
+test.only('Testing leaving a review', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+
+  await testController.navigateTo('/');
+  const firstRestaurant = Selector('.top-pick-image');
+  await testController.click(firstRestaurant);
+  await restaurantPage.isDisplayed(testController);
+
+  const firstReview = Selector('.review-link');
+  await testController.click(firstReview);
+
+  await leaveReview.isDisplayed(testController);
+  await leaveReview.fillForm(testController, {
+    comment: 'this food was decent',
+  });
+  const sweetAlert = Selector('.swal-text');
+  await testController.expect(sweetAlert.exists).ok();
+
+  // Now you can interact with the SweetAlert, for example, clicking the OK button
+  const okButton = Selector('.swal-button');
+  await testController.click(okButton);
+
+});
 
 

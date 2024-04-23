@@ -41,6 +41,7 @@ function Rating({
         <span
           style={{ fontSize: 40, cursor: 'pointer' }}
           key={index}
+          class={`star-${index}`}
           onClick={event => onAction(event, index)}
           onKeyDown={event => onAction(event, index)}
           role="button"

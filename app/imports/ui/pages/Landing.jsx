@@ -58,6 +58,7 @@ const Landing = () => {
               {restaurants.map((restaurant, index) => (
                 // In Landing.jsx where RestaurantItem is used
                 <RestaurantItem key={index}
+                                id={`restaurantItem-${index}`}
                                 restaurant={restaurant}
                                 currentUser={currentUser}
                                 canDelete={isAdmin || currentUser === restaurant.owner}
