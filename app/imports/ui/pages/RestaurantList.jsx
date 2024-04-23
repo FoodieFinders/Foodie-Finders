@@ -1,11 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
+import { Col, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Search } from 'react-bootstrap-icons';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+
+const currentUser = Meteor.user() ? Meteor.user().username : null;
 
 const RestaurantList = () => {
   const { ready, restaurants } = useTracker(() => {
@@ -25,14 +27,17 @@ const RestaurantList = () => {
           <Col sm="2">
             <div className="d-grid gap-1 sticky-top py-3">
               <h4 className="text-center">Filters</h4>
+
               <hr />
-              <ToggleButtonGroup type="checkbox" defaultValue={1}>
-                <ToggleButton id="tbg-check-1" value={1} variant="primary">Top Pick?</ToggleButton>
-              </ToggleButtonGroup>
-              <ToggleButtonGroup type="checkbox" defaultValue={1}>
-                <ToggleButton id="tbg-check-2" value={2} variant="primary">Open?</ToggleButton>
-              </ToggleButtonGroup>
-              <h4 className="text-center py-3">Sort By</h4>
+            </h4>
+            <ToggleButtonGroup type="checkbox" defaultValue={1}>
+              <ToggleButton id="tbg-check-1" value={1} variant="primary">Top Pick?</ToggleButton>
+            </ToggleButtonGroup>
+            <ToggleButtonGroup type="checkbox" defaultValue={1}>
+              <ToggleButton id="tbg-check-2" value={2} variant="primary">Open?</ToggleButton>
+            </ToggleButtonGroup>
+            <h4 className="text-center py-1 ">
+              Sort By
               <hr />
               <Button variant="primary">Popularity</Button>
               <Button variant="primary">Rating</Button>
