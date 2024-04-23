@@ -20,7 +20,7 @@ const RestaurantList = () => {
 
   return (
     ready ? (
-      <Container fluid>
+      <Container id="restaurant-list-page" fluid>
         <Row>
           <Col sm="2">
             <div className="d-grid gap-1 sticky-top py-3">

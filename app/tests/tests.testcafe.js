@@ -6,7 +6,7 @@ import { navBar } from './navbar.component';
 import { addRestaurantPage } from './addrestaurant.page';
 import { editUserPage } from './edituserpage.page';
 import { Selector } from 'testcafe';
-/* global fixture:false, test:false */
+import { restaurantlistPage } from './restaurantlist.page'
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'admin@foo.com', password: 'changeme' };
@@ -18,6 +18,12 @@ fixture('Foodie Finder localhost test with default db')
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+});
+
+test.only('Test that Our Vendors page shows up', async (testController) => {
+  await navBar.gotoOurVendorsPage(testController);
+  await restaurantlistPage.isDisplayed(testController);
+  
 });
 
 test('Test the About Us page', async (testController) => {
@@ -40,7 +46,7 @@ test('Test that signin and signout work', async (testController) => {
 test('Test the Add Restaurant page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
-  await testController.navigateTo('/add-restaurant'); // Direct navigation or update navBar class to include a method for this
+  await testController.navigateTo('/add-restaurant');
   await addRestaurantPage.isDisplayed(testController);
   await addRestaurantPage.fillForm(testController, {
     name: 'Test Restaurant',
@@ -52,7 +58,7 @@ test('Test the Add Restaurant page', async (testController) => {
 });
 
 
-test.only('Edit user information', async (testController) => {
+test('Edit user information', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await testController.click('#navbar-current-user')
