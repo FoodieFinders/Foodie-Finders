@@ -29,7 +29,7 @@ const NavBar = () => {
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
 
-            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/aboutus" key="profiles">About Us</Nav.Link>
+            <Nav.Link as={NavLink} id="navbar-about-us" to="/aboutus" key="profiles">About Us</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/restaurants-list" key="projects">Our Vendors</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/top-picks" key="top-picks">What's Hot</Nav.Link>
             {isVendor && [

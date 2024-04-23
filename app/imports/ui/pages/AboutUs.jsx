@@ -15,7 +15,7 @@ const AboutUs = () => {
   const goToTopPicks = () => navigate('top-picks');
 
   return (
-    <Container id="landing-page" fluid className="py-3" style={{ fontFamily:"Montserrat"}}>
+    <Container id="about-us" fluid className="py-3" style={{ fontFamily:"Montserrat", textAlign:"center"}}>
       <Row className="justify-content-center">
         <div className="about-text">
           <div className="row justify-content-center">

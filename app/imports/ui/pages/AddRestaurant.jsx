@@ -65,7 +65,7 @@ const AddRestaurant = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container id="landing-page" fluid className="py-3">
+    <Container id="add-restaurant-page" fluid className="py-3">
       <Row className="justify-content-center">
         <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Card style={{borderRadius:15}} className="review-card">

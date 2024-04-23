@@ -52,6 +52,13 @@ class NavBar {
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-up');
   }
+
+
+  async gotoAboutUsPage(testController) {
+    await testController.click('#navbar-about-us'); // Ensure the correct selector for the About Us link
+  }
+  
 }
+
 
 export const navBar = new NavBar();
