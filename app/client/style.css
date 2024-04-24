@@ -20,6 +20,10 @@ Link {
   text-decoration:none;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 .montserrat-header {
   font-family:"Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -348,13 +352,10 @@ body {
   font-weight:900;
 }
 
-
-
 /* Media Query for Responsiveness */
 @media (max-width: 768px) {
   .hot-item-image, .review-item-avatar, .spotlight-image {
     height: 150px; /* Adjust for smaller screens */
   }
 }
-
 

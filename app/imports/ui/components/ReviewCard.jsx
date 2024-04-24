@@ -29,6 +29,7 @@ const ReviewCard = ({ review }) => {
         {review.owner === owner ? (
           <Button onClick={() => { RemoveReview(review._id); }}>Remove Comment</Button>
         ) : null}
+
       </div>
     </div>
   );

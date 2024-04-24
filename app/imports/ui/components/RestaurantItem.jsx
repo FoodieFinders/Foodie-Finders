@@ -4,9 +4,10 @@ import { Container, Card, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 import { Restaurants } from '../../api/restaurants/Restaurants'
 
-const remove = (vendor) => {
+const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation
   swal({
     title: "Are you sure?",
@@ -30,9 +31,9 @@ const remove = (vendor) => {
       }
     });
 };
-const RestaurantItem = ({ restaurant, currentUser }) => {
+const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
 
-  const handleDelete = () => {
+/*  const handleDelete = () => {
     if (confirm('Are you sure you want to delete this restaurant?')) {
       Meteor.call('restaurants.delete', restaurant._id, (error) => {
         if (error) {
@@ -42,9 +43,15 @@ const RestaurantItem = ({ restaurant, currentUser }) => {
         }
       });
     }
+  };*/
+
+  const navigate = useNavigate();
+  const handleEdit = () => {
+    navigate(`/editrestaurant/${restaurant._id}`);
   };
 
-  const isOwner = currentUser === restaurant.owner; // Check if current user is the owner
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+  const isOwner = currentUser === restaurant.owner || isAdmin; // Check if current user is the owner
 
   return (
 
@@ -61,7 +68,8 @@ const RestaurantItem = ({ restaurant, currentUser }) => {
             <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
             <Card.Text>{restaurant.rating}</Card.Text>
             <Card.Text>{restaurant.hours}</Card.Text>
-            {isOwner && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
+            {canDelete && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
+            {canEdit && <Button id="edit-button" variant="secondary" onClick={handleEdit} className="ms-2">Edit</Button>}
           </div>
           <div className="fire-animation"></div>
         </Card.Body>
@@ -81,7 +89,8 @@ RestaurantItem.propTypes = {
     imageSrc: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  currentUser: PropTypes.string.isRequired,
+  currentUser: PropTypes.string,
+  canDelete: PropTypes.bool,
 };
 
 export default RestaurantItem;
