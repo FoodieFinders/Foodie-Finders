@@ -39,7 +39,7 @@ const UserPage = () => {
             <UserProfile key={user._id} user={user} />
           ))}
           <Col fluid md={{ span: 4, offset: 3 }} className="d-flex justify-content-center">
-            <Button size="lg" block className="text-center mt-3 custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
+            <Button id="edit-profile-button" size="lg" block className="text-center mt-3 custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
               Edit Your Profile Page
             </Button>
           </Col>
