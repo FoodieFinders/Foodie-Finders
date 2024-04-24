@@ -63,7 +63,7 @@ const RestaurantList = () => {
                 <br />
                 <br />
                 <br />
-                Can't decide what to eat?
+                Can&apos;t decide what to eat?
                 <br />
                 <Button variant="primary" size="lg">
                   SEND IT
@@ -73,7 +73,7 @@ const RestaurantList = () => {
           </Col>
         </Row>
       </Container>
-      ) :
+    ) :
       <LoadingSpinner />
   );
 };
