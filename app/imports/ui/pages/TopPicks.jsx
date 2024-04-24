@@ -242,7 +242,7 @@ const WhatsHot = () => {
       <SpotlightOfTheWeek spotlight={spotlightData} />
       <Row>
         <Col xs={12}>
-          <div className="section-header">Whats Hot This Week!</div>
+          <div className="section-header">Whats Hot Today!</div>
         </Col>
         {orderReviewData.map((data, index) => (
           <React.Fragment key={`merged-${index}`}>
