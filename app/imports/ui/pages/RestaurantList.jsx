@@ -1,11 +1,13 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
-import { useTracker } from 'meteor/react-meteor-data';
+import { Container, Col, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+
+// Assuming the currentUser is used somewhere in the component or for the subscription.
+const currentUser = Meteor.user() ? Meteor.user().username : null;
 
 const RestaurantList = () => {
   const { ready, restaurants } = useTracker(() => {
@@ -20,7 +22,7 @@ const RestaurantList = () => {
 
   return (
     ready ? (
-      <Container fluid>
+      <Container id="restaurant-list-page" fluid>
         <Row>
           <Col sm="2">
             <div className="d-grid gap-1 sticky-top py-3">
@@ -32,7 +34,7 @@ const RestaurantList = () => {
               <ToggleButtonGroup type="checkbox" defaultValue={1}>
                 <ToggleButton id="tbg-check-2" value={2} variant="primary">Open?</ToggleButton>
               </ToggleButtonGroup>
-              <h4 className="text-center py-3">Sort By</h4>
+              <h4 className="text-center py-1">Sort By</h4>
               <hr />
               <Button variant="primary">Popularity</Button>
               <Button variant="primary">Rating</Button>
@@ -42,6 +44,7 @@ const RestaurantList = () => {
                 <Form.Control
                   aria-label="Search"
                   aria-describedby="basic-addon2"
+                  name="search"
                 />
                 <Button variant="primary" id="button-addon2"><Search /></Button>
               </InputGroup>
@@ -59,12 +62,7 @@ const RestaurantList = () => {
           <Col sm="5">
             <div className="d-grid gap-1 sticky-top p-3">
               <h1 className="text-center">
-                <br />
-                <br />
-                <br />
-                <br />
                 Can't decide what to eat?
-                <br />
                 <Button variant="primary" size="lg">
                   SEND IT
                 </Button>
@@ -73,7 +71,7 @@ const RestaurantList = () => {
           </Col>
         </Row>
       </Container>
-      ) :
+    ) :
       <LoadingSpinner />
   );
 };

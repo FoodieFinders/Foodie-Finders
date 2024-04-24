@@ -41,6 +41,7 @@ function Rating({
         <span
           style={{ fontSize: 40, cursor: 'pointer' }}
           key={index}
+          class={`star-${index}`}
           onClick={event => onAction(event, index)}
           onKeyDown={event => onAction(event, index)}
           role="button"
@@ -116,7 +117,7 @@ const LeaveReview = () => {
   let fRef = null;
   return ready ? (
 
-    <Container id="landing-page" fluid className="py-3">
+    <Container id="leave-review" fluid className="py-3">
       <Row className="justify-content-center">
           <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef, rev)}>
             <Card style={{borderRadius:15}} className="review-card">

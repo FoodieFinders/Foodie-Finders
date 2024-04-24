@@ -8,7 +8,6 @@ import '../../api/methods/restaurants';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import Landing2 from '../pages/Landing2';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import EditStuff from '../pages/EditStuff';
@@ -21,12 +20,14 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import LeaveReview from '../pages/LeaveReview';
 import RestaurantPage from '../pages/RestaurantPage';
+import FilterMockup from '../pages/FilterMockup';
 import TopPicks from '../pages/TopPicks';
 import AboutUs from '../pages/AboutUs';
 import UserPage from '../pages/UserPage';
 import EditUserPage from '../pages/EditUserPage';
 import Home from '../pages/Home';
 import AddRestaurant from '../pages/AddRestaurant';
+import EditRestaurantPage from '../pages/EditRestaurantPage';
 import RestaurantList from '../pages/RestaurantList';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -42,7 +43,7 @@ const App = () => {
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Landing2 />} />
+          <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
@@ -52,15 +53,18 @@ const App = () => {
           <Route path="/add-restaurant" element={<ProtectedRoute><AddRestaurant /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/edituser/:_id" element={<ProtectedRoute><EditUserPage /></ProtectedRoute>} />
+          <Route path="/editrestaurant/:_id" element={<ProtectedRoute><EditRestaurantPage /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
-          <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
           <Route path="/restaurants-list" element={<RestaurantList />} />
+          <Route path="/restaurant-page/:_id" element={<RestaurantPage />} />
           <Route path="/leave-review/:_id" element={<ProtectedRoute><LeaveReview /></ProtectedRoute>} />
+          <Route path="/filter-mockup" element={<FilterMockup />} />
           <Route path="/top-picks" element={<TopPicks />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

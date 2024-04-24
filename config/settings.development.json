@@ -238,7 +238,7 @@
         "hours": "Mon - Fri 7:00AM - 4:30PM",
         "owner": "admin@foo.com"
       }
-  ],
+    ],
 
   "defaultReviews": [
     { "comment": "Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!", "rating": 3, "owner": "john@foo.com", "restaurantId": "Starbucks"},

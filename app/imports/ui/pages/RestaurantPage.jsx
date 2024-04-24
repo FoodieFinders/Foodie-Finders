@@ -40,7 +40,7 @@ const RestaurantPage = () => {
   // On successful submit, insert the data.
   const restaurantReviews = rev.filter(review => review.restaurantId === resId);
   return ready ? (
-    <Col id="landing-page" className="py-3">
+    <Col id="restaurant-page" className="py-3">
       <Row className="justify-content-center">
         <Col lg={5} className="mb-4" >
           <Card className="merged-item-card">
@@ -51,7 +51,7 @@ const RestaurantPage = () => {
               <div className="star-rating">{doc.rating}</div>
               <Card.Text>{doc.address}</Card.Text>
               <Card.Text>{doc.hours}</Card.Text>
-              <Link to={`/leave-review/${resId}`}><Button variant="primary" className="w-100">Leave a Review!</Button></Link>
+              <Link className="review-link" to={`/leave-review/${resId}`}><Button variant="primary" className="w-100">Leave a Review!</Button></Link>
               <hr className="comment-divider" />
               <ListGroup variant="flush" className="top-pick-list">
                 {restaurantReviews.map((rev, index) => <ReviewCard key={index} review={rev} />)}

@@ -1,80 +1,102 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
-import '../../../client/style.css'; // Import your custom stylesheet here
-
-const TopPick = ({ name, rating, hours, imageSrc }) => (
-  <Card className="top-pick-card mb-3">
-    <Card.Body className="d-flex">
-      <Image src="/images/Burger.jpg" alt={name} className="img-fluid top-pick-image mr-3" />
-      <div>
-        <Card.Title className="top-pick-name">{name}</Card.Title>
-        <Card.Text className="top-pick-rating">{rating}</Card.Text>
-        <Card.Text className="top-pick-hours">{hours}</Card.Text>
-      </div>
-    </Card.Body>
-  </Card>
-);
+import { useTracker } from 'meteor/react-meteor-data';
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import RestaurantItem from '../components/RestaurantItem';
+import LoadingSpinner from '../components/LoadingSpinner';
+import '../../../client/style.css';
 
 const Landing = () => {
+  const { ready, restaurants, loggedIn, currentUser, isAdmin } = useTracker(() => {
+    const subscription = Meteor.subscribe(Restaurants.userPublicationName);
+    const rdy = subscription.ready();
+    const currentUser = Meteor.user() ? Meteor.user().username : null;
+    const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+    let allRestaurants = Restaurants.collection.find({}).fetch();
+
+    const userRestaurants = currentUser ? allRestaurants.filter(rest => rest.owner === currentUser) : [];
+    const unownedRestaurants = allRestaurants.filter(rest => !rest.owner || rest.owner !== currentUser);
+
+    // Randomly shuffle unowned restaurants
+    const shuffled = unownedRestaurants.sort(() => 0.5 - Math.random());
+    // Select random restaurants to ensure there are always up to three displayed
+    const randomUnownedRestaurants = shuffled.slice(0, Math.max(3 - userRestaurants.length, 0));
+
+    return {
+      restaurants: [...userRestaurants, ...randomUnownedRestaurants].slice(0, 3), // ensure no more than 3 restaurants are shown
+      ready: rdy,
+      loggedIn: !!Meteor.user(),
+      currentUser: currentUser,
+      isAdmin: isAdmin
+    };
+  }, []);
+
   const navigate = useNavigate();
 
-  // Function to navigate to the vendor dashboard
-  const goToVendorDashboard = () => navigate('/vendor-dashboard');
-
-  // Function to navigate to the leave review page
+  const goToEditRestaurantPage = (userId) => navigate(`/editrestaurant/${userId}`);
+  const goToSignIn = () => navigate('signin');
   const goToLeaveReview = () => navigate('/leave-review');
+  const goToTopPicks = () => navigate('top-picks');
 
-  const goToFilterMockup = () => navigate('/filter-mockup');
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
 
   return (
-    <Container id="landing-page" className="">
+    <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
-        <Row className="justify-content-center">
-            <div className="top-picks-header text-center">
+        {restaurants.length > 0 ? (
+          <Col md={6} className="text-center d-flex flex-column align-items-center">
+            <div className="top-picks-header my-4">
               <h1>Today's Top Picks</h1>
             </div>
-        </Row>
-        <ListGroup variant="flush" className="top-pick-list">
-          <TopPick
-            name="BRITO"
-            rating="★★★★★"
-            hours="Today's hours: 10:00AM - 2:00PM"
-            imageSrc="/path/to/image.jpg"
-          />
-          <TopPick
-            name="BRITO"
-            rating="★★★★★"
-            hours="Today's hours: 10:00AM - 2:00PM"
-            imageSrc="/path/to/image.jpg"
-          />
-          <TopPick
-            name="BRITO"
-            rating="★★★★★"
-            hours="Today's hours: 10:00AM - 2:00PM"
-            imageSrc="/path/to/image.jpg"
-          />
-          {/* Repeat TopPick as necessary */}
-        </ListGroup>
-        <Row className="justify-content-center">
-          <Col>
-            <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToFilterMockup}>
-              Browse Through All Restaurants!
+            <div>
+            <ListGroup variant="flush" className="top-pick-list w-100">
+              {restaurants.map((restaurant, index) => (
+                // In Landing.jsx where RestaurantItem is used
+                <RestaurantItem key={index}
+                                id={`restaurantItem-${index}`}
+                                restaurant={restaurant}
+                                currentUser={currentUser}
+                                canDelete={isAdmin || currentUser === restaurant.owner}
+                                canEdit={isAdmin || currentUser === restaurant.owner}/>
+
+              ))}
+            </ListGroup>
+            </div>
+            <div>
+            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
+              See all of today's top picks!
             </Button>
+            </div>
           </Col>
-        </Row>
-
-        <div className="cta-container cta-card text-center">
-          <h2>Are you a vendor?</h2>
-          <Button size="lg" className="custom-review-button" onClick={goToVendorDashboard}>
-            Vendor Dashboard
-          </Button>
-
-          <h2>Are you a student?</h2>
-          <Button size="lg" className="custom-review-button" onClick={goToLeaveReview}>
-            Leave a review!
-          </Button>
-        </div>
+        ) : (
+          <Col md={6} className="text-center">
+            <div className="top-picks-header">
+              <h1>No Restaurants Available</h1>
+            </div>
+          </Col>
+        )}
+        {!loggedIn && (
+          <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
+            <h2>Are you a vendor?</h2>
+            <div>
+            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToSignIn} style={{width:300}}>
+              Vendor Dashboard
+            </Button>
+            </div>
+            <br/>
+            <h2>Are you a student?</h2>
+            <div>
+              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToLeaveReview} style={{width:300}}>
+              Leave a review!
+            </Button>
+            </div>
+          </Col>
+        )}
       </Row>
     </Container>
   );

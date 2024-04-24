@@ -49,12 +49,6 @@ Meteor.publish(Reviews.userPublicationName, function () {
   }
   return this.ready();
 });
-/*
-    if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-      return Stuffs.collection.find();
-    }
-    return this.ready();
-  };*/
 
   Meteor.publish(null, function () {
     if (!this.userId) return this.ready();
@@ -134,29 +128,6 @@ Meteor.publish(Reviews.userPublicationName, function () {
   return this.ready();
 });
 
-/*
-Meteor.publish(Restaurants.userPublicationName, function () {
-  return Restaurants.collection.find(/!*{ owner: username }*!/);
-});
-*/
-
-// Admin-level publication.
-// If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Restaurants.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Restaurants.collection.find();
-  }
-  return this.ready();
-});
-
-// alanning:roles publication
-// Recommended code to publish roles for each user.
-Meteor.publish(null, function () {
-  if (this.userId) {
-    return Meteor.roleAssignment.find({ 'user._id': this.userId });
-  }
-  return this.ready();
-});
 
   // alanning:roles publication
   // Recommended code to publish roles for each user.

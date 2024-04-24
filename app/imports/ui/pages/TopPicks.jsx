@@ -238,7 +238,7 @@ const WhatsHot = () => {
   ];
 
   return (
-    <Container fluid className="py-3">
+    <Container id="top-picks-page" fluid className="py-3">
       <SpotlightOfTheWeek spotlight={spotlightData} />
       <Row>
         <Col xs={12}>
