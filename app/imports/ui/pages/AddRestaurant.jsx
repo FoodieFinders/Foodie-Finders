@@ -98,7 +98,7 @@ const AddRestaurant = () => {
                 </Col>
 
                 <label htmlFor="hours">Hours</label>
-                <div style={{  position: 'relative', display: 'inline-block', width: '400px' }}>
+                <div style={{  position: 'relative', display: 'inline-block', width: '100%' }}>
                   <TimeRangePicker
                     onChange={setHours}
                     value={hours}
