@@ -4,7 +4,6 @@ import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
 import { ChatRightText, HandThumbsUp } from 'react-bootstrap-icons';
 import '../../../client/top-picks.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { AuthProvider } from '../../startup/client/AuthContext';
 
 const SpotlightOfTheWeek = ({ spotlight }) => (
   <Row className="mb-4 spotlight-section">
@@ -67,7 +66,7 @@ SpotlightOfTheWeek.propTypes = {
         avatarSrc: PropTypes.string,
         rating: PropTypes.string,
         likes: PropTypes.number,
-        comments: PropTypes.number, // Changed from commentsCount to comments
+        comments: PropTypes.number,
       }),
     ).isRequired,
   }).isRequired,
@@ -76,7 +75,7 @@ SpotlightOfTheWeek.propTypes = {
 const MergedItemCard = ({ order, review }) => (
   <Col lg={4} className="mb-4">
     <Card className="merged-item-card">
-      <Card.Header className="text-center">Top Order This Week</Card.Header>
+      <Card.Header className="text-center">Whats Hot Today</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
       <Card.Body>
         <Card.Title>{order.name}</Card.Title>
@@ -127,36 +126,7 @@ MergedItemCard.propTypes = {
   }).isRequired,
 };
 
-const TodayTopPickCard = ({ order }) => (
-  <Col lg={4} className="mb-4">
-    <Card className="merged-item-card">
-      <Card.Header className="text-center">Whats Hot Today!</Card.Header>
-      <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />
-      <Card.Body>
-        <Card.Title>{order.name}</Card.Title>
-        <div className="star-rating">{order.rating}</div>
-        <Card.Text>{order.store}</Card.Text>
-        <Card.Text>{order.orders}</Card.Text>
-        <Card.Text>{order.hours}</Card.Text>
-        <Button variant="primary" className="w-100">View Store</Button>
-      </Card.Body>
-    </Card>
-  </Col>
-);
-
-TodayTopPickCard.propTypes = {
-  order: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    store: PropTypes.string.isRequired,
-    imageSrc: PropTypes.string.isRequired,
-    rating: PropTypes.string,
-    orders: PropTypes.string.isRequired,
-    hours: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
 const WhatsHot = () => {
-  // Detailed data for Spotlight of the Week
   const spotlightData = {
     name: 'Soul Fusion',
     imageSrc: 'Soul-fusion.jpg',
@@ -197,10 +167,17 @@ const WhatsHot = () => {
         likes: 192,
         comments: 72,
       },
+      {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Best food truck in town!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
+      },
     ],
   };
 
-  // Detailed data for order reviews this week
   const orderReviewData = [
     {
       order: {
@@ -220,100 +197,60 @@ const WhatsHot = () => {
         comments: 72,
       },
     },
-    {
-      order: {
-        name: 'Caramel Frappuccino',
-        store: 'Starbucks',
-        rating: '★★★★★',
-        hours: "Today's hours: 10:00AM - 2:00PM",
-        imageSrc: 'Starbs.jpg',
-        orders: '5028 orders this week',
-      },
-      review: {
-        reviewerName: 'Joshuah D. Jones',
-        reviewText: 'Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!',
-        rating: '★★★★★',
-        avatarSrc: 'ME.jpeg',
-        likes: 192,
-        comments: 72,
-      },
-    },
-    {
-      order: {
-        name: 'Caramel Frappuccino',
-        store: 'Starbucks',
-        rating: '★★★★★',
-        hours: "Today's hours: 10:00AM - 2:00PM",
-        imageSrc: 'Starbs.jpg',
-        orders: '5028 orders this week',
-      },
-      review: {
-        reviewerName: 'Joshuah D. Jones',
-        reviewText: 'Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!',
-        rating: '★★★★★',
-        avatarSrc: 'ME.jpeg',
-        likes: 192,
-        comments: 72,
-      },
-    },
-  ];
 
-  // Detailed data for today's top picks
-  const todayTopPicksData = [
     {
       order: {
         name: 'Caramel Frappuccino',
-        store: 'Starbucks',
         rating: '★★★★★',
+        store: 'Starbucks',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
         orders: '5028 orders this week',
+      },
+      review: {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!',
+        rating: '★★★★★',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
       },
     },
     {
       order: {
         name: 'Caramel Frappuccino',
-        store: 'Starbucks',
         rating: '★★★★★',
+        store: 'Starbucks',
         hours: "Today's hours: 10:00AM - 2:00PM",
         imageSrc: 'Starbs.jpg',
         orders: '5028 orders this week',
       },
-    },
-    {
-      order: {
-        name: 'Caramel Frappuccino',
-        store: 'Starbucks',
+      review: {
+        reviewerName: 'Joshuah D. Jones',
+        reviewText: 'Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!',
         rating: '★★★★★',
-        hours: "Today's hours: 10:00AM - 2:00PM",
-        imageSrc: 'Starbs.jpg',
-        orders: '5028 orders this week',
+        avatarSrc: 'ME.jpeg',
+        likes: 192,
+        comments: 72,
       },
     },
+
   ];
 
   return (
-    <AuthProvider> {/* Authentication context provider */}
-      <Container fluid className="py-3">
-        <SpotlightOfTheWeek spotlight={spotlightData} />
-        <Row>
-          <Col xs={12}>
-            <div className="section-header">Whats Hot This Week!</div>
-          </Col>
-          {orderReviewData.map((data, index) => (
-            <MergedItemCard key={`week-${index}`} order={data.order} review={data.review} />
-          ))}
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <div className="section-header">Todays Top Picks</div>
-          </Col>
-          {todayTopPicksData.map((data, index) => (
-            <TodayTopPickCard key={`today-${index}`} order={data.order} />
-          ))}
-        </Row>
-      </Container>
-    </AuthProvider>
+    <Container fluid className="py-3">
+      <SpotlightOfTheWeek spotlight={spotlightData} />
+      <Row>
+        <Col xs={12}>
+          <div className="section-header">Whats Hot This Week!</div>
+        </Col>
+        {orderReviewData.map((data, index) => (
+          <React.Fragment key={`merged-${index}`}>
+            <MergedItemCard order={data.order} review={data.review} />
+          </React.Fragment>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

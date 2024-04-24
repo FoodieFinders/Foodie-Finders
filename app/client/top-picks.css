@@ -45,11 +45,6 @@ body {
   margin-bottom: 10px;
 }
 
-.comment-details Button {
-  font-size:15px;
-  margin-top:10px;
-}
-
 .comment-avatar {
   width: 45px;
   height: 45px;
@@ -168,3 +163,4 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
