@@ -55,7 +55,7 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
 
   return (
 
-    <Container id="Restaurant-Item" fluid className="h-75">
+    <Container lg={6} md={3} sm={1} id="Restaurant-Item" fluid className="h-75">
       <Card className="top-pick-card h-100">
         <Card.Body className="d-flex">
           <Link to={`/restaurant-page/${restaurant._id}`}>
