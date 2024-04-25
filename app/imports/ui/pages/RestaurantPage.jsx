@@ -12,7 +12,7 @@ import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ReviewCard from '../components/ReviewCard';
 import PropTypes from 'prop-types';
-import { Rating } from '../components/Rating';
+import Rating from '../components/Rating';
 
 
 /* Renders the EditStuff page for editing a single document. */
