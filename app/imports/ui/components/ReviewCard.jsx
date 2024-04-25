@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 import { Meteor } from 'meteor/meteor';
 import { Reviews } from '../../api/reviews/Reviews';
+import Rating from './Rating'
+import { updateReview } from '../utilities/updateReview';
 
 const ReviewCard = ({ review }) => {
   const owner = Meteor.user()?.username;
@@ -27,42 +29,14 @@ const ReviewCard = ({ review }) => {
         <span>{review.comment}</span>
         <br />
         {review.owner === owner ? (
-          <Button onClick={() => { RemoveReview(review._id); }}>Remove Comment</Button>
+          <Button onClick={() => { RemoveReview(review._id); updateReview(0, review.restaurantId)}}>Remove Comment</Button>
         ) : null}
 
       </div>
     </div>
   );
 };
-const Rating = ({
-  max = 5,
-  value = 0,
-}) => {
-  const numStarsToShow = Math.min(value, max); // Show up to 'value' number of stars, capped at 'max'
 
-  return (
-    <div>
-      {Array.from({ length: numStarsToShow }, (_, index) => index + 1).map(index => (
-        <span
-          style={{ fontSize: 25 }}
-          key={index}
-          tabIndex={0}
-        >
-          ★
-        </span>
-      ))}
-      {Array.from({ length: max - numStarsToShow }, (_, index) => index + numStarsToShow + 1).map(index => (
-        <span
-          style={{ fontSize: 25 }}
-          key={index}
-          tabIndex={0}
-        >
-          ☆
-        </span>
-      ))}
-    </div>
-  );
-};
 ReviewCard.propTypes = {
   review: PropTypes.shape({
     owner: PropTypes.string.isRequired,

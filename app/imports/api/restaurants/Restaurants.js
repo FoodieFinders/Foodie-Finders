@@ -23,9 +23,8 @@ class RestaurantsCollection {
         optional: true 
       },
       rating: {
-        type: String,
-        allowedValues: ['☆', '☆☆', '☆☆☆', '☆☆☆☆', '☆☆☆☆☆'],
-        defaultValue: '☆☆☆☆☆',
+        type: Number,
+        defaultValue: 0,
       },
       owner: {
         optional: true,
