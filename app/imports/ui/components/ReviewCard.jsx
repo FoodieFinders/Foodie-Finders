@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 import { Meteor } from 'meteor/meteor';
 import { Reviews } from '../../api/reviews/Reviews';
+import { Rating } from '../components/Rating';
 
 const ReviewCard = ({ review }) => {
   const owner = Meteor.user()?.username;
@@ -34,35 +35,7 @@ const ReviewCard = ({ review }) => {
     </div>
   );
 };
-const Rating = ({
-  max = 5,
-  value = 0,
-}) => {
-  const numStarsToShow = Math.min(value, max); // Show up to 'value' number of stars, capped at 'max'
 
-  return (
-    <div>
-      {Array.from({ length: numStarsToShow }, (_, index) => index + 1).map(index => (
-        <span
-          style={{ fontSize: 25 }}
-          key={index}
-          tabIndex={0}
-        >
-          ★
-        </span>
-      ))}
-      {Array.from({ length: max - numStarsToShow }, (_, index) => index + numStarsToShow + 1).map(index => (
-        <span
-          style={{ fontSize: 25 }}
-          key={index}
-          tabIndex={0}
-        >
-          ☆
-        </span>
-      ))}
-    </div>
-  );
-};
 ReviewCard.propTypes = {
   review: PropTypes.shape({
     owner: PropTypes.string.isRequired,

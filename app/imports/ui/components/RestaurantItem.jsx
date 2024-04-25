@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
-import { Restaurants } from '../../api/restaurants/Restaurants'
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import { Rating } from '../components/Rating';
 
 const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation
@@ -66,7 +67,7 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
           <div>
 
             <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
-            <Card.Text>{restaurant.rating}</Card.Text>
+            <Rating value={restaurant.rating} />
             <Card.Text>{restaurant.hours}</Card.Text>
             {canDelete && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
             {canEdit && <Button id="edit-button" variant="secondary" onClick={handleEdit} className="ms-2">Edit</Button>}
@@ -83,7 +84,7 @@ RestaurantItem.propTypes = {
     name: PropTypes.string,
     address: PropTypes.string,
     description: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
     owner: PropTypes.string,
     hours: PropTypes.string,
     imageSrc: PropTypes.string,
