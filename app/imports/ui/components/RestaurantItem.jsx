@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
-import { Restaurants } from '../../api/restaurants/Restaurants'
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
 import { Restaurants } from '../../api/restaurants/Restaurants';
