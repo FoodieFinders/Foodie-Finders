@@ -1,19 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Search } from 'react-bootstrap-icons';
+import { ArrowUp, ArrowDown, Search } from 'react-bootstrap-icons';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const currentUser = Meteor.user() ? Meteor.user().username : null;
-
 const RestaurantList = () => {
+
+  const [state1, setState1] = useState(0);
+  const [state2, setState2] = useState(0);
+  const [state3, setState3] = useState(0);
+
+  const handleClick1 = () => {
+    setState1((prevState) => (prevState + 1) % 3);
+    setState2(0);
+    setState3(0);
+  };
+
+  const handleClick2 = () => {
+    setState2((prevState) => (prevState + 1) % 3);
+    setState1(0);
+    setState3(0);
+  };
+
+  const handleClick3 = () => {
+    setState3((prevState) => (prevState + 1) % 3);
+    setState1(0);
+    setState2(0);
+  };
+
   const { ready, restaurants } = useTracker(() => {
     const subscription = Meteor.subscribe(Restaurants.userPublicationName);
     const rdy = subscription.ready();
     const restaurantItems = Restaurants.collection.find({}).fetch();
+
     return {
       restaurants: restaurantItems,
       ready: rdy,
@@ -22,28 +44,56 @@ const RestaurantList = () => {
 
   return (ready ? (
     <>
-      <Row>
+      <Row className="ps-lg-5">
+        {/* THIS IS THE ANCHOR TO SCROLL UP TO THE TOP OF THE PAGE */}
         <a id="top-page" />
+
+        {/* THIS COLUMN IS THE FILTERS COLUMN} */}
         <Col className="col-md-2">
-          <div className="d-grid gap-1 sticky-top py-1">
+          <div className="d-grid gap-1 sticky-top py-3">
             <h4 className="text-center py-2">
               Filters
               <hr />
             </h4>
             <ToggleButtonGroup type="checkbox" defaultValue={1}>
-              <ToggleButton id="tbg-check-1" value={1} variant="primary">Top Pick?</ToggleButton>
+              <ToggleButton id="tbg-check-2" value={2} variant="primary">Open Late?</ToggleButton>
             </ToggleButtonGroup>
-            <ToggleButtonGroup type="checkbox" defaultValue={1}>
-              <ToggleButton id="tbg-check-2" value={2} variant="primary">Open?</ToggleButton>
-            </ToggleButtonGroup>
+
+            {/* THIS IS THE SORT BY ROW */}
             <h4 className="text-center py-1 ">
               Sort By
               <hr />
             </h4>
-            <Button variant="primary">Popularity</Button>
-            <Button variant="primary">Rating</Button>
+            <Button className={`toggle-button state-${state1}`} onClick={handleClick1}>
+              Alphabetical
+              <span>
+                {state1 === 0 && ' '}
+                {state1 === 1 && <ArrowDown />}
+                {state1 === 2 && <ArrowUp />}
+              </span>
+            </Button>
+            <Button className={`toggle-button state-${state2}`} onClick={handleClick2}>
+              Popularity
+              <span className="icon">
+                {state2 === 0 }
+                {state2 === 1 && <ArrowDown />}
+                {state2 === 2 && <ArrowUp />}
+              </span>
+            </Button>
+            <Button className={`toggle-button state-${state3}`} onClick={handleClick3}>
+              Rating
+              <span className="icon">
+                {state3 === 0 }
+                {state3 === 1 && <ArrowDown />}
+                {state3 === 2 && <ArrowUp />}
+              </span>
+            </Button>
             <Button variant="primary">Distance</Button>
-            <h4 className="text-center py-2">Search</h4>
+
+            {/* SEARCH BUTTON HERE */}
+            <h4 className="text-center py-2">
+              Search
+            </h4>
             <InputGroup className="mb-3">
               <Form.Control
                 aria-label="Search"
@@ -82,11 +132,7 @@ const RestaurantList = () => {
             <br />
             <br />
             <Button className="w-75 primary" style={{ height: '75px' }}>
-              <span className="fs-3">SEND IT
-              {/*  {restaurants.map((restaurant, index) => (*/}
-              {/*  <RestaurantItem key={index} restaurant={restaurant} currentUser={currentUser} />*/}
-              {/*))}*/}
-              </span>
+              <span className="fs-3">SEND IT</span>
             </Button>
             <br />
             <br />

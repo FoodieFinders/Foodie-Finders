@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ComponentIDs } from '../utilities/ids';
-import { Users } from '../../api/users/users';  // Assuming the path to Users import is correct
+import { Users } from '../../api/users/users';// Assuming the path to Users import is correct
 
 const NavBar = () => {
   // Subscribe to the user data and access the necessary fields
