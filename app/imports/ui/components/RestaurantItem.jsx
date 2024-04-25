@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
+import { Restaurants } from '../../api/restaurants/Restaurants'
+import moment from 'moment';
+import { useHours } from '../../api/hours/useHours';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import Rating from './Rating'
 
@@ -32,19 +35,39 @@ const remove = (vendor, admin) => {
       }
     });
 };
-const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
 
-/*  const handleDelete = () => {
-    if (confirm('Are you sure you want to delete this restaurant?')) {
-      Meteor.call('restaurants.delete', restaurant._id, (error) => {
-        if (error) {
-          console.error('Delete restaurant error:', error.reason || error.message);
-        } else {
-          console.log('Restaurant deleted successfully.');
-        }
-      });
-    }
-  };*/
+const formatHours = (hours) => {
+  if (!Array.isArray(hours) || hours.length === 0) {
+    return 'No hours provided'; // Display a message indicating no hours provided
+  }
+
+  return hours
+    .map(hour => {
+      if (!hour || typeof hour !== 'string') {
+        return null; // Skip if hour is not a string or is undefined
+      }
+      const trimmedHour = hour.trim();
+      if (!trimmedHour) {
+        return null; // Skip if hour is empty after trimming
+      }
+
+      if (trimmedHour.includes('-')) {
+        const [start, end] = trimmedHour.split('-').map(time => {
+          // Format time from "HH:MM" to "HH:MM AM/PM"
+          return moment(time.trim(), 'HH:mm').format('hh:mm A');
+        });
+        return `${start} - ${end}`;
+      } else {
+        return moment(trimmedHour, 'HH:mm').format('hh:mm A');
+      }
+    })
+    .filter(hour => hour) // Filter out null values
+    .join(' - ');
+};
+
+const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
+  console.log('Restaurant hours:', restaurant.hours);
+  const { hours } = useHours();
 
   const navigate = useNavigate();
   const handleEdit = () => {
@@ -55,7 +78,8 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
   const isOwner = currentUser === restaurant.owner || isAdmin; // Check if current user is the owner
 
   return (
-    <Container id="Restaurant-Item" fluid className="h-75">
+    <Container lg={6} md={3} sm={1} id="Restaurant-Item" fluid className="h-75">
+
       <Card className="top-pick-card h-100">
         <Card.Body className="d-flex">
           <Link to={`/restaurant-page/${restaurant._id}`}>
@@ -65,8 +89,9 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
           </Link>
           <div>
             <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
-            <Rating value={restaurant.rating} />
-            <Card.Text>{restaurant.hours}</Card.Text>
+            <Card.Text>{restaurant.rating}</Card.Text>
+            <Card.Text>{formatHours(restaurant.hours)}</Card.Text>
+
             {canDelete && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
             {canEdit && <Button id="edit-button" variant="secondary" onClick={handleEdit} className="ms-2">Edit</Button>}
           </div>
@@ -84,7 +109,7 @@ RestaurantItem.propTypes = {
     description: PropTypes.string,
     rating: PropTypes.number,
     owner: PropTypes.string,
-    hours: PropTypes.string,
+    hours: PropTypes.arrayOf(PropTypes.string),
     imageSrc: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,

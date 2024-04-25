@@ -19,25 +19,25 @@ fixture('Foodie Finder localhost test with default db')
   await t.resizeWindow(1280, 800);
 });
 
-test.only('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test.only('Test the About Us page', async (testController) => {
+test('Test the About Us page', async (testController) => {
 /*  await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);*/
   await navBar.gotoAboutUsPage(testController); // Ensure this method is added to the NavBar class
   await aboutUs.isDisplayed(testController);
 });
 
-test.only('Test the Top Picks page', async (testController) => {
+test('Test the Top Picks page', async (testController) => {
 /*  await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);*/
   await navBar.gotoTopPicksPage(testController); // Ensure this method is added to the NavBar class
   await topPicks.isDisplayed(testController);
 });
 
-test.only('Test that signin and signout work', async (testController) => {
+test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
@@ -47,7 +47,7 @@ test.only('Test that signin and signout work', async (testController) => {
 
 
 // Add a new test for the Add Restaurant page
-test.only('Test the Add Restaurant page', async (testController) => {
+test('Test the Add Restaurant page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await testController.navigateTo('/add-restaurant'); // Direct navigation or update navBar class to include a method for this
@@ -61,12 +61,12 @@ test.only('Test the Add Restaurant page', async (testController) => {
   });
 });
 
-test.only('Edit user information', async (testController) => {
+test('Edit user information', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await testController.click('#navbar-current-user')
   await testController.click('#navbar-user-profile');
-  await testController.click('#editprofile-button')
+  await testController.click('#edit-profile-button')
   await editUserPage.isDisplayed(testController);
   await editUserPage.fillForm(testController, {
     firstName: 'John',
@@ -88,7 +88,7 @@ test.only('Edit user information', async (testController) => {
 
 });
 
-test.only('Testing entering restaurant page', async(testController) =>{
+test('Testing entering restaurant page', async(testController) =>{
 
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
@@ -101,7 +101,7 @@ test.only('Testing entering restaurant page', async(testController) =>{
 });
 
 
-test.only('Testing leaving a review', async (testController) => {
+test('Testing leaving a review', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
 
