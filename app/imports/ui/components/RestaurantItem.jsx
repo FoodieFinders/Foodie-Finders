@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { Restaurants } from '../../api/restaurants/Restaurants'
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import Rating from './Rating'
 
 const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation
@@ -76,8 +78,8 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
   const isOwner = currentUser === restaurant.owner || isAdmin; // Check if current user is the owner
 
   return (
-
     <Container lg={6} md={3} sm={1} id="Restaurant-Item" fluid className="h-75">
+
       <Card className="top-pick-card h-100">
         <Card.Body className="d-flex">
           <Link to={`/restaurant-page/${restaurant._id}`}>
@@ -86,10 +88,10 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
           </div>
           </Link>
           <div>
-
             <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
             <Card.Text>{restaurant.rating}</Card.Text>
             <Card.Text>{formatHours(restaurant.hours)}</Card.Text>
+
             {canDelete && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
             {canEdit && <Button id="edit-button" variant="secondary" onClick={handleEdit} className="ms-2">Edit</Button>}
           </div>
@@ -105,7 +107,7 @@ RestaurantItem.propTypes = {
     name: PropTypes.string,
     address: PropTypes.string,
     description: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
     owner: PropTypes.string,
     hours: PropTypes.arrayOf(PropTypes.string),
     imageSrc: PropTypes.string,

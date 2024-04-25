@@ -21,10 +21,10 @@
     { "firstName": "Admin", "lastName": "DAN", "title": "Vendor", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "admin@foo.com"}
   ],
   "defaultRestaurants": [
-    { "name": "burgerINC", "address": "1020 BlaBLa Street", "description": "Best American Food", "imageSrc": "../images/Burger.jpg","rating": "☆☆☆☆☆", "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
-    { "name": "pizzaINC", "address": "1020 BlaBLa Street", "description": "Best Pizza Food", "imageSrc": "../images/ultimate-pizza.jpg","rating": "☆☆☆☆", "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"},
-    { "name": "sushiINC", "address": "1020 BlaBLa Street", "description": "Best Sushi Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": "☆☆☆☆☆", "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
-    { "name": "italianINC", "address": "1020 BlaBLa Street", "description": "Best Italian Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": "☆☆☆☆☆", "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"}
+    { "name": "burgerINC", "address": "1020 BlaBLa Street", "description": "Best American Food", "imageSrc": "../images/Burger.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
+    { "name": "pizzaINC", "address": "1020 BlaBLa Street", "description": "Best Pizza Food", "imageSrc": "../images/ultimate-pizza.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"},
+    { "name": "sushiINC", "address": "1020 BlaBLa Street", "description": "Best Sushi Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
+    { "name": "italianINC", "address": "1020 BlaBLa Street", "description": "Best Italian Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"}
   ],
 
   "defaultReviews": [
