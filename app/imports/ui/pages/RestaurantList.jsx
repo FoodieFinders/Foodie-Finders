@@ -61,16 +61,6 @@ const RestaurantList = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col sm="5">
-            <div className="d-grid gap-1 sticky-top p-3">
-              <h1 className="text-center">
-                Can't decide what to eat?
-                <Button variant="primary" size="lg">
-                  SEND IT
-                </Button>
-              </h1>
-            </div>
-          </Col>
         </Row>
       </Container>
     ) :
