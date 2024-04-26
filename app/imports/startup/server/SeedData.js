@@ -10,19 +10,19 @@ Meteor.startup(() => {
     const initialRestaurants = [
       {
         name: "Gourmet Burger",
-        rating: "★★★★★",
+        rating: 5,
         hours: "Today's hours: 10:00AM - 8:00PM",
         imageSrc: "/images/sushi-spectacular.jpg",
       },
       {
         name: "Ultimate Pizza",
-        rating: "★★★★★",
+        rating: 5,
         hours: "Today's hours: 11:00AM - 10:00PM",
         imageSrc: "/images/ultimate-pizza.jpg",
       },
       {
         name: "Sushi Spectacular",
-        rating: "★★★★",
+        rating: 4,
         hours: "Today's hours: 12:00PM - 8:00PM",
         imageSrc: "/images/sushi-spectacular.jpg",
       },

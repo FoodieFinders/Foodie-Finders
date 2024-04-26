@@ -14,6 +14,7 @@ import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Users } from '../../api/users/users';
+import { updateReview } from '../utilities/updateReview';
 
 const formSchema = new SimpleSchema({
   rating: Number,
@@ -81,10 +82,11 @@ const LeaveReview = () => {
   console.log(owner, firstname, image);
   */
 
-  const submit = (data, formRef, rev) => {
-    const { rating, comment } = data;
 
-    if (rev) {
+  const submit = (data, formRef) => {
+    const { rating, comment } = data;
+    const existingReview = rev.filter(rev => rev.restaurantId === restaurantId && rev.owner === userData.email);
+    if (existingReview.length >= 1) {
       swal('Error', 'You have already submitted a review for this restaurant', 'error');
       return; // Prevent duplicate reviews
     }
@@ -97,8 +99,8 @@ const LeaveReview = () => {
       firstName: userData?.firstName, // Make sure the key matches what your schema expects
       image: userData?.picture,
     };
-    console.log('Review Data Test:', reviewData);
     Reviews.collection.insert(reviewData, (error) => {
+      updateReview(rating, restaurantId);
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -111,7 +113,7 @@ const LeaveReview = () => {
   const { rev, ready2 } = useTracker(() => {
     const subscription = Meteor.subscribe(Reviews.userPublicationName);
     const rdy = subscription.ready();
-    const review = Reviews.collection.findOne({ owner, restaurantId });
+    const review = Reviews.collection.find().fetch();
     return {
       rev: review,
       ready2: rdy,
@@ -136,7 +138,7 @@ const LeaveReview = () => {
 
     <Container id="leave-review" fluid className="py-3">
       <Row className="justify-content-center">
-        <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef, rev)}>
+        <AutoForm className="review-form" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Card style={{ borderRadius: 15 }} className="review-card">
             <Card.Body>
               <div className="page-header">
