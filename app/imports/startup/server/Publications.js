@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { check } from 'meteor/check';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Users } from '../../api/users/users';
@@ -128,4 +129,12 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.publish('reviewsByEmail', function (email) {
+  check(email, String);
+  console.log(`Looking for reviews with owner email: ${email}`);
+  const reviews = Reviews.collection.find({ owner: email });
+  console.log(`Found ${reviews.count()} reviews`);
+  return reviews;
 });
