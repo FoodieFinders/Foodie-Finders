@@ -124,6 +124,7 @@ const MergedItemCard = ({ order, review }) => {
               <span>{review.reviewText}</span>
             </div>
           </div>
+          <Button variant="outline-primary" size="sm" className="mt-auto w-100">View more Comments</Button>
         </Card.Body>
       </Card>
     </Col>
