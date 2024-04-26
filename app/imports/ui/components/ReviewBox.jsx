@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
 import { Reviews } from '../../api/reviews/Reviews';
 import '../../../client/ReviewsBox.css';
+import Rating from './Rating';
 
 const ReviewsBox = ({ userEmail }) => {
   const { reviews, isReady } = useTracker(() => {
@@ -29,7 +30,7 @@ const ReviewsBox = ({ userEmail }) => {
   }
 
   return (
-    <div className="reviews-box justify-content-left">
+    <div className="py-4 reviews-box justify-content-left">
       <h2 className="text-center">My Reviews</h2>
       <div className="reviews-container">
         {reviews.map((review) => (
@@ -39,6 +40,7 @@ const ReviewsBox = ({ userEmail }) => {
 
             )}
             <strong>{review.firstName || review.owner}</strong>
+            <Rating value={review.rating} />
             <p><strong>Comment:</strong> {review.comment}</p>
             {/* Additional review details can be added here */}
           </div>
