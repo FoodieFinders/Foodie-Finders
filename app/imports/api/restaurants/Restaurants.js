@@ -40,6 +40,11 @@ class RestaurantsCollection {
         type: String,
         optional: true, // Make optional if some restaurants might not have an image initially
       },
+      resterauntID:
+        {
+          type: String,
+          optional: true,
+        },
     });
     // Attach the schema to the collection.
     this.collection.attachSchema(this.schema);

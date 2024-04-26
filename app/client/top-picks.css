@@ -109,9 +109,9 @@ body {
 }
 
 .btn-outline-primary {
-  color: var(--dark-green) !important;
+  color: var(--text-color) !important;
   border-color: var(--dark-green) !important;
-  background-color: transparent !important;
+  background-color: var(--dark-green) !important;
 }
 
 .btn-outline-primary:hover {
@@ -164,3 +164,32 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.equal-height-cards .card {
+  height: 100%;  /* Makes each card take full height of its parent column */
+  display: flex;
+  flex-direction: column; /* Ensures the card content is flexibly laid out */
+}
+
+.equal-height-cards .card-body {
+  flex: 1;  /* Allows the card body to expand and fill available space */
+}
+
+.merge-card-img-top {
+  max-width: 100%;        /* Ensure the image takes the full width of the card */
+  height: 200px !important;      /* Fixed height for all images */
+  object-fit: cover !important;  /* This will cover the area of the div without stretching the image */
+}
+
+.btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--dark-green) !important;
+  background-color: var(--dark-green) !important;
+}
+
+.btn-outline-tirtiary {
+  color: var(--text-color) !important;
+  border-color: var(--dark-green) !important;
+  background-color: var(--dark-green) !important;
+  font-weight: bolder !important;
+  font-size: larger !important;
+}

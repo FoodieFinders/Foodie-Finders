@@ -13,7 +13,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ReviewCard from '../components/ReviewCard';
 import PropTypes from 'prop-types';
 
-
 /* Renders the EditStuff page for editing a single document. */
 const RestaurantPage = () => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.

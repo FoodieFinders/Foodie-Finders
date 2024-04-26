@@ -28,7 +28,8 @@
       "imageSrc": "../images/ding.jpg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "restaurantId": "ding-tea"
     },
 
     {
@@ -38,7 +39,8 @@
       "imageSrc": "../images/Brito.jpeg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "john@foo.com"
+      "owner": "john@foo.com",
+      "restaurantId": "b-rito"
     },
 
     {
@@ -48,27 +50,30 @@
       "imageSrc": "../images/Jamba.jpeg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "restaurantId": "jamba-juice"
     },
 
     {
       "name": "Starbucks",
       "location": "Campus Center",
       "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ",
-      "imageSrc": "../images/WomanStarbs.png",
+      "imageSrc": "../images/WomanStarbs.jpeg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "restaurantId": "starbucks-campus-center"
     },
 
     {
       "name": "Starbucks",
       "location": "Gateway Cafe",
       "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ",
-      "imageSrc": "../images/WomanStarbs.png",
+      "imageSrc": "../images/WomanStarbs.jpeg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "restaurantId": "starbucks-gateway-cafe"
     },
 
     {
@@ -78,7 +83,8 @@
       "imageSrc": "../images/sub.jpeg",
       "rating": "☆☆☆☆",
       "hours": "10:00 AM - 6:00 PM",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "restaurantId": "subway"
     },
 
       {
@@ -88,7 +94,8 @@
         "imageSrc": "../images/daBean.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "the-bean-counter"
       },
 
       {
@@ -98,7 +105,8 @@
         "imageSrc": "../images/dunkin.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "dunkin-donuts"
       },
 
       {
@@ -108,7 +116,8 @@
         "imageSrc": "../images/lecrepe.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "le-crepe-cafe"
       },
 
       {
@@ -118,7 +127,8 @@
         "imageSrc": "../images/sama.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "sama-sama"
       },
 
       {
@@ -128,7 +138,8 @@
         "imageSrc": "../images/evisuya.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "evisuya"
       },
 
       {
@@ -138,7 +149,8 @@
         "imageSrc": "../images/happybelly.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "happy-belly-eatery"
       },
 
       {
@@ -148,7 +160,8 @@
         "imageSrc": "../images/hicravings.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "hi-cravings"
       },
 
       {
@@ -158,7 +171,8 @@
         "imageSrc": "../images/holob.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "holoholo-bistro"
       },
 
       {
@@ -168,7 +182,8 @@
         "imageSrc": "../images/soul.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "soul-fusion"
       },
 
       {
@@ -178,7 +193,8 @@
         "imageSrc": "../images/krazydogs.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "krazy-dogs"
       },
 
       {
@@ -188,7 +204,8 @@
         "imageSrc": "../images/veggidogs.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "veggie-dogs"
       },
 
       {
@@ -198,7 +215,8 @@
         "imageSrc": "../images/ba-le.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "ba-le"
       },
 
       {
@@ -208,7 +226,8 @@
         "imageSrc": "../images/L&L.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "l-l-hawaiian-barbecue"
       },
 
       {
@@ -218,7 +237,8 @@
         "imageSrc": "../images/lasoon.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "lasoon"
       },
 
       {
@@ -228,7 +248,8 @@
         "imageSrc": "../images/panda.jpeg",
         "rating": "☆☆☆☆",
         "hours": "10:00 AM - 6:00 PM",
-        "owner": "admin@foo.com"
+        "owner": "admin@foo.com",
+        "restaurantId": "panda-express"
       }
   ],
 
@@ -239,7 +260,8 @@
       "rating": 5,
       "owner": "admin@foo.com",
       "comment": "I love Ding Tea! The drinks are always fresh and the staff is always friendly. I highly recommend the Mango Green Tea with Boba. It's my favorite!",
-      "restaurantId": "ding-tea"
+      "restaurantId": "ding-tea",
+      "imageSrc": "../images/ME.jpeg"
     },
 
     {
