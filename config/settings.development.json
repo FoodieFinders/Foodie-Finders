@@ -20,15 +20,246 @@
     { "firstName": "John", "lastName": "Doe", "title": "Student", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "john@foo.com"},
     { "firstName": "Admin", "lastName": "DAN", "title": "Vendor", "picture": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","email": "admin@foo.com"}
   ],
+  
   "defaultRestaurants": [
-    { "name": "burgerINC", "address": "1020 BlaBLa Street", "description": "Best American Food", "imageSrc": "../images/Burger.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
-    { "name": "pizzaINC", "address": "1020 BlaBLa Street", "description": "Best Pizza Food", "imageSrc": "../images/ultimate-pizza.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"},
-    { "name": "sushiINC", "address": "1020 BlaBLa Street", "description": "Best Sushi Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "admin@foo.com"},
-    { "name": "italianINC", "address": "1020 BlaBLa Street", "description": "Best Italian Food", "imageSrc": "../images/sushi-spectacular.jpg","rating": 0, "hours": ["9:00 AM - 5:00 PM"], "owner": "john@foo.com"}
+    { 
+      "name": "Ding Tea", 
+      "address": "Campus Center", 
+      "description": "Located on the first floor of Campus Center near Vending Machines and   ATMs. \n\nSatisfy your craving of Milk Tea and Boba! Try one of the Top 10 Flavors!", 
+      "imageSrc": "../images/ding.jpg",
+      "rating": 5, 
+      "hours": ["10:00AM - 6:00PM"], 
+      "owner": "john@foo.com"
+    },
+
+    { 
+      "name": "B'RITO", 
+      "address": "Campus Center", 
+      "description": "Located on the first floor of Campus Center across from the ATMs, B'RITO serves up fresh and flavorful Mexican inspired food. \n\nWe have a variety of different protein options to suit your taste!", 
+      "imageSrc": "../images/Brito.jpeg",
+      "rating": 5, 
+      "hours": ["Mon - Fri 10:00AM - 2:00PM"], 
+      "owner": "john@foo.com"
+    },
+
+    { 
+      "name": "Jamba Juice", 
+      "address": "Campus Center", 
+      "description": "Visit Jamba for refreshing fruit smoothie blends, delicious and nutritious energy bowls, fresh juices, healthy baked goods and savory grab-and-go food items. \n\nJamba blends real fruit and whole ingredients into each delicious fresh juice, smoothie, or energy bowl you order and contains no artificial colors, preservatives, or flavors.", 
+      "imageSrc": "../images/Jamba.jpeg",
+      "rating": 5,  
+      "hours": ["Mon - Fri 8:00AM - 6:00PM"], 
+      "owner": "admin@foo.com"
+    },
+    
+    { 
+      "name": "Starbucks", 
+      "location": "Campus Center", 
+      "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ", 
+      "imageSrc": "../images/WomanStarbs.jpeg",
+      "rating": 5,  
+      "hours": ["Mon - Thu 6:00AM - 10:00PM | Fri 6:00AM - 5:00PM"], 
+      "owner": "admin@foo.com"
+    },
+
+    { 
+      "name": "Starbucks", 
+      "location": "Gateway Cafe", 
+      "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ", 
+      "imageSrc": "../images/WomanStarbs.jpeg",
+      "rating": 5,  
+      "hours": ["Mon - Fri 7:00AM - 9:00PM | Sat & Sun 9:00Am - 9:00PM"], 
+      "owner": "admin@foo.com"
+    },
+
+    { 
+      "name": "Subway", 
+      "address": "Campus Center", 
+      "description": "Subway® is simply the better choice when it comes to freshly made, convenient and affordable food. We’re one of the world’s largest restaurant brands for a reason, serving up a craveable menu with better-for-you options to our millions of fans, every day. \n Whether it’s our bread baked fresh daily, new flavorful signature subs or our classic fan favorites made fresh to order, Subway® delivers a quality, flavorful meal that you can feel good about.", 
+      "imageSrc": "../images/sub.jpeg",
+      "rating": 5,  
+      "hours": ["Mon & Fri 8:00AM - 5:00PM | Tue - Thu 8:00AM - 6:00PM"], 
+      "owner": "admin@foo.com"
+    },
+      
+      { 
+        "name": "The Bean Counter", 
+        "address": "Shidler College of Business, 1st Floor", 
+        "description":" Local beans, local flavor…your local coffee bar. \n\nThe Bean Counter serves up brewed coffee from the Hawaiian Islands and fulfills your caffeinated desires with a full service espresso bar. Feed your growling stomach with a dizzying array of bagels with homemade spreads, or chow down with our savory wraps, healthy salads and sweet treats. ", 
+        "imageSrc": "../images/daBean.jpeg",
+        "rating": 5,  
+        "hours": ["Mon - Fri 10:00AM - 6:00PM"], 
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Dunkin’ Donuts",
+        "address": "Paradise Palms Cafe",
+        "description": "Dunkin’ Donuts in Paradise Palms Cafe will keep Hawaii running with high-quality beverage offerings–including freshly-brewed Hot and Iced Coffees–paired perfectly with delicious donuts, bakery good, sandwiches and more. ",
+        "imageSrc": "../images/dunkin.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Fri 7:00AM - 4:30PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Le Crêpe Café",
+        "address": "Paradise Palms Cafe",
+        "description": "Le Crêpe Café makes traditional French crêpes, cooked to order in front of customers. They specialize in a flavorsome menu of sweet and savory crêpes and use fresh ingredients, organic when possible. Their utensils are even bio-compostable. Enjoy a crêpe any time of day, as a breakfast, snack, main course, or dessert — close your eyes and you’re in Paris! \n\nWhether you’re needing a break from the law books or a pick-me-up as you’re headed to or off campus, you’ll also appreciate Le Crêpe Café’s French Roast and espresso drinks.",
+        "imageSrc": "../images/lecrepe.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Fri 8:00AM - 3:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "SAMA SAMA",  
+        "address": "Food Truck Row",
+        "description": "Sama Sama was created to bring together the Filipino community through the love for boba drinks, while educating others about Filipino culture and cuisine.",
+        "imageSrc": "../images/sama.jpeg",
+        "rating": 5, 
+        "hours": ["Tues, Wed, Thu 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Evisuya",
+        "address": "Food Truck Row",
+        "description": "Located near Legacy Path closest to the Dole Street crosswalk, Evisuya serves local Japanese food. We offer tasty food that is affordable and easy to eat!",
+        "imageSrc": "../images/evisuya.jpeg",
+        "rating": 5, 
+        "hours": ["Mon, Tues, Thu, Fri 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Happy Belly Eatery",
+        "address": "Food Truck Row",
+        "description": "Located near Legacy Path closest to the Dole Street crosswalk. Voted the #1 food truck in the Honolulu Star Advertiser’s Best of Everything 2022, Happy Belly Eatery brings you elevated munchies with a local Asian-fusion flare. Our HI-5 menu features our Top 5 best sellers, we currently have 5 Fry Tot flavors on rotation, and we offer weekly specials so finding something to make your belly happy will be a breeze.",
+        "imageSrc": "../images/happybelly.jpeg",
+        "rating": 5,  
+        "hours": ["Mon - Fri 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "HI Cravings",
+        "address": "Food Truck Row",
+        "description": "Located near Legacy Path closest to the Dole Street crosswalk. Hi Cravings provides Vegan-based smoothie bowls that can be customized to fit any diet. Our team will assemble a variety of fresh fruits with your choice of base and toppings to create a visual edible art on a bowl experience with over 25 different add-on options. We can accommodate gluten free, vegan, dairy free, vegetarian, and many other diets. Grab a smoothie bowl for a healthy snack or a quick dessert. Hi Cravings also sources several add-ons and ingredients from the local community and local businesses to serve you the most quality-filled smoothie bowl made with Aloha.",
+        "imageSrc": "../images/hicravings.jpeg",
+        "rating": 5, 
+        "hours": ["Mon & Tues 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      }, 
+
+      {
+        "name": "Holoholo Bistro",
+        "address": "Food Truck Row",
+        "description": "Located near Legacy Path closest to the Dole Street crosswalk, Holoholo Bistro is the mobile concept of Holoholo Grill featuring convenient and delicious grab-and-go items. Made with local, fresh ingredients, these tasty meals and snacks are perfect quick bite to eat.",
+        "imageSrc": "../images/holob.jpeg",
+        "rating": 5, 
+        "hours": ["Wednesday 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Soul Fusion",
+        "address": "Food Truck Row",
+        "description": "Located near Legacy Path closest to the Dole Street crosswalk. Soul Fusion is a veteran owned and operated business that was started to bring together those who miss the taste of home. We offer southern rooted food with a fusion twist of the islands. As our motto says, “Follow your Soul, It Knows The Way.”",
+        "imageSrc": "../images/soul.jpeg",
+        "rating": 5, 
+        "hours": ["Mon, Wed, Thu, Fri 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Krazy Dogs",
+        "address": "Food Truck Row",
+        "description": "Krazy Dogs is a small local business specializing in gourmet and fusion hot dogs. We have a vast variety of different hot dogs from the classics to bacon wrapped and popular options such as L.A. Street Dog and Chicago Dog. Don’t forget to wash down your hot dogs with our fresh squeezed ice-cold lemonades.",
+        "imageSrc": "../images/krazydogs.jpeg",
+        "rating": 5, 
+        "hours": ["Wed, Thu, Fri 10:00 - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Veggie Dogs",
+        "address": "Food Truck Row",
+        "description": "Veggi Dogs is a plant-based hot dog cart, serving up a variety of the best tasting hot dogs and soft serve anywhere. We invite you to come down and give us a try, it just might be the best tasting hot dog you’ve ever had! Voted a finalist in Hawaii’s Best 2023!",
+        "imageSrc": "../images/veggidogs.jpeg",
+        "rating": 5, 
+        "hours": ["Mon, Tue 10:00AM - 2:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Ba-Le",
+        "address": "Hemmenway Hall",
+        "description": "Located at Hemenway Hall, Ba-Le is the perfect stop if you're craving something a little different. \n\nPastries, sandwiches, and pre-made salads are some of their quick lunch options. Popular items at Ba-Le include pho, pad thai, and banh mi sandwiches. \n\nAlso offered at Ba-Le are a selection of La Tour Cafe macarons and entrees. \n\nManoa Gardens, located inside Ba-Le, is our campus bar for those age 21 and older. ",
+        "imageSrc": "../images/ba-le.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Thu 10:00AM - 8:00PM | Fri 10:00AM - 9:00PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "L&L Hawaiian Barbecue",
+        "address": "Paradise Palms Cafe",
+        "description": "Delicious local and Asian-American fusion cuisine served in big portions at reasonable prices! Try delicious L&L favorites like the Hawaiian Barbecue beef, chicken, or short ribs! Enjoy L&L’s famous fried chicken katsu, the best in town! Grab-and-go, breakfast items and party packs for groups also available.",
+        "imageSrc": "../images/L&L.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Fri 7:00AM - 4:30PM"],
+        "owner": "admin@foo.com"
+      }, 
+
+      {
+        "name": "Lasoon",
+        "address": "Paradise Palms Cafe",
+        "description": "Delicious local and Asian-American fusion cuisine served in big portions at reasonable prices! Try delicious L&L favorites like the Hawaiian Barbecue beef, chicken, or short ribs! Enjoy L&L’s famous fried chicken katsu, the best in town! Grab-and-go, breakfast items and party packs for groups also available.",
+        "imageSrc": "../images/lasoon.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Fri 10:00AM - 4:30PM"],
+        "owner": "admin@foo.com"
+      },
+
+      {
+        "name": "Panda Express",
+        "address": "Paradise Palms Cafe",
+        "description": "Panda Express serves gourmet Chinese food made with only the freshest ingredients. Famous for its Orange Chicken, they also offer a number of Wok Smart entrées that contain less than 250 calories per serving, such as Shanghai Angus Steak, Kung Pao Chicken, and Broccoli Beef. Other favorites include Beijing Beef, Sweetfire Chicken Breast, and Honey Walnut Shrimp. \n\nPanda Express’ offerings can be enjoyed in Panda Bowls, or two and three item plates. Perfect for lunch, dinner or as a pick-me-up snack between classes.",
+        "imageSrc": "../images/panda.jpeg",
+        "rating": 5, 
+        "hours": ["Mon - Fri 7:00AM - 4:30PM"],
+        "owner": "admin@foo.com"
+      }
   ],
 
   "defaultReviews": [
-    { "comment": "Absolutely loved the Caramel Frappuccino, perfect blend of coffee and sweetness!", "rating": 3, "owner": "john@foo.com", "restaurantId": "3LSwR3AGZNSDcXoPb"},
-    { "comment": "Absolutely loved the other Frappuccino, perfect blend of coffee and sweetness!", "rating": 4, "owner": "admin@foo.com", "restaurantId": "yfBq65XwZuHPvKFj7"}
+    {
+      "restaurant": "Ding Tea",
+      "reviewer": "Joshuah D. Jones",
+      "rating": 5,
+      "owner": "admin@foo.com",
+      "comment": "I love Ding Tea! The drinks are always fresh and the staff is always friendly. I highly recommend the Mango Green Tea with Boba. It's my favorite!",
+      "restaurantId": "ding-tea",
+      "imageSrc": "../images/ME.jpeg"
+    },
+
+    {
+      "restaurant": "B'RITO",
+      "reviewer": "Joshuah D. Jones",
+      "rating": 5,
+      "owner": "admin@foo.com",
+      "comment": "B'RITO is my go-to spot for lunch. The burritos are always fresh and the staff is always friendly. I highly recommend the Chicken Burrito with a side of chips and salsa. It's my favorite!",
+      "restaurantId": "b-rito"
+    },
+
+    {
+      "restaurant":"Panda Express",
+      "reviewer": "Joshuah D. Jones",
+      "rating": 2,
+      "owner": "admin@foo.com",
+      "comment": "It just dont hit the same no more",
+      "restaurantId": "panda-express"
+    }
   ]
 }

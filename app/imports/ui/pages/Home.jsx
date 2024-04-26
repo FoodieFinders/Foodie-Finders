@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
@@ -48,7 +48,9 @@ const Home = () => {
             </Col>
           </Row>
           <ListGroup variant="flush" className="top-pick-list">
-            {restaurants.map((restaurant) => <RestaurantItem key={restaurant._id} restaurant={restaurant} />)}
+            {restaurants.map((restaurant) => (
+              <RestaurantItem key={restaurant._id} restaurant={restaurant} />
+            ))}
           </ListGroup>
           <Row className="justify-content-center">
             <Col md={8}>
