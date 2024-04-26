@@ -90,8 +90,9 @@ SpotlightOfTheWeek.propTypes = {
 const MergedItemCard = ({ order, review }) => {
   const navigate = useNavigate();
 
+  // Updated the navigation path to match the App.jsx route configuration
   const viewStore = () => {
-    navigate(`/restaurant/${order._id}`); // Adjusted to match the parameter name and route structure
+    navigate(`/restaurant-page/${order._id}`);  // Updated to use the correct route
   };
 
   return (
@@ -99,9 +100,9 @@ const MergedItemCard = ({ order, review }) => {
       <Button variant="outline-tirtiary" size="sm" className="mt-auto w-100"> Todays Top Pick! </Button>
       <Card className="merged-item-card">
         <Card.Header className="text-center">{order.name}</Card.Header>
-        <Image
-          src={`/images/${order.imageSrc}`}
-          alt={order.name}
+        <Image 
+          src={`/images/${order.imageSrc}`} 
+          alt={order.name} 
           className="img-fluid merge-card-img-top"
         />
         <Card.Body>
@@ -113,10 +114,10 @@ const MergedItemCard = ({ order, review }) => {
           <Button variant="primary" className="w-100" onClick={viewStore}>View Store</Button>
           <hr className="comment-divider" />
           <div className="instagram-style-comment">
-            <Image
-              src={`/images/${review.avatarSrc}`}
-              alt={`${review.reviewerName}'s avatar`}
-              className="comment-avatar rounded-circle"
+            <Image 
+              src={`/images/${review.avatarSrc}`} 
+              alt={`${review.reviewerName}'s avatar`} 
+              className="comment-avatar rounded-circle" 
             />
             <div className="comment-details">
               <strong>{review.reviewerName}</strong>
@@ -124,7 +125,6 @@ const MergedItemCard = ({ order, review }) => {
               <span>{review.reviewText}</span>
             </div>
           </div>
-          <Button variant="outline-primary" size="sm" className="mt-auto w-100">View more Comments</Button>
         </Card.Body>
       </Card>
     </Col>

@@ -56,9 +56,9 @@
       "name": "Starbucks", 
       "location": "Campus Center", 
       "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ", 
-      "imageSrc": "../images/WomanStarbs.png",
+      "imageSrc": "../images/WomanStarbs.jpeg",
       "rating": 5,  
-      "hours": ["Mon - Thu 6:00AM - 10:00PM\n Fri 6:00AM - 5:00PM"], 
+      "hours": ["Mon - Thu 6:00AM - 10:00PM | Fri 6:00AM - 5:00PM"], 
       "owner": "admin@foo.com"
     },
 
@@ -66,9 +66,9 @@
       "name": "Starbucks", 
       "location": "Gateway Cafe", 
       "description": "With a full menu, as well as seasonal and specialty items, coffee fanatics are sure to be pleased. Also available are pastries, fruit cups, and bottled beverages for your purchase. ", 
-      "imageSrc": "../images/WomanStarbs.png",
+      "imageSrc": "../images/WomanStarbs.jpeg",
       "rating": 5,  
-      "hours": ["Mon - Fri 7:00AM - 9:00PM\n Sat & Sun 9:00Am - 9:00PM"], 
+      "hours": ["Mon - Fri 7:00AM - 9:00PM | Sat & Sun 9:00Am - 9:00PM"], 
       "owner": "admin@foo.com"
     },
 
@@ -78,7 +78,7 @@
       "description": "Subway® is simply the better choice when it comes to freshly made, convenient and affordable food. We’re one of the world’s largest restaurant brands for a reason, serving up a craveable menu with better-for-you options to our millions of fans, every day. \n Whether it’s our bread baked fresh daily, new flavorful signature subs or our classic fan favorites made fresh to order, Subway® delivers a quality, flavorful meal that you can feel good about.", 
       "imageSrc": "../images/sub.jpeg",
       "rating": 5,  
-      "hours": ["Mon & Fri 8:00AM - 5:00PM\n Tue - Thu 8:00AM - 6:00PM"], 
+      "hours": ["Mon & Fri 8:00AM - 5:00PM | Tue - Thu 8:00AM - 6:00PM"], 
       "owner": "admin@foo.com"
     },
       
@@ -198,7 +198,7 @@
         "description": "Located at Hemenway Hall, Ba-Le is the perfect stop if you're craving something a little different. \n\nPastries, sandwiches, and pre-made salads are some of their quick lunch options. Popular items at Ba-Le include pho, pad thai, and banh mi sandwiches. \n\nAlso offered at Ba-Le are a selection of La Tour Cafe macarons and entrees. \n\nManoa Gardens, located inside Ba-Le, is our campus bar for those age 21 and older. ",
         "imageSrc": "../images/ba-le.jpeg",
         "rating": 5, 
-        "hours": ["Mon - Thu 10:00AM - 8:00PM\n Fri 10:00AM - 9:00PM"],
+        "hours": ["Mon - Thu 10:00AM - 8:00PM | Fri 10:00AM - 9:00PM"],
         "owner": "admin@foo.com"
       },
 

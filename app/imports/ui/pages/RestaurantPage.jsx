@@ -1,65 +1,56 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row, Button, Image, ListGroup } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { Meteor } from 'meteor/meteor';
+import { useParams } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { useParams } from 'react-router';
-import { Restaurants } from '../../api/restaurants/Restaurants';
-import { Link } from 'react-router-dom';
-import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ReviewCard from '../components/ReviewCard';
+import { Restaurants } from '../../api/restaurants/Restaurants';
+import { Reviews } from '../../api/reviews/Reviews';
 import PropTypes from 'prop-types';
-import Rating from '../components/Rating';
+import { Link } from 'react-router-dom';
 
-/* Renders the EditStuff page for editing a single document. */
 const RestaurantPage = () => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
-  // console.log('EditStuff', _id);
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const resId = _id;
+
   const { doc, rev, ready } = useTracker(() => {
-    // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Restaurants.userPublicationName);
     const subscription2 = Meteor.subscribe(Reviews.userPublicationName);
-    // Determine if the subscription is ready
-    const rdy = subscription.ready() && subscription2.ready();
-    const review = Reviews.collection.find().fetch();
-    // Get the document
+    const ready = subscription.ready() && subscription2.ready();
     const document = Restaurants.collection.findOne(_id);
-    return {
-      doc: document,
-      rev: review,
-      ready: rdy,
-    };
+    const reviews = ready ? Reviews.collection.find({ restaurantId: _id }).fetch() : [];
+    
+    return { doc: document, rev: reviews, ready };
   }, [_id]);
 
-  // On successful submit, insert the data.
-  const restaurantReviews = rev.filter(review => review.restaurantId === resId);
-  return ready ? (
+  if (!ready || !doc) {
+    return <LoadingSpinner />;
+  }
+
+  return (
     <Col id="restaurant-page" className="py-3">
       <Row className="justify-content-center">
-        <Col lg={5} className="mb-4" >
+        <Col lg={5} className="mb-4">
           <Card className="merged-item-card">
             <Card.Header className="text-center">{doc.name}</Card.Header>
             <Image src={`${doc.imageSrc}`} alt={doc.name} className="img-fluid" />
             <Card.Body>
-              <Rating value={doc.rating} />
+              <div className="star-rating">{doc.rating}</div>
               <Card.Text>{doc.address}</Card.Text>
               <Card.Text>{doc.hours}</Card.Text>
-              <Link className="review-link" to={`/leave-review/${resId}`}><Button variant="primary" className="w-100">Leave a Review!</Button></Link>
+              <Link className="review-link" to={`/leave-review/${_id}`}>
+                <Button variant="primary" className="w-100">Leave a Review!</Button>
+              </Link>
               <hr className="comment-divider" />
               <ListGroup variant="flush" className="top-pick-list">
-                {restaurantReviews.map((rev, index) => <ReviewCard key={index} review={rev} />)}
+                {rev.map((review, index) => <ReviewCard key={index} review={review} />)}
               </ListGroup>
             </Card.Body>
           </Card>
         </Col>
       </Row>
     </Col>
-  ) : <LoadingSpinner />;
+  );
 };
+
 export default RestaurantPage;
