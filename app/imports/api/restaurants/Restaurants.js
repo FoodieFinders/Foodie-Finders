@@ -23,16 +23,19 @@ class RestaurantsCollection {
         optional: true 
       },
       rating: {
-        type: String,
-        defaultValue: '☆☆☆☆☆',
+        type: Number,
+        defaultValue: 0,
       },
       owner: {
         optional: true,
         type: String
       },
-      hours: { 
-        type: String, 
-        optional: true 
+      hours: {
+        type: Array,
+        optional: true,
+      },
+      'hours.$': {
+        type: String
       },
       imageSrc: {
         type: String,

@@ -7,20 +7,16 @@ import { Users } from '../../api/users/users';
 import UserProfile from '../components/UserProfile';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const UserPage = () => {
   const navigate = useNavigate();
   const goToEditUserPage = (userId) => navigate(`/edituser/${userId}`);
-  const goToLeaveReview = () => navigate('/leave-review');
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const goToLeaveReview = () => navigate('/restaurants-list');
+
+  const goAddRestaurant = () => navigate('/add-restaurant');
+
   const { ready, users } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
-    // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
     const userProfiles = Users.collection.find({}).fetch();
     return {
       users: userProfiles,
@@ -30,33 +26,36 @@ const UserPage = () => {
 
   const currentUser = users.length > 0 ? users[0] : null;
   const currentUserFirstName = currentUser ? currentUser.firstName : '';
+  const isVendor = currentUser && currentUser.title === 'Vendor';
 
   return (ready ? (
     <Container fluid id="view-user-page" className="min-vh-100">
       <Row>
         <Col md={6}>
-          <Col md={{ span: 4, offset: 3 }} className="text-center">
+          <Col fluid md={{ span: 4, offset: 3 }} className="text-center">
             <h2>Hi, {currentUserFirstName}</h2>
           </Col>
           {users.map((user) => (
-            <UserProfile key={user._id} user={user} /> // Pass profile instead of stuff
+            <UserProfile key={user._id} user={user} />
           ))}
-          <Col md={{ span: 4, offset: 3 }}>
-            <Button size="lg" block className=" text-center mt-3  custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
+          <Col fluid md={{ span: 4, offset: 3 }} className="d-flex justify-content-center">
+            <Button id="edit-profile-button" size="lg" block className="text-center mt-3 custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
               Edit Your Profile Page
             </Button>
           </Col>
         </Col>
         <Col md={6}>
-          <Col className="text-center py-5">
-            <h2>Are You A Vendor?</h2>
-            <Button size="lg" block className=" text-center mt-3 custom-review-button">
-              Submit A New Restaurant
-            </Button>
-          </Col>
+          {isVendor && (
+            <Col fluid className="text-center py-5">
+              <h2>Want To Add A New Restaurant?</h2>
+              <Button size="lg" block className="text-center mt-3 custom-review-button" onClick={goAddRestaurant}>
+                Add A New Restaurant
+              </Button>
+            </Col>
+          )}
           <Col className="text-center py-4">
-            <h2>Already Ate?</h2>
-            <Button size="lg" block className=" text-center mt-3 custom-review-button" onClick={goToLeaveReview}>
+            <h2>Want To Leave A Review?</h2>
+            <Button size="lg" block className="text-center mt-3 custom-review-button" onClick={goToLeaveReview}>
               Write A Review
             </Button>
           </Col>

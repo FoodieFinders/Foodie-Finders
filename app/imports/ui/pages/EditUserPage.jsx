@@ -37,9 +37,9 @@ const EditUserPage = () => {
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
-
+  
   return ready ? (
-    <Container className="mt-5">
+    <Container id="edit-user-page"  className="mt-5">
       <Row className="justify-content-md-center">
         <Col md={6}>
           <h2 className="text-center">Edit Profile</h2>
@@ -50,7 +50,7 @@ const EditUserPage = () => {
                 <TextField name="lastName" placeholder="Last Name" />
                 <TextField name="picture" placeholder="Picture URL" />
                 <div className="text-center">
-                  <SubmitField value="Update Profile" />
+                  <SubmitField id="update-profile-button" value="Update Profile" />
                 </div>
                 <ErrorsField />
                 <HiddenField name="email" />

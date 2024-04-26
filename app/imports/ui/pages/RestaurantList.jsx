@@ -7,6 +7,11 @@ import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+// Assuming the currentUser is used somewhere in the component or for the subscription.
+/*
+const currentUser = Meteor.user() ? Meteor.user().username : null;
+*/
+
 const RestaurantList = () => {
 
   const [state1, setState1] = useState(0);
