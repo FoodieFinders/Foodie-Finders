@@ -38,6 +38,7 @@ const RestaurantPage = () => {
               <div className="star-rating">{doc.rating}</div>
               <Card.Text>{doc.address}</Card.Text>
               <Card.Text>{doc.hours}</Card.Text>
+              <Card.Text>{doc.description}</Card.Text>
               <Link className="review-link" to={`/leave-review/${_id}`}>
                 <Button variant="primary" className="w-100">Leave a Review!</Button>
               </Link>
