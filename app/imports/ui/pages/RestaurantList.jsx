@@ -93,7 +93,6 @@ const RestaurantList = () => {
                 {state3 === 2 && <ArrowUp />}
               </span>
             </Button>
-            <Button variant="primary">Distance</Button>
 
             {/* SEARCH BUTTON HERE */}
             <h4 className="text-center py-2">

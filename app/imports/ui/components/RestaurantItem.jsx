@@ -7,7 +7,6 @@ import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
-import { Restaurants } from '../../api/restaurants/Restaurants';
 import Rating from './Rating'
 
 const remove = (vendor, admin) => {
@@ -88,7 +87,7 @@ const RestaurantItem = ({ restaurant, currentUser, canDelete, canEdit }) => {
           </Link>
           <div>
             <Link to={`/restaurant-page/${restaurant._id}`} style={{ textDecoration: 'none', color:'black' }}><Card.Title >{restaurant.name}</Card.Title> </Link>
-            <Card.Text>{restaurant.rating}</Card.Text>
+            <Rating value={restaurant.rating} />
             <Card.Text>{formatHours(restaurant.hours)}</Card.Text>
 
             {canDelete && <Button variant="danger" onClick={() => remove(restaurant)}>Delete</Button>}
