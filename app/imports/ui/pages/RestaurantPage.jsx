@@ -13,6 +13,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ReviewCard from '../components/ReviewCard';
 import PropTypes from 'prop-types';
 import Rating from '../components/Rating';
+import moment from 'moment';
 
 
 /* Renders the EditStuff page for editing a single document. */
@@ -38,6 +39,35 @@ const RestaurantPage = () => {
     };
   }, [_id]);
 
+  const formatHours = (hours) => {
+    if (!Array.isArray(hours) || hours.length === 0) {
+      return 'No hours provided'; // Display a message indicating no hours provided
+    }
+
+    return hours
+      .map(hour => {
+        if (!hour || typeof hour !== 'string') {
+          return null; // Skip if hour is not a string or is undefined
+        }
+        const trimmedHour = hour.trim();
+        if (!trimmedHour) {
+          return null; // Skip if hour is empty after trimming
+        }
+
+        if (trimmedHour.includes('-')) {
+          const [start, end] = trimmedHour.split('-').map(time => {
+            // Format time from "HH:MM" to "HH:MM AM/PM"
+            return moment(time.trim(), 'HH:mm').format('hh:mm A');
+          });
+          return `${start} - ${end}`;
+        } else {
+          return moment(trimmedHour, 'HH:mm').format('hh:mm A');
+        }
+      })
+      .filter(hour => hour) // Filter out null values
+      .join(' - ');
+  };
+
   // On successful submit, insert the data.
   const restaurantReviews = rev.filter(review => review.restaurantId === resId);
   return ready ? (
@@ -50,7 +80,7 @@ const RestaurantPage = () => {
             <Card.Body>
               <Rating value={doc.rating} />
               <Card.Text>{doc.address}</Card.Text>
-              <Card.Text>{doc.hours}</Card.Text>
+              <Card.Text>{formatHours(doc.hours)}</Card.Text>
               <Link className="review-link" to={`/leave-review/${resId}`}><Button variant="primary" className="w-100">Leave a Review!</Button></Link>
               <hr className="comment-divider" />
               <ListGroup variant="flush" className="top-pick-list">

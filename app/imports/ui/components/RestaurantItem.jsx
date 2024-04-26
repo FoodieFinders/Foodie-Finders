@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { Restaurants } from '../../api/restaurants/Restaurants'
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
-import { Restaurants } from '../../api/restaurants/Restaurants';
 import Rating from './Rating'
 
 const remove = (vendor, admin) => {
