@@ -31,9 +31,11 @@ class RestaurantsCollection {
         type: String
       },
       hours: {
-        type: String,
-        allowedValues: ['9:00 AM - 5:00 PM', '10:00 AM - 6:00 PM', '11:00 AM - 7:00 PM', '12:00 PM - 8:00 PM', '1:00 PM - 9:00 PM'],
-        optional: true
+        type: Array,
+        optional: true,
+      },
+      'hours.$': {
+        type: String
       },
       imageSrc: {
         type: String,

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 import { Meteor } from 'meteor/meteor';
 import { Reviews } from '../../api/reviews/Reviews';
-import Rating from './Rating'
+import Rating from './Rating';
 import { updateReview } from '../utilities/updateReview';
 
 const ReviewCard = ({ review }) => {
@@ -29,7 +29,7 @@ const ReviewCard = ({ review }) => {
         <span>{review.comment}</span>
         <br />
         {review.owner === owner ? (
-          <Button onClick={() => { RemoveReview(review._id); updateReview(0, review.restaurantId)}}>Remove Comment</Button>
+          <Button onClick={() => { RemoveReview(review._id); updateReview(0, review.restaurantId); }}>Remove Comment</Button>
         ) : null}
 
       </div>

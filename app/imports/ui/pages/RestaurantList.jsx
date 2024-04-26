@@ -7,7 +7,9 @@ import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 // Assuming the currentUser is used somewhere in the component or for the subscription.
+/*
 const currentUser = Meteor.user() ? Meteor.user().username : null;
+*/
 
 const RestaurantList = () => {
   const { ready, restaurants } = useTracker(() => {

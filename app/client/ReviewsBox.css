@@ -1,0 +1,10 @@
+.reviews-box {
+  width: 500px; /* Width of the box */
+  height: 300px; /* Height of the box */
+  overflow-y: scroll; /* Allows vertical scrolling within the box */
+  border: 1px solid #ccc; /* Border to distinguish the box */
+  background: #fff; /* White background for the content */
+  padding: 10px; /* Padding inside the box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for better visibility */
+  z-index: 1000; /* Ensures the box stays on top of other elements */
+}

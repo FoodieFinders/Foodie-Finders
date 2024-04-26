@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Users } from '../../api/users/users';
 import UserProfile from '../components/UserProfile';
 import LoadingSpinner from '../components/LoadingSpinner';
+import ReviewsBox from '../components/ReviewBox';
 
 const UserPage = () => {
   const navigate = useNavigate();
@@ -25,6 +26,8 @@ const UserPage = () => {
   }, []);
 
   const currentUser = users.length > 0 ? users[0] : null;
+  const userEmail = currentUser ? currentUser.email : '';
+  console.log(userEmail);
   const currentUserFirstName = currentUser ? currentUser.firstName : '';
   const isVendor = currentUser && currentUser.title === 'Vendor';
 
@@ -39,7 +42,7 @@ const UserPage = () => {
             <UserProfile key={user._id} user={user} />
           ))}
           <Col fluid md={{ span: 4, offset: 3 }} className="d-flex justify-content-center">
-            <Button size="lg" block className="text-center mt-3 custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
+            <Button id="edit-profile-button" size="lg" block className="text-center mt-3 custom-review-button" onClick={() => goToEditUserPage(currentUser._id)}>
               Edit Your Profile Page
             </Button>
           </Col>
@@ -58,6 +61,10 @@ const UserPage = () => {
             <Button size="lg" block className="text-center mt-3 custom-review-button" onClick={goToLeaveReview}>
               Write A Review
             </Button>
+          </Col>
+          <Col className="py-4 d-flex justify-content-center">
+
+            <ReviewsBox userEmail={userEmail} />
           </Col>
         </Col>
       </Row>
