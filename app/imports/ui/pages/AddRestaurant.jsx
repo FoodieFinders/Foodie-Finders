@@ -109,7 +109,7 @@ const AddRestaurant = () => {
                     clockAriaLabel="Toggle clock"
                     clearAriaLabel="Clear value"
                     clockIcon={null}
-                    disableClock={true}
+                    disableClock={false}
                     clearIcon="Clear"
                   />
                 </div>
