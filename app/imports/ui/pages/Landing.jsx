@@ -49,7 +49,7 @@ const Landing = () => {
     <Container id="landing-page" fluid className="py-3">
       <Row className="justify-content-center">
         {restaurants.length > 0 ? (
-          <Col md={6} className="text-center d-flex flex-column align-items-center">
+          <Col lg={6} md={3} sm={1} className="text-center d-flex flex-column align-items-center">
             <div className="top-picks-header my-4">
               <h1>Today's Top Picks</h1>
             </div>

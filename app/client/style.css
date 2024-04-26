@@ -12,6 +12,18 @@
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
+/*.react-timerange-picker */
+.react-timerange-picker__wrapper {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.react-timerange-picker__inputGroup__input.react-timerange-picker__inputGroup__hour, .react-timerange-picker__inputGroup__input.react-timerange-picker__inputGroup__minute  {
+  width: 25px !important;
+}
+
+
+
 a {
   text-decoration: none;
 }
