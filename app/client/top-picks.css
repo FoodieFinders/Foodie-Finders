@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 body, .card, .btn {
   font-family: 'Montserrat', sans-serif;
 }
@@ -44,11 +45,6 @@ body {
   margin-bottom: 10px;
 }
 
-.comment-details Button {
-  font-size:15px;
-  margin-top:10px;
-}
-
 .comment-avatar {
   width: 45px;
   height: 45px;
@@ -77,14 +73,6 @@ body {
   padding-top: 0;
 }
 
-.spotlight-card .spotlight-image {
-  margin-top: 0;
-}
-
-.row, .col-md-4 {
-  padding: 0;
-  margin: 0;
-}
 
 .card-body {
   padding: 0;
@@ -96,14 +84,14 @@ body {
 
 }
 
-.spotlight-card, .spotlight-description-card, .comment-card {
-  max-height: 400px;
-  overflow: hidden;
+.like-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border-color: var(--dark-green);
 }
 
-.spotlight-card-image, .description-map-image {
-  max-height: 50px;
-  object-fit: cover;
+.like-button.liked {
+  color: var(--dark-green);
 }
 
 .spotlight-description-card .card-body {
@@ -116,19 +104,19 @@ body {
 }
 
 .spotlight-description-card .card-body {
-  max-height: 400px;
+  max-height: 700px;
   overflow: auto;
 }
 
 .btn-outline-primary {
-  color: var(--dark-green) !important;
+  color: var(--text-color) !important;
   border-color: var(--dark-green) !important;
-  background-color: transparent !important;
+  background-color: var(--dark-green) !important;
 }
 
 .btn-outline-primary:hover {
   color: var(--text-color) !important;
-  background-color: var(--light-green) !important;
+  background-color: var(--dark-green) !important;
   border-color: var(--dark-green) !important;
 }
 .btn-primary {
@@ -138,15 +126,70 @@ body {
 }
 
 .btn-primary:hover {
-  color: var(--text-color) !important;
+  color: var(--dark-green) !important;
   background-color: var(--light-green) !important;
   border-color: var(--dark-green) !important;
 }
 
 
 .spotlight-card-image {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
+.description-map-image {
+  max-width: 100%;
+  height: auto; 
+  max-height: 250px; 
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.description-map-image:hover {
+  transform: scale(1.1); 
+}
+
+
+.section-header {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 10px 0;
+  margin: 20px 0;
+  background-color: var(--dark-green);
+  color: var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.equal-height-cards .card {
+  height: 100%; 
+  display: flex;
+  flex-direction: column; 
+}
+
+.equal-height-cards .card-body {
+  flex: 1;  
+}
+
+.merge-card-img-top {
+  max-width: 100%;       
+  height: 200px !important;      
+  object-fit: cover !important;  
+}
+
+.btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--dark-green) !important;
+  background-color: var(--dark-green) !important;
+}
+
+.btn-outline-tirtiary {
+  color: var(--text-color) !important;
+  border-color: var(--dark-green) !important;
+  background-color: var(--dark-green) !important;
+  font-weight: bolder !important;
+  font-size: larger !important;
+}
