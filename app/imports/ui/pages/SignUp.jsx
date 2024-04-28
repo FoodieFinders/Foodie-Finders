@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Users } from '../../api/users/users';
+import ImageUpload from "../components/ImageUpload";
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -20,8 +21,7 @@ const SignUp = ({ location }) => {
     password: { type: String, min: 6 },
     firstName: { type: String },
     lastName: { type: String },
-    title: { type: String, allowedValues: ['Student', 'Vendor'], defaultValue: 'Student' },
-    picture: { type: String },
+    title: { type: String, allowedValues: ['Student', 'Vendor'], defaultValue: 'Student' }
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
@@ -66,7 +66,14 @@ const SignUp = ({ location }) => {
                 <TextField name="firstName" placeholder="First Name" />
                 <TextField name="lastName" placeholder="Last Name" />
                 <SelectField name="title" placeholder="Title" allowedValues={['Student', 'Vendor']} />
-                <TextField name="picture" placeholder="Picture URL " />
+                {/*
+                
+                <TextField name="picture" placeholder="Picture URL " /> 
+                
+                */}
+
+                <ImageUpload message={"Add Profile Picture"} name="picture" />
+                <br></br>
                 <ErrorsField />
                 <SubmitField className="mt-3" value="Register" />
               </Card.Body>

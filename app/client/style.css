@@ -363,6 +363,26 @@ body {
   font-family:'Montserrat';
   font-weight:900;
 }
+.upload-image-wrapper {
+  display:flex;
+  flex-direction:column;
+}
+
+.image-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.image-item img {
+  margin-bottom:15px;
+}
+
+.image-item-btn-wrapper {
+  display:flex;
+  gap:15px;
+  justify-content: space-between;
+}
 
 /* Media Query for Responsiveness */
 @media (max-width: 768px) {
