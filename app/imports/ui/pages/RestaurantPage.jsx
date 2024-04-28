@@ -81,6 +81,7 @@ const RestaurantPage = () => {
               <Rating value={doc.rating} />
               <Card.Text>{doc.address}</Card.Text>
               <Card.Text>{formatHours(doc.hours)}</Card.Text>
+              <Card.Text>{doc.description}</Card.Text>
               <Link className="review-link" to={`/leave-review/${resId}`}><Button variant="primary" className="w-100">Leave a Review!</Button></Link>
               <hr className="comment-divider" />
               <ListGroup variant="flush" className="top-pick-list">

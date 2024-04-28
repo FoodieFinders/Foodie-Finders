@@ -9,6 +9,7 @@ import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 import '../../../client/top-picks.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Rating from '../../ui/components/Rating.jsx';
 
 const SpotlightOfTheWeek = () => {
   const navigate = useNavigate();
@@ -76,10 +77,12 @@ const SpotlightOfTheWeek = () => {
             <Card key={index} className="comment-card mb-3 flex-grow-1">
               <Card.Body>
                 <div className="instagram-style-comment">
-                <Image src={review.image || '/images/ME.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
+                <Image src={review.image || '/images/avatar.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
                   <div className="comment-details">
                     <strong>{review.firstName}</strong>
-                    <div className="star-rating">{review.rating}</div>
+                    <div className="star-rating">
+                      <Rating value={parseFloat(review.rating)} max={5} />
+                    </div>
                     <span>{review.comment}</span>
                   </div>
                 </div> 
@@ -106,6 +109,7 @@ SpotlightOfTheWeek.propTypes = {
   }).isRequired,
 };
 
+
 const MergedItemCard = ({ order }) => {
   const navigate = useNavigate();
 
@@ -128,7 +132,6 @@ const MergedItemCard = ({ order }) => {
   return (
     <Col lg={4} className="mb-4">
       <Card className="merged-item-card">
-      <Button variant="outline-tirtiary" size="sm" className="mt-auto w-100"> Todays Top Pick! </Button>
         <Card.Header className="text-center">{order.name}</Card.Header>
         <Image
           src={`/images/${order.imageSrc}`}
@@ -137,7 +140,9 @@ const MergedItemCard = ({ order }) => {
         />
         <Card.Body>
           <Card.Title>{order.name}</Card.Title>
-          <div className="star-rating">{order.rating}</div>
+          <div className="star-rating">
+            <Rating value={parseFloat(order.rating)} max={5} />
+          </div>
           <Card.Text>{order.store}</Card.Text>
           <Card.Text>{order.address}</Card.Text>
           <Card.Text>{order.hours}</Card.Text>
@@ -154,7 +159,9 @@ const MergedItemCard = ({ order }) => {
               />
               <div className="comment-details">
                 <strong>{latestReview.firstName}</strong>
-                <div className="star-rating">{latestReview.rating}</div>
+                <div className="star-rating">
+                  <Rating value={parseFloat(latestReview.rating)} max={5} />
+                </div>
                 <span>{latestReview.comment}</span>
               </div>
             </div>
