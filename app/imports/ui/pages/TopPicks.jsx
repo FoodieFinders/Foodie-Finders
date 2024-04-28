@@ -77,10 +77,12 @@ const SpotlightOfTheWeek = () => {
             <Card key={index} className="comment-card mb-3 flex-grow-1">
               <Card.Body>
                 <div className="instagram-style-comment">
-                <Image src={review.image || '/images/ME.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
+                <Image src={review.image || '/images/avatar.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
                   <div className="comment-details">
                     <strong>{review.firstName}</strong>
-                    <div className="star-rating">{review.rating}</div>
+                    <div className="star-rating">
+                      <Rating value={parseFloat(review.rating)} max={5} />
+                    </div>
                     <span>{review.comment}</span>
                   </div>
                 </div> 
