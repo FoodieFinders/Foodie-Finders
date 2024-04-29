@@ -5,13 +5,14 @@ import { Container, Card, Image, Button } from 'react-bootstrap';
 import { useHours } from '../../api/hours/useHours';
 import ReactDOM from "react-dom";
 
-function ImageUpload({message}) {
+function ImageUpload({message, setPicture}) {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
+    setPicture(imageList[0].data_url);
   };
 
   return (
