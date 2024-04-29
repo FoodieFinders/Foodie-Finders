@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Row, ListGroup, Button, InputGroup, ToggleButton, ToggleButtonGroup, Form } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { ArrowUp, ArrowDown, Search } from 'react-bootstrap-icons';
+import _ from 'lodash'; // Make sure lodash is imported;
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -16,26 +17,26 @@ const RestaurantList = () => {
 
   const currentUser = Meteor.user() ? Meteor.user().username : null;
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-  const [state1, setState1] = useState(0);
-  const [state2, setState2] = useState(0);
-  const [state3, setState3] = useState(0);
+  const [alphaSort, setAlphaSort] = useState(0);
+  const [hotSort, setHotSort] = useState(0);
+  const [ratingSort, setRatingSort] = useState(0);
 
-  const handleClick1 = () => {
-    setState1((prevState) => (prevState + 1) % 3);
-    setState2(0);
-    setState3(0);
+  const handleAlphaSort = () => {
+    setAlphaSort((prevState) => (prevState + 1) % 3);
+    setHotSort(0);
+    setRatingSort(0);
   };
 
-  const handleClick2 = () => {
-    setState2((prevState) => (prevState + 1) % 3);
-    setState1(0);
-    setState3(0);
+  const handleHotSort = () => {
+    setHotSort((prevState) => (prevState + 1) % 3);
+    setAlphaSort(0);
+    setRatingSort(0);
   };
 
-  const handleClick3 = () => {
-    setState3((prevState) => (prevState + 1) % 3);
-    setState1(0);
-    setState2(0);
+  const handleRatingSort = () => {
+    setRatingSort((prevState) => (prevState + 1) % 3);
+    setAlphaSort(0);
+    setHotSort(0);
   };
 
   const { ready, restaurants } = useTracker(() => {
@@ -48,6 +49,24 @@ const RestaurantList = () => {
       ready: rdy,
     };
   }, []);
+
+  let sortedRestaurants;
+  if (alphaSort === 1 || alphaSort === 2) {
+    sortedRestaurants = [...restaurants].sort((a, b) => {
+      return alphaSort === 1 ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+    });
+  } else if (hotSort === 1 || hotSort === 2) {
+    sortedRestaurants = [...restaurants].sort((a, b) => {
+      return hotSort === 1 ? a.rating - b.rating : b.rating - a.rating;
+    });
+  } else if (ratingSort === 1 || ratingSort === 2) {
+    sortedRestaurants = [...restaurants].sort((a, b) => {
+      return ratingSort === 1 ? a.rating - b.rating : b.rating - a.rating;
+    });
+  } else {
+    // Default to unsorted list
+    sortedRestaurants = restaurants;
+  }
 
   return (ready ? (
     <>
@@ -71,28 +90,28 @@ const RestaurantList = () => {
               Sort By
               <hr />
             </h4>
-            <Button className={`toggle-button state-${state1}`} onClick={handleClick1}>
+            <Button className={`toggle-button state-${alphaSort}`} onClick={handleAlphaSort}>
               Alphabetical
               <span>
-                {state1 === 0 && ' '}
-                {state1 === 1 && <ArrowDown />}
-                {state1 === 2 && <ArrowUp />}
+                {alphaSort === 0 && ' '}
+                {alphaSort === 1 && <ArrowDown />}
+                {alphaSort === 2 && <ArrowUp />}
               </span>
             </Button>
-            <Button className={`toggle-button state-${state2}`} onClick={handleClick2}>
+            <Button className={`toggle-button state-${hotSort}`} onClick={handleHotSort}>
               Popularity
               <span className="icon">
-                {state2 === 0 }
-                {state2 === 1 && <ArrowDown />}
-                {state2 === 2 && <ArrowUp />}
+                {hotSort === 0 }
+                {hotSort === 1 && <ArrowDown />}
+                {hotSort === 2 && <ArrowUp />}
               </span>
             </Button>
-            <Button className={`toggle-button state-${state3}`} onClick={handleClick3}>
+            <Button className={`toggle-button state-${ratingSort}`} onClick={handleRatingSort}>
               Rating
               <span className="icon">
-                {state3 === 0 }
-                {state3 === 1 && <ArrowDown />}
-                {state3 === 2 && <ArrowUp />}
+                {ratingSort === 0 }
+                {ratingSort === 1 && <ArrowDown />}
+                {ratingSort === 2 && <ArrowUp />}
               </span>
             </Button>
 
@@ -112,11 +131,14 @@ const RestaurantList = () => {
         <Col className="col-md-5">
           <div className="py-3">
             <ListGroup variant="flush" className="top-pick-list">
-              {restaurants.map(restaurant => (
-                <RestaurantItem key={restaurant._id} restaurant={restaurant}
-                                currentUser={currentUser}
-                                canDelete={isAdmin || currentUser === restaurant.owner}
-                                canEdit={isAdmin || currentUser === restaurant.owner}/>
+              {sortedRestaurants.map(restaurant => (
+                <RestaurantItem
+                  key={restaurant._id}
+                  restaurant={restaurant}
+                  currentUser={currentUser}
+                  canDelete={isAdmin || currentUser === restaurant.owner}
+                  canEdit={isAdmin || currentUser === restaurant.owner}
+                />
               ))}
             </ListGroup>
           </div>
