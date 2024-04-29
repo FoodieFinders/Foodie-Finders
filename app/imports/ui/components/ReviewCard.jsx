@@ -8,7 +8,7 @@ import { Reviews } from '../../api/reviews/Reviews';
 import Rating from './Rating';
 import { updateReview } from '../utilities/updateReview';
 
-const RemoveReview = (reviewId) => {
+const RemoveReview = (review) => {
   // Using SweetAlert for confirmation
   swal({
     title: "Are you sure?",
@@ -19,7 +19,7 @@ const RemoveReview = (reviewId) => {
   })
     .then((willDelete) => {
       if (willDelete) {
-        Meteor.call(Reviews.collection.remove(reviewId), (error) => {
+        Meteor.call(Reviews.collection.remove(review._id), (error) => {
           if (error) {
             console.error('Delete review error:', error.reason || error.message);
             swal("Error", `Failed to delete the review: ${error.reason || error.message}`, "error");
@@ -27,6 +27,7 @@ const RemoveReview = (reviewId) => {
             swal("Deleted!", "Review deleted successfully.", "success");
           }
         });
+          updateReview(0, review.restaurantId);
       } else {
         swal("Did not delete review!");
       }
@@ -53,7 +54,7 @@ const ReviewCard = ({ review }) => {
         <span>{review.comment}</span>
         <br />
         {isOwner || isAdmin ? (
-          <Button onClick={() => { RemoveReview(review._id); updateReview(0, review.restaurantId); }}>Remove Comment</Button>
+          <Button onClick={() => { RemoveReview(review) }}>Remove Comment</Button>
         ) : null}
 
       </div>
