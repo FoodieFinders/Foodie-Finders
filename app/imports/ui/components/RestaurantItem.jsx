@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
 import Rating from './Rating'
+import { Restaurants } from '../../api/restaurants/Restaurants';
 
 const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation

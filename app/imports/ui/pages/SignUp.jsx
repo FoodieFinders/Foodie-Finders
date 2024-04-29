@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Users } from '../../api/users/users';
+import ImageUpload from "../components/ImageUpload";
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -14,6 +15,7 @@ import { Users } from '../../api/users/users';
 const SignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
+  const [picture, setPicture] = useState("../images/emptyUser.jpg");
 
   const schema = new SimpleSchema({
     email: { type: String },
@@ -21,13 +23,12 @@ const SignUp = ({ location }) => {
     firstName: { type: String },
     lastName: { type: String },
     title: { type: String, allowedValues: ['Student', 'Vendor'], defaultValue: 'Student' },
-    picture: { type: String },
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password, firstName, lastName, title, picture } = doc;
+    const { email, password, firstName, lastName, title } = doc;
     Accounts.createUser({ 
       email, 
       username: email, password,
@@ -66,7 +67,14 @@ const SignUp = ({ location }) => {
                 <TextField name="firstName" placeholder="First Name" />
                 <TextField name="lastName" placeholder="Last Name" />
                 <SelectField name="title" placeholder="Title" allowedValues={['Student', 'Vendor']} />
-                <TextField name="picture" placeholder="Picture URL " />
+                {/*
+                
+                <TextField name="picture" placeholder="Picture URL " /> 
+                
+                */}
+
+                <ImageUpload message={"Add Profile Picture"} setPicture={setPicture} />
+                <br></br>
                 <ErrorsField />
                 <SubmitField className="mt-3" value="Register" />
               </Card.Body>

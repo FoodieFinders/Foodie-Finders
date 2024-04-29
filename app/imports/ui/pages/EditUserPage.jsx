@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, HiddenField } from 'uniforms-bootstrap5';
@@ -8,6 +8,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { Users } from '../../api/users/users';
 import LoadingSpinner from '../components/LoadingSpinner';
+import ImageUpload from '../components/ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Users.schema);
 
@@ -31,8 +32,11 @@ const EditUserPage = () => {
     };
   }, [_id]);
 
+
+  const [picture, setPicture] = useState(doc.picture);
+
   const submit = (data) => {
-    const { firstName, lastName, title, picture } = data;
+    const { firstName, lastName, title } = data;
     Users.collection.update(_id, { $set: { firstName, lastName, title, picture } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
@@ -48,7 +52,8 @@ const EditUserPage = () => {
               <Card.Body>
                 <TextField name="firstName" placeholder="First Name" />
                 <TextField name="lastName" placeholder="Last Name" />
-                <TextField name="picture" placeholder="Picture URL" />
+                <ImageUpload message={"Update Profile Picture"} setPicture={setPicture} />
+                <br></br>
                 <div className="text-center">
                   <SubmitField id="update-profile-button" value="Update Profile" />
                 </div>

@@ -8,12 +8,36 @@ import { Reviews } from '../../api/reviews/Reviews';
 import Rating from './Rating';
 import { updateReview } from '../utilities/updateReview';
 
+const RemoveReview = (reviewId) => {
+  // Using SweetAlert for confirmation
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this review!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+    .then((willDelete) => {
+      if (willDelete) {
+        Meteor.call(Reviews.collection.remove(reviewId), (error) => {
+          if (error) {
+            console.error('Delete review error:', error.reason || error.message);
+            swal("Error", `Failed to delete the review: ${error.reason || error.message}`, "error");
+          } else {
+            swal("Deleted!", "Review deleted successfully.", "success");
+          }
+        });
+      } else {
+        swal("Did not delete review!");
+      }
+    });
+};
+
 const ReviewCard = ({ review }) => {
   const owner = Meteor.user()?.username;
 
-  const RemoveReview = (reviewId) => {
-    Reviews.collection.remove(reviewId);
-  };
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+  const isOwner = review.owner === owner;
 
   return (
     <div className="instagram-style-comment">
@@ -28,7 +52,7 @@ const ReviewCard = ({ review }) => {
         <Rating value={review.rating} />
         <span>{review.comment}</span>
         <br />
-        {review.owner === owner ? (
+        {isOwner || isAdmin ? (
           <Button onClick={() => { RemoveReview(review._id); updateReview(0, review.restaurantId); }}>Remove Comment</Button>
         ) : null}
 

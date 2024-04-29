@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Restaurants } from '../../api/restaurants/Restaurants';
+import ImageUpload from '../components/ImageUpload';
 
 
 // Create a schema to specify the structure of the data to appear in the form.
@@ -40,10 +41,6 @@ const formSchema = new SimpleSchema({
     type: String,
     optional: true
   },
-  imageSrc: {
-    type: String,
-    optional: true // Make optional if some restaurants might not have an image initially
-  }
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -51,11 +48,12 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 /* Renders the AddStuff page for adding a document. */
 const AddRestaurant = () => {
   const [hours, setHours] = useState('');
+  const [imageSrc, setPicture] = useState("../images/emptyUser.jpg");
   const navigate = useNavigate();
   const submit = (data, formRef) => {
     console.log("Form data:", data);
     console.log("Logged in user:", Meteor.user());
-    const { name, address, imageSrc, description, rating } = data;
+    const { name, address, description, rating } = data;
 
     if (!hours) {
       swal('Error', 'Hours field is required', 'error');
@@ -116,7 +114,7 @@ const AddRestaurant = () => {
 
               </Row>
               <TextField name="address"/>
-              <TextField name="imageSrc" label="Image"/>
+              <ImageUpload message={"Add Profile Picture"} setPicture={setPicture} />
               <LongTextField name="description"/>
               <SubmitField value="Submit"/>
               <ErrorsField/>
