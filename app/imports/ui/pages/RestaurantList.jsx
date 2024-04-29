@@ -14,6 +14,8 @@ const currentUser = Meteor.user() ? Meteor.user().username : null;
 
 const RestaurantList = () => {
 
+  const currentUser = Meteor.user() ? Meteor.user().username : null;
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
   const [state1, setState1] = useState(0);
   const [state2, setState2] = useState(0);
   const [state3, setState3] = useState(0);
@@ -111,7 +113,10 @@ const RestaurantList = () => {
           <div className="py-3">
             <ListGroup variant="flush" className="top-pick-list">
               {restaurants.map(restaurant => (
-                <RestaurantItem key={restaurant._id} restaurant={restaurant} />
+                <RestaurantItem key={restaurant._id} restaurant={restaurant}
+                                currentUser={currentUser}
+                                canDelete={isAdmin || currentUser === restaurant.owner}
+                                canEdit={isAdmin || currentUser === restaurant.owner}/>
               ))}
             </ListGroup>
           </div>
