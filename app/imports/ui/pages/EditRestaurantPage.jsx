@@ -93,7 +93,7 @@ const EditRestaurantPage = () => {
                 </div>
                 <br></br>
                 <br></br>
-                <ImageUpload message={"Add Profile Picture"} setPicture={setPicture} />
+                <ImageUpload message={"Edit Restaurant Picture"} setPicture={setPicture} />
                 <br></br>
                 <div className="text-center">
                   <SubmitField value="Update Restaurant"/>
