@@ -10,7 +10,8 @@ import { Users } from '../../api/users/users';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
- */
+ * */
+
 const SignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
@@ -28,10 +29,10 @@ const SignUp = ({ location }) => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { email, password, firstName, lastName, title, picture } = doc;
-    Accounts.createUser({ 
-      email, 
+    Accounts.createUser({
+      email,
       username: email, password,
-      profile: { firstName, lastName, title, picture }
+      profile: { firstName, lastName, title, picture },
     }, (err) => {
       if (err) {
         setError(err.reason);

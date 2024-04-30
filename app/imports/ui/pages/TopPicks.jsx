@@ -28,7 +28,7 @@ const SpotlightOfTheWeek = ({ spotlight }) => (
           <Card key={index} className="comment-card mb-3 flex-grow-1">
             <Card.Body>
               <div className="instagram-style-comment">
-                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.reviewerName}'s avatar`} className="comment-avatar rounded-circle"/>
+                <Image src={`/images/${comment.avatarSrc}`} alt={`${comment.reviewerName}'s avatar`} className="comment-avatar rounded-circle" />
                 <div className="comment-details">
                   <strong>{comment.reviewerName}</strong>
                   <div className="star-rating">{comment.rating}</div>
@@ -69,7 +69,7 @@ SpotlightOfTheWeek.propTypes = {
 };
 
 const MergedItemCard = ({ order, review }) => (
-  <Col lg={4} className="mb-4" >
+  <Col lg={4} className="mb-4">
     <Card className="merged-item-card">
       <Card.Header className="text-center">Top Order This Week</Card.Header>
       <Image src={`/images/${order.imageSrc}`} alt={order.name} className="img-fluid" />

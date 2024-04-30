@@ -39,5 +39,3 @@ Meteor.startup(() => {
       console.log("TopPicks collection already has data.");
     }
   });
-
-
