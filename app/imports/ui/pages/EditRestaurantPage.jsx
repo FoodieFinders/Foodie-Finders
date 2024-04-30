@@ -5,11 +5,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { Roles } from 'meteor/alanning:roles';
-import { Restaurants } from '../../api/restaurants/Restaurants';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, SelectField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import LoadingSpinner from '../components/LoadingSpinner';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import { useHours } from '../../api/hours/useHours';
 
@@ -30,11 +30,11 @@ const EditRestaurantPage = () => {
     return {
       doc: document,
       ready: rdy,
-      canEdit: canEdit
+      canEdit: canEdit,
     };
   }, [_id]);
 
-/*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']);*/
+  /*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']); */
 
   const submit = (data) => {
     const { address, description, rating, imageSrc } = data;
@@ -51,14 +51,13 @@ const EditRestaurantPage = () => {
     });
   };
 
-
   if (!ready) {
     return <LoadingSpinner />;
   }
 
   if (!canEdit) {
-    swal("Unauthorized", "You do not have permission to edit this restaurant.", "error");
-    navigate('/'); 
+    swal('Unauthorized', 'You do not have permission to edit this restaurant.', 'error');
+    navigate('/');
   }
 
   return (
@@ -69,11 +68,11 @@ const EditRestaurantPage = () => {
           <AutoForm schema={bridge} model={doc} onSubmit={submit}>
             <Card>
               <Card.Body>
-                <TextField name="address" placeholder="Address"/>
-                <LongTextField name="description" placeholder="Description"/>
-                <SelectField name="rating"/>
+                <TextField name="address" placeholder="Address" />
+                <LongTextField name="description" placeholder="Description" />
+                <SelectField name="rating" />
                 <label htmlFor="hours">Hours</label>
-                <br/>
+                <br />
                 <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
                   <TimeRangePicker
                     onChange={setHours}
@@ -81,18 +80,18 @@ const EditRestaurantPage = () => {
                     format="h:mm a" // Use AM/PM format
                     name="hours"
                     id="hours"
-                    className="form-control" //Ensure TimeRangePicker matches form-control styling
+                    className="form-control" // Ensure TimeRangePicker matches form-control styling
                     clockAriaLabel="Toggle clock"
                     clearAriaLabel="Clear value"
                     clockIcon={null}
-                    disableClock={true}
+                    disableClock
                     clearIcon="Clear"
                   />
                 </div>
-                <TextField name="imageSrc" placeholder="Image URL" label="Image"/>
+                <TextField name="imageSrc" placeholder="Image URL" label="Image" />
                 <div className="text-center">
-                  <SubmitField value="Update Restaurant"/>
-                  <ErrorsField/>
+                  <SubmitField value="Update Restaurant" />
+                  <ErrorsField />
                 </div>
               </Card.Body>
             </Card>

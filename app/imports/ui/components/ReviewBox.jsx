@@ -2,14 +2,14 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { Image, Button, Col } from 'react-bootstrap';
 import { Reviews } from '../../api/reviews/Reviews';
 import '../../../client/ReviewsBox.css';
 import Rating from './Rating';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ReviewsBox = ({ userEmail }) => {
-  const navigate = useNavigate(); // Instantiate the navigate function
+  const navigate = useNavigate();
 
   const { reviews, isReady } = useTracker(() => {
     console.log('Subscription started for email:', userEmail);
@@ -47,10 +47,9 @@ const ReviewsBox = ({ userEmail }) => {
             <strong>{review.firstName || review.owner}</strong>
             <Rating value={review.rating} />
             <p><strong>Comment:</strong> {review.comment}</p>
-            {/* Add a button that, when clicked, navigates to the restaurant's page */}
             <Col className="pb-4">
               <Button variant="primary" onClick={() => handleNavigate(review.restaurantId)}>
-                Visit Restaurant
+                Visit Review
               </Button>
             </Col>
           </div>

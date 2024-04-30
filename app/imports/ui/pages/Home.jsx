@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
@@ -53,7 +53,7 @@ const Home = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                See all of today's top picks!
+                See all of today&apos;s top picks!
               </Button>
             </Col>
           </Row>

@@ -64,7 +64,7 @@ const RestaurantList = () => {
           <Col sm="5">
             <div className="d-grid gap-1 sticky-top p-3">
               <h1 className="text-center">
-                Can't decide what to eat?
+                Can&apos;t decide what to eat?
                 <Button variant="primary" size="lg">
                   SEND IT
                 </Button>

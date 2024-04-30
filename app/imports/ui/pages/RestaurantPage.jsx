@@ -6,14 +6,13 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
-import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ReviewCard from '../components/ReviewCard';
-import PropTypes from 'prop-types';
 import Rating from '../components/Rating';
-
 
 /* Renders the EditStuff page for editing a single document. */
 const RestaurantPage = () => {
@@ -43,7 +42,7 @@ const RestaurantPage = () => {
   return ready ? (
     <Col id="restaurant-page" className="py-3">
       <Row className="justify-content-center">
-        <Col lg={5} className="mb-4" >
+        <Col lg={5} className="mb-4">
           <Card className="merged-item-card">
             <Card.Header className="text-center">{doc.name}</Card.Header>
             <Image src={`${doc.imageSrc}`} alt={doc.name} className="img-fluid" />
