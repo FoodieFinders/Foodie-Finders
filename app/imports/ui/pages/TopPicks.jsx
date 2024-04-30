@@ -109,7 +109,6 @@ SpotlightOfTheWeek.propTypes = {
   }).isRequired,
 };
 
-
 const MergedItemCard = ({ order }) => {
   const navigate = useNavigate();
 
