@@ -100,10 +100,10 @@ const AddRestaurant = () => {
                   <TimeRangePicker
                     onChange={setHours}
                     value={hours}
-                    format="h:mm a" // Use AM/PM format
+                    format="h:mm a"
                     name="hours"
                     id="hours"
-                    className="form-control" //Ensure TimeRangePicker matches form-control styling
+                    className="form-control"
                     clockAriaLabel="Toggle clock"
                     clearAriaLabel="Clear value"
                     clockIcon={null}
