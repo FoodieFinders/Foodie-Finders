@@ -4,11 +4,11 @@ import { Container, Card, Image, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
+import Rating from './Rating'
 import { Restaurants } from '../../api/restaurants/Restaurants';
-import Rating from './Rating';
+
 
 const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation

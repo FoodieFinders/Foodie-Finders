@@ -12,6 +12,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import RestaurantItem from '../components/RestaurantItem';
 import { useHours } from '../../api/hours/useHours';
+import ImageUpload from '../components/ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Restaurants.schema);
 
@@ -34,10 +35,13 @@ const EditRestaurantPage = () => {
     };
   }, [_id]);
 
-  /*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']); */
+  const [imageSrc, setPicture] = useState(doc.picture);
+
+/*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']);*/
+
 
   const submit = (data) => {
-    const { address, description, rating, imageSrc } = data;
+    const { address, description, rating } = data;
     setHours([]);
     Restaurants.collection.update(_id, { $set: { address, description, rating, hours, imageSrc } }, (error) => {
       if (error) {
@@ -68,9 +72,8 @@ const EditRestaurantPage = () => {
           <AutoForm schema={bridge} model={doc} onSubmit={submit}>
             <Card>
               <Card.Body>
-                <TextField name="address" placeholder="Address" />
-                <LongTextField name="description" placeholder="Description" />
-                <SelectField name="rating" />
+                <TextField name="address" placeholder="Address"/>
+                <LongTextField name="description" placeholder="Description"/>
                 <label htmlFor="hours">Hours</label>
                 <br />
                 <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
@@ -88,7 +91,10 @@ const EditRestaurantPage = () => {
                     clearIcon="Clear"
                   />
                 </div>
-                <TextField name="imageSrc" placeholder="Image URL" label="Image" />
+                <br></br>
+                <br></br>
+                <ImageUpload message={"Edit Restaurant Picture"} setPicture={setPicture} />
+                <br></br>
                 <div className="text-center">
                   <SubmitField value="Update Restaurant" />
                   <ErrorsField />
