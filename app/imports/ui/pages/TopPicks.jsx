@@ -9,7 +9,7 @@ import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 import '../../../client/top-picks.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Rating from '../../ui/components/Rating.jsx';
+import Rating from '../components/Rating.jsx';
 
 const SpotlightOfTheWeek = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const SpotlightOfTheWeek = () => {
 
   const { restaurant, isRestaurantReady } = useTracker(() => {
     const handler = Meteor.subscribe(Restaurants.userPublicationName);
-    const restaurant = Restaurants.collection.findOne({ name: 'Soul Fusion' }); 
+    const restaurant = Restaurants.collection.findOne({ name: 'Soul Fusion' });
     return {
       restaurant,
       isRestaurantReady: handler.ready(),
@@ -32,7 +32,7 @@ const SpotlightOfTheWeek = () => {
       const reviewSub = Meteor.subscribe(Reviews.userPublicationName, { restaurantId: restaurant._id });
       const reviews = Reviews.collection.find(
         { restaurantId: restaurant._id },
-        { sort: { createdAt: -1 }, limit: 5 }
+        { sort: { createdAt: -1 }, limit: 5 },
       ).fetch();
       return {
         reviews,
@@ -77,7 +77,7 @@ const SpotlightOfTheWeek = () => {
             <Card key={index} className="comment-card mb-3 flex-grow-1">
               <Card.Body>
                 <div className="instagram-style-comment">
-                <Image src={review.image || '/images/avatar.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
+                  <Image src={review.image || '/images/avatar.jpeg'} alt={`${review.firstName}'s avatar`} className="comment-avatar rounded-circle" />
                   <div className="comment-details">
                     <strong>{review.firstName}</strong>
                     <div className="star-rating">
@@ -85,7 +85,7 @@ const SpotlightOfTheWeek = () => {
                     </div>
                     <span>{review.comment}</span>
                   </div>
-                </div> 
+                </div>
               </Card.Body>
             </Card>
           )) : <p>Loading comments...</p>}
@@ -120,7 +120,7 @@ const MergedItemCard = ({ order }) => {
     const handler = Meteor.subscribe(Reviews.userPublicationName);
     const latestReview = Reviews.collection.findOne(
       { restaurantId: order._id },
-      { sort: { createdAt: -1 } }
+      { sort: { createdAt: -1 } },
     );
     return {
       latestReview,
