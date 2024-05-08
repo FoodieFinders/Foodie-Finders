@@ -1,17 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/users/users';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Reviews } from '../../api/reviews/Reviews';
 
-
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
-const addData = (data) => {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
-};
 const addUser = (user) => {
   console.log(`  Adding: ${user.email} (${user.owner})`);
   Users.collection.insert(user);
@@ -29,14 +23,6 @@ const addReview = (review) => {
 
 };
 
-// Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
-  }
-}
-
 if (Users.collection.find().count() === 0) {
   if (Meteor.settings.defaultUsers) {
     console.log('Creating default data.');
@@ -50,7 +36,6 @@ if (Restaurants.collection.find().count() === 0) {
     Meteor.settings.defaultRestaurants.forEach(restaurant => addRestaurant(restaurant));
   }
 }
-
 
 if (Reviews.collection.find().count() === 0) {
   if (Meteor.settings.defaultReviews) {

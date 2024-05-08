@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { check } from 'meteor/check';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 import { Users } from '../../api/users/users';
 import { Reviews } from '../../api/reviews/Reviews';
@@ -9,33 +8,18 @@ import '../../api/methods/restaurants';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-Meteor.publish(Stuffs.userPublicationName, function () {
-
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
-  }
-  return this.ready();
-});
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Stuffs.adminPublicationName, function () {
-
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
-  }
-  return this.ready();
-});
 
 Meteor.publish(Reviews.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
+    //    const username = Meteor.users.findOne(this.userId).username;
     return Reviews.collection.find({});
   }
   return Reviews.collection.find({});
 
-  return this.ready();
+//  return this.ready();
 });
 
 // Admin-level publication.
@@ -102,7 +86,7 @@ Meteor.publish(Restaurants.userPublicationName, function () {
   }
   return Restaurants.collection.find();
 
-  return this.ready();
+//  return this.ready();
 });
 
 /*
@@ -119,7 +103,7 @@ Meteor.publish(Restaurants.adminPublicationName, function () {
   }
   return Restaurants.collection.find();
 
-  return this.ready();
+//  return this.ready();
 });
 
 // alanning:roles publication

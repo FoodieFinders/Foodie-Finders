@@ -15,7 +15,7 @@ const Landing = () => {
     const rdy = subscription.ready();
     const currentUser = Meteor.user() ? Meteor.user().username : null;
     const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-    let allRestaurants = Restaurants.collection.find({}).fetch();
+    const allRestaurants = Restaurants.collection.find({}).fetch();
 
     const userRestaurants = currentUser ? allRestaurants.filter(rest => rest.owner === currentUser) : [];
     const unownedRestaurants = allRestaurants.filter(rest => !rest.owner || rest.owner !== currentUser);
@@ -30,7 +30,7 @@ const Landing = () => {
       ready: rdy,
       loggedIn: !!Meteor.user(),
       currentUser: currentUser,
-      isAdmin: isAdmin
+      isAdmin: isAdmin,
     };
   }, []);
 
@@ -51,26 +51,28 @@ const Landing = () => {
         {restaurants.length > 0 ? (
           <Col lg={6} md={3} sm={1} className="text-center d-flex flex-column align-items-center">
             <div className="top-picks-header my-4">
-              <h1>Today's Top Picks</h1>
+              <h1>Today&apos;s Top Picks</h1>
             </div>
             <div>
-            <ListGroup variant="flush" className="top-pick-list w-100">
-              {restaurants.map((restaurant, index) => (
+              <ListGroup variant="flush" className="top-pick-list w-100">
+                {restaurants.map((restaurant, index) => (
                 // In Landing.jsx where RestaurantItem is used
-                <RestaurantItem key={index}
-                                id={`restaurantItem-${index}`}
-                                restaurant={restaurant}
-                                currentUser={currentUser}
-                                canDelete={isAdmin || currentUser === restaurant.owner}
-                                canEdit={isAdmin || currentUser === restaurant.owner}/>
+                  <RestaurantItem
+                    key={index}
+                    id={`restaurantItem-${index}`}
+                    restaurant={restaurant}
+                    currentUser={currentUser}
+                    canDelete={isAdmin || currentUser === restaurant.owner}
+                    canEdit={isAdmin || currentUser === restaurant.owner}
+                  />
 
-              ))}
-            </ListGroup>
+                ))}
+              </ListGroup>
             </div>
             <div>
-            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{width:600}}>
-              See all of today's top picks!
-            </Button>
+              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToTopPicks} style={{ width: 600 }}>
+                See all of today&apos;s top picks!
+              </Button>
             </div>
           </Col>
         ) : (
@@ -84,16 +86,16 @@ const Landing = () => {
           <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
             <h2>Are you a vendor?</h2>
             <div>
-            <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToSignIn} style={{width:300}}>
-              Vendor Dashboard
-            </Button>
+              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToSignIn} style={{ width: 300 }}>
+                Vendor Dashboard
+              </Button>
             </div>
-            <br/>
+            <br />
             <h2>Are you a student?</h2>
             <div>
-              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToLeaveReview} style={{width:300}}>
-              Leave a review!
-            </Button>
+              <Button size="lg" className="top-picks-header text-center mt-3 custom-review-button d-block" onClick={goToLeaveReview} style={{ width: 300 }}>
+                Leave a review!
+              </Button>
             </div>
           </Col>
         )}

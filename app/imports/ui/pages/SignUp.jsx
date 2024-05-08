@@ -11,7 +11,8 @@ import ImageUpload from "../components/ImageUpload";
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
- */
+ * */
+
 const SignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
@@ -32,7 +33,7 @@ const SignUp = ({ location }) => {
     Accounts.createUser({ 
       email, 
       username: email, password,
-      profile: { firstName, lastName, title, picture }
+      profile: { firstName, lastName, title, picture },
     }, (err) => {
       if (err) {
         setError(err.reason);
