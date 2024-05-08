@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Card, Col, Row, Image, Button } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../../client/style.css';
 import { Meteor } from 'meteor/meteor';

@@ -6,12 +6,12 @@ import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 const UserProfile = ({ user }) => (
   <Container id="Container-User-Profile" fluid className="h-75">
     <Row className="h-100">
-      <Col md={10} className="h-100"> {/* Adjust the md value as per your layout requirement */}
+      <Col md={10} className="h-100">
         <Card id="Card-Profile" className="h-100 w-100">
           <Card.Body>
             <Row className="justify-content-center">
               <Col className="justify-content-center text-center">
-                <Image src={user.picture} width={200} />
+                <Image src={user.picture} rounded width={200} />
               </Col>
             </Row>
             <Row className="text-center">

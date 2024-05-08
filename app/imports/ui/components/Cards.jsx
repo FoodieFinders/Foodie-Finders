@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, ListGroup } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const Cards = ({ cards }) => (

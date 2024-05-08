@@ -18,7 +18,7 @@ const NavBar = () => {
     return {
       currentUser: user ? user.username : '',
       loggedIn: !!user,
-      canAddRestaurant: isVendor || isAdmin  // Checking if the title is 'Vendor'
+      canAddRestaurant: isVendor || isAdmin, // Checking if the title is 'Vendor'
     };
   }, []);
 
@@ -34,9 +34,9 @@ const NavBar = () => {
 
             <Nav.Link as={NavLink} id="navbar-about-us" to="/aboutus" key="profiles">About Us</Nav.Link>
             <Nav.Link as={NavLink} id="list-restaurant-nav" to="/restaurants-list" key="projects">Our Vendors</Nav.Link>
-            <Nav.Link as={NavLink} id="top-picks-nav" to="/top-picks" key="top-picks">What's Hot</Nav.Link>
+            <Nav.Link as={NavLink} id="top-picks-nav" to="/top-picks" key="top-picks">What&apos;s Hot</Nav.Link>
             {canAddRestaurant && [
-              <Nav.Link as={NavLink} id="add-restaurant-nav" to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>
+              <Nav.Link as={NavLink} id="add-restaurant-nav" to="/add-restaurant" key="add-restaurant">Add Restaurant</Nav.Link>,
             ]}
 
           </Nav>
@@ -49,7 +49,7 @@ const NavBar = () => {
                   Sign
                   in
                 </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up"  as={NavLink} to="/signup">
+                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
                   <PersonPlusFill style={{ marginRight: '5px' }} />
                   Sign up
                 </NavDropdown.Item>

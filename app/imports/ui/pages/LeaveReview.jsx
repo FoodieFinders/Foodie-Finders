@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
-import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
+import { AutoForm, ErrorsField, SubmitField, LongTextField } from 'uniforms-bootstrap5';
+import { Container, Row, Col, Image, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../client/style.css'; // Import your custom stylesheet here
 import SimpleSchema from 'simpl-schema';
@@ -42,7 +42,7 @@ const Rating = ({
         <span
           style={{ fontSize: 40, cursor: 'pointer' }}
           key={index}
-          class={`star-${index}`}
+          className={`star-${index}`}
           onClick={event => onAction(event, index)}
           onKeyDown={event => onAction(event, index)}
           role="button"
@@ -81,7 +81,6 @@ const LeaveReview = () => {
   console.log('hi');
   console.log(owner, firstname, image);
   */
-
 
   const submit = (data, formRef) => {
     const { rating, comment } = data;
