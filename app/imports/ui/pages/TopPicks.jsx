@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
-import { ChatRightText, HandThumbsUp } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
