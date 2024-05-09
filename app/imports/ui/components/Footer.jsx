@@ -7,7 +7,6 @@ const Footer = () => {
   // Get the current year
   const currentYear = new Date().getFullYear();
 
-
   const navigate = useNavigate();
   const goToSignUp = () => navigate('signup');
   const goToSignIn = () => navigate('signin');
@@ -36,25 +35,25 @@ const Footer = () => {
               <Row className="justify-content-center text-center pt-3">
                 <Col>
                   <Nav className="justify-content-center">
-                    <Nav.Link href="#" style={{ color: 'white' }}><FaFacebook size="20px"/></Nav.Link>
-                    <Nav.Link href="#" style={{ color: 'white' }}><FaInstagram size="20px"/></Nav.Link>
-                    <Nav.Link href="#" style={{ color: 'white' }}><FaTwitter size="20px"/></Nav.Link>
-                    <Nav.Link href="#" style={{ color: 'white' }}><FaPinterest size="20px"/></Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white' }}><FaFacebook size="20px" /></Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white' }}><FaInstagram size="20px" /></Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white' }}><FaTwitter size="20px" /></Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white' }}><FaPinterest size="20px" /></Nav.Link>
                   </Nav>
                 </Col>
                 <Col>
-                  Contact Us <br/>
-                  <strong>808-777-7777</strong> <br/>
+                  Contact Us <br />
+                  <strong>808-777-7777</strong> <br />
                   <strong>admin@foodiefinder.com</strong>
                 </Col>
               </Row>
             </Container>
           </Col>
         </Row>
-          <hr />
-          <div className="text-center" >
-            <strong style={{ fontSize: '12px' }}>© {currentYear} Foodie Finders. All rights reserved.</strong>
-          </div>
+        <hr />
+        <div className="text-center">
+          <strong style={{ fontSize: '12px' }}>© {currentYear} Foodie Finders. All rights reserved.</strong>
+        </div>
       </Container>
     </footer>
   );

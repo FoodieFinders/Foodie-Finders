@@ -10,7 +10,7 @@ const createUser = (email, password, role, profile) => {
     username: email,
     email: email,
     password: password,
-    profile: profile  // Storing additional profile data
+    profile: profile, // Storing additional profile data
   });
 
   if (role) {
@@ -23,7 +23,7 @@ if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
     Meteor.settings.defaultAccounts.forEach(({ email, password, role, firstName, lastName, title, picture }) => {
-      const profile = { firstName, lastName, title, picture };  // Constructing the profile object
+      const profile = { firstName, lastName, title, picture }; // Constructing the profile object
       createUser(email, password, role, profile);
     });
   } else {
@@ -32,15 +32,13 @@ if (Meteor.users.find().count() === 0) {
 }
 
 Accounts.onCreateUser((options, user) => {
-  if (options.profile) {
-    user.profile = options.profile;  // Ensuring profile is attached to the user document
-  }
+  const newUser = {
+    ...user,
+    profile: options.profile || user.profile,
+  };
 
-  // Attach additional properties here if needed
-
-  return user;
+  return newUser;
 });
-
 
 /*
 const createUser = (email, password, role) => {

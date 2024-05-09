@@ -9,22 +9,22 @@ Meteor.startup(() => {
     // Array of initial restaurant data
     const initialRestaurants = [
       {
-        name: "Gourmet Burger",
+        name: 'Gourmet Burger',
         rating: 5,
         hours: "Today's hours: 10:00AM - 8:00PM",
-        imageSrc: "/images/sushi-spectacular.jpg",
+        imageSrc: '/images/sushi-spectacular.jpg',
       },
       {
-        name: "Ultimate Pizza",
+        name: 'Ultimate Pizza',
         rating: 5,
         hours: "Today's hours: 11:00AM - 10:00PM",
-        imageSrc: "/images/ultimate-pizza.jpg",
+        imageSrc: '/images/ultimate-pizza.jpg',
       },
       {
-        name: "Sushi Spectacular",
+        name: 'Sushi Spectacular',
         rating: 4,
         hours: "Today's hours: 12:00PM - 8:00PM",
-        imageSrc: "/images/sushi-spectacular.jpg",
+        imageSrc: '/images/sushi-spectacular.jpg',
       },
     ];
 

@@ -32,7 +32,7 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
+                <Card.Title />
                 <Card.Text>asdasd</Card.Text>
                 <Card.Text>asdsada</Card.Text>
                 <Card.Text>asdasd</Card.Text>
@@ -43,9 +43,9 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
-                <Card.Text></Card.Text>
-                <Card.Text></Card.Text>
+                <Card.Title />
+                <Card.Text />
+                <Card.Text />
               </div>
             </Card.Body>
           </Card>
@@ -53,9 +53,9 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
-                <Card.Text></Card.Text>
-                <Card.Text></Card.Text>
+                <Card.Title />
+                <Card.Text />
+                <Card.Text />
               </div>
             </Card.Body>
           </Card>
@@ -63,9 +63,9 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
-                <Card.Text></Card.Text>
-                <Card.Text></Card.Text>
+                <Card.Title />
+                <Card.Text />
+                <Card.Text />
               </div>
             </Card.Body>
           </Card>
@@ -73,9 +73,9 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
-                <Card.Text></Card.Text>
-                <Card.Text></Card.Text>
+                <Card.Title />
+                <Card.Text />
+                <Card.Text />
               </div>
             </Card.Body>
           </Card>
@@ -87,9 +87,9 @@ const FilterMockup = () => (
             <Card.Body className="d-flex">
               <Image src="/images/Burger.jpg" className="img-fluid top-pick-image mr-3" />
               <div>
-                <Card.Title></Card.Title>
-                <Card.Text></Card.Text>
-                <Card.Text></Card.Text>
+                <Card.Title />
+                <Card.Text />
+                <Card.Text />
               </div>
             </Card.Body>
           </Card>

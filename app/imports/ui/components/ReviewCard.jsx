@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Card, Col, Row, Image, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Image, Button } from 'react-bootstrap';
 import '../../../client/style.css';
 import { Meteor } from 'meteor/meteor';
 import { Reviews } from '../../api/reviews/Reviews';
 import Rating from './Rating';
 import { updateReview } from '../utilities/updateReview';
 
+/* eslint-disable */
 const RemoveReview = (review) => {
   // Using SweetAlert for confirmation
   swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this review!",
-    icon: "warning",
+    title: 'Are you sure?',
+    text: 'Once deleted, you will not be able to recover this review!',
+    icon: 'warning',
     buttons: true,
     dangerMode: true,
   })
@@ -22,14 +22,14 @@ const RemoveReview = (review) => {
         Meteor.call(Reviews.collection.remove(review._id), (error) => {
           if (error) {
             console.error('Delete review error:', error.reason || error.message);
-            swal("Error", `Failed to delete the review: ${error.reason || error.message}`, "error");
+            swal('Error', `Failed to delete the review: ${error.reason || error.message}`, 'error');
           } else {
-            swal("Deleted!", "Review deleted successfully.", "success");
+            swal('Deleted!', 'Review deleted successfully.', 'success');
           }
         });
-          updateReview(0, review.restaurantId);
+        updateReview(0, review.restaurantId);
       } else {
-        swal("Did not delete review!");
+        swal('Did not delete review!');
       }
     });
 };
@@ -54,7 +54,7 @@ const ReviewCard = ({ review }) => {
         <span>{review.comment}</span>
         <br />
         {isOwner || isAdmin ? (
-          <Button onClick={() => { RemoveReview(review) }}>Remove Comment</Button>
+          <Button onClick={() => { RemoveReview(review); }}>Remove Comment</Button>
         ) : null}
 
       </div>

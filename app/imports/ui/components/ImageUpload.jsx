@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import ImageUploading from 'react-images-uploading';
-import { Container, Card, Image, Button } from 'react-bootstrap';
-import { useHours } from '../../api/hours/useHours';
-import ReactDOM from "react-dom";
+import { Button } from 'react-bootstrap';
 
-function ImageUpload({message, setPicture}) {
+/* eslint-disable */
+const ImageUpload = ({ message, setPicture }) => {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
   const onChange = (imageList, addUpdateIndex) => {
@@ -23,16 +21,14 @@ function ImageUpload({message, setPicture}) {
         onChange={onChange}
         maxNumber={maxNumber}
         dataURLKey="data_url"
-        acceptType={["jpg"]}
+        acceptType={['jpg']}
       >
         {({
           imageList,
           onImageUpload,
-          onImageRemoveAll,
           onImageUpdate,
           onImageRemove,
-          isDragging,
-          dragProps
+          dragProps,
         }) => (
           // write your building UI
           <div className="upload-image-wrapper">
@@ -58,7 +54,6 @@ function ImageUpload({message, setPicture}) {
       </ImageUploading>
     </div>
   );
-}
-
+};
 
 export default ImageUpload;

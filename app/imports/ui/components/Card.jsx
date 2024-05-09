@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, ListGroup } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const Card = ({ card }) => (
+/** Dont know which files use this so cant rename it */
+/* eslint-disable */
+const CardItem = ({ card }) => (
   <Card className="h-100">
     <Card.Header>
       <Image src={card.image} width={75} />
@@ -21,7 +21,7 @@ const Card = ({ card }) => (
 );
 
 // Require a document to be passed to this component.
-Card.propTypes = {
+CardItem.propTypes = {
   card: PropTypes.shape({
     name: PropTypes.string,
     rating: PropTypes.string,
@@ -33,4 +33,4 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default CardItem;

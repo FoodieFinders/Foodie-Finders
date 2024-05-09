@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col, Button, ListGroup, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '../../api/restaurants/Restaurants';
@@ -29,10 +29,6 @@ const Home = () => {
   const navigate = useNavigate();
 
   // Function to navigate to the vendor dashboard
-  const goToVendorDashboard = () => navigate('/vendor-dashboard');
-
-  // Function to navigate to the leave review page
-  const goToLeaveReview = () => navigate('/leave-review');
 
   const goToTopPicks = () => navigate('top-picks');
 
@@ -43,7 +39,7 @@ const Home = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <div className="top-picks-header text-center">
-                <h1>Today's Top Picks</h1>
+                <h1>Today&apos;s Top Picks</h1>
               </div>
             </Col>
           </Row>
@@ -53,7 +49,7 @@ const Home = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <Button size="lg" block className="top-picks-header text-center mt-3 custom-review-button" onClick={goToTopPicks}>
-                See all of today's top picks!
+                See all of today&apos;s top picks!
               </Button>
             </Col>
           </Row>

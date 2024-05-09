@@ -5,17 +5,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { Roles } from 'meteor/alanning:roles';
-import { Restaurants } from '../../api/restaurants/Restaurants';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import LoadingSpinner from '../components/LoadingSpinner';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
-import RestaurantItem from '../components/RestaurantItem';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { Restaurants } from '../../api/restaurants/Restaurants';
 import { useHours } from '../../api/hours/useHours';
 import ImageUpload from '../components/ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Restaurants.schema);
 
+/* eslint-disable */
 const EditRestaurantPage = () => {
   const { hours, setHours } = useHours();
   const { _id } = useParams();
@@ -31,13 +31,13 @@ const EditRestaurantPage = () => {
     return {
       doc: document,
       ready: rdy,
-      canEdit: canEdit
+      canEdit: canEdit,
     };
   }, [_id]);
 
   const [imageSrc, setPicture] = useState(doc.picture);
 
-/*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']);*/
+  /*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']); */
 
   const submit = (data) => {
     const { address, description, rating } = data;
@@ -54,14 +54,13 @@ const EditRestaurantPage = () => {
     });
   };
 
-
   if (!ready) {
     return <LoadingSpinner />;
   }
 
   if (!canEdit) {
-    swal("Unauthorized", "You do not have permission to edit this restaurant.", "error");
-    navigate('/'); 
+    swal('Unauthorized', 'You do not have permission to edit this restaurant.', 'error');
+    navigate('/');
   }
 
   return (
@@ -72,10 +71,10 @@ const EditRestaurantPage = () => {
           <AutoForm schema={bridge} model={doc} onSubmit={submit}>
             <Card>
               <Card.Body>
-                <TextField name="address" placeholder="Address"/>
-                <LongTextField name="description" placeholder="Description"/>
+                <TextField name="address" placeholder="Address" />
+                <LongTextField name="description" placeholder="Description" />
                 <label htmlFor="hours">Hours</label>
-                <br/>
+                <br />
                 <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
                   <TimeRangePicker
                     onChange={setHours}
@@ -83,21 +82,21 @@ const EditRestaurantPage = () => {
                     format="h:mm a" // Use AM/PM format
                     name="hours"
                     id="hours"
-                    className="form-control" //Ensure TimeRangePicker matches form-control styling
+                    className="form-control" // Ensure TimeRangePicker matches form-control styling
                     clockAriaLabel="Toggle clock"
                     clearAriaLabel="Clear value"
                     clockIcon={null}
-                    disableClock={true}
+                    disableClock
                     clearIcon="Clear"
                   />
                 </div>
-                <br></br>
-                <br></br>
-                <ImageUpload message={"Edit Restaurant Picture"} setPicture={setPicture} />
-                <br></br>
+                <br />
+                <br />
+                <ImageUpload message="Edit Restaurant Picture" setPicture={setPicture} />
+                <br />
                 <div className="text-center">
-                  <SubmitField value="Update Restaurant"/>
-                  <ErrorsField/>
+                  <SubmitField value="Update Restaurant" />
+                  <ErrorsField />
                 </div>
               </Card.Body>
             </Card>
