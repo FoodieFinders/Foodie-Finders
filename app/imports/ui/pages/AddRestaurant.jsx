@@ -102,7 +102,7 @@ const AddRestaurant = () => {
                     value={hours}
                     format="h:mm a"
                     name="hours"
-                    id="hours"
+                    id="hoursRangePicker"
                     className="form-control"
                     clockAriaLabel="Toggle clock"
                     clearAriaLabel="Clear value"

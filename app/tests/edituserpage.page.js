@@ -16,7 +16,7 @@ class EditUserPage {
   }
 
   /** Fill the form on the Edit User page */
-  async fillForm(testController, { firstName, lastName, title, picture }) {
+  async fillForm(testController, { firstName, lastName, title }) {
     if (firstName) await testController.typeText(this.firstNameInput, firstName, { replace: true });
     if (lastName) await testController.typeText(this.lastNameInput, lastName, { replace: true });
     if (title) {
@@ -24,7 +24,6 @@ class EditUserPage {
         .click(this.titleSelect)
         .click(this.titleSelect.find('option').withText(title));
     }
-    if (picture) await testController.typeText(this.pictureInput, picture, { replace: true });
     await testController.click(this.submitButton);
   }
 }

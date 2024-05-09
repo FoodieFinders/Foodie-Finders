@@ -16,6 +16,7 @@ class NavBar {
   constructor() {
     this.toggler = Selector('button.navbar-toggler');
     this.loginDropdown = Selector('#login-dropdown');
+    this.signinButton = Selector('#signin-button');
   }
 
   async ensureMenuVisible(testController) {
@@ -28,7 +29,7 @@ class NavBar {
     await this.ensureLogout(testController);
     await this.ensureMenuVisible(testController);
     await testController.click(this.loginDropdown);
-    await testController.click('#signin-button');
+    await testController.click(this.signinButton);
   }
 
   /** Check that the specified user is currently logged in. */

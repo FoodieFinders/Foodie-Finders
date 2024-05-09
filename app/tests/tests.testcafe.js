@@ -16,7 +16,6 @@ const credentials = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('Foodie Finder localhost test with default db')
   .page('http://localhost:3000').beforeEach(async t => {
-    await t.resizeWindow(1280, 800);
   });
 
 test('Test that landing page shows up', async (testController) => {
@@ -53,7 +52,7 @@ test('Test the Add Restaurant page', async (testController) => {
   await addRestaurantPage.isDisplayed(testController);
   await addRestaurantPage.fillForm(testController, {
     name: 'Test Restaurant',
-    hours: '10:00 AM - 6:00 PM',
+    hours: ['09:00', '17:00'],
     address: '123 Main St',
     imageSrc: 'https://example.com/image.png',
     description: 'Great new place to try!',
@@ -70,7 +69,6 @@ test('Edit user information', async (testController) => {
   await editUserPage.fillForm(testController, {
     firstName: 'John',
     lastName: 'Doe',
-    picture: 'https://example.com/johndoe.png',
   });
   const sweetAlert = Selector('.swal-text');
   await testController.expect(sweetAlert.exists).ok();
