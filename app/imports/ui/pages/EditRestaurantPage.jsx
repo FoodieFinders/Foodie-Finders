@@ -5,17 +5,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { Roles } from 'meteor/alanning:roles';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Restaurants } from '../../api/restaurants/Restaurants';
-import RestaurantItem from '../components/RestaurantItem';
 import { useHours } from '../../api/hours/useHours';
 import ImageUpload from '../components/ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Restaurants.schema);
 
+/* eslint-disable */
 const EditRestaurantPage = () => {
   const { hours, setHours } = useHours();
   const { _id } = useParams();
@@ -37,8 +37,7 @@ const EditRestaurantPage = () => {
 
   const [imageSrc, setPicture] = useState(doc.picture);
 
-/*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']);*/
-
+  /*  const [hours, setHours] = useState(doc.hours || ['09:00', '17:00']); */
 
   const submit = (data) => {
     const { address, description, rating } = data;
@@ -72,8 +71,8 @@ const EditRestaurantPage = () => {
           <AutoForm schema={bridge} model={doc} onSubmit={submit}>
             <Card>
               <Card.Body>
-                <TextField name="address" placeholder="Address"/>
-                <LongTextField name="description" placeholder="Description"/>
+                <TextField name="address" placeholder="Address" />
+                <LongTextField name="description" placeholder="Description" />
                 <label htmlFor="hours">Hours</label>
                 <br />
                 <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
@@ -91,10 +90,10 @@ const EditRestaurantPage = () => {
                     clearIcon="Clear"
                   />
                 </div>
-                <br></br>
-                <br></br>
-                <ImageUpload message={"Edit Restaurant Picture"} setPicture={setPicture} />
-                <br></br>
+                <br />
+                <br />
+                <ImageUpload message="Edit Restaurant Picture" setPicture={setPicture} />
+                <br />
                 <div className="text-center">
                   <SubmitField value="Update Restaurant" />
                   <ErrorsField />

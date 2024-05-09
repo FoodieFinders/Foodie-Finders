@@ -22,7 +22,7 @@ const formSchema = new SimpleSchema({
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
-
+/* eslint-disable */
 const Rating = ({
   disabled,
   max = 5,

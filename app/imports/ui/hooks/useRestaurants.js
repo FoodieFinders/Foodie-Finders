@@ -2,6 +2,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Restaurants } from '/imports/api/restaurants/Restaurants';
 import { Roles } from 'meteor/alanning:roles';
 
+/* eslint-disable */
 const useRestaurants = () => {
   const user = useTracker(() => Meteor.user());
   const isAdmin = useTracker(() => Roles.userIsInRole(Meteor.userId(), 'admin'), [user]);

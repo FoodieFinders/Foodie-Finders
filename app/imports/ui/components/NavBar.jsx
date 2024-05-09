@@ -5,13 +5,10 @@ import { NavLink } from 'react-router-dom';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { Roles } from 'meteor/alanning:roles';
-import { ComponentIDs } from '../utilities/ids';
-import { Users } from '../../api/users/users';
 
 const NavBar = () => {
   // Subscribe to the user data and access the necessary fields
   const { currentUser, loggedIn, canAddRestaurant } = useTracker(() => {
-    const handle = Meteor.subscribe(Users.userPublicationName);
     const user = Meteor.user();
     const isVendor = user && user.profile && user.profile.title === 'Vendor';
     const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');

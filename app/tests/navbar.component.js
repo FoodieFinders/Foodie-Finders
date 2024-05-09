@@ -1,7 +1,6 @@
 import { Selector } from 'testcafe';
 
-/*class NavBar {
-
+/* class NavBar {
 
   async gotoSignInPage(testController) {
     await this.ensureLogout(testController);
@@ -11,7 +10,7 @@ import { Selector } from 'testcafe';
     }
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-in');
-  }*/
+  } */
 
 class NavBar {
   constructor() {
@@ -62,7 +61,6 @@ class NavBar {
     }
   }
 
-
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
@@ -74,19 +72,18 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
-
   async gotoAboutUsPage(testController) {
     await testController.click('#navbar-about-us'); // Ensure the correct selector for the About Us link
   }
+
   async gotoTopPicksPage(testController) {
     await testController.click('#top-picks-nav'); // Ensure the correct selector for the About Us link
   }
-  
-  async goToOurVendorsPage(testController){
+
+  async goToOurVendorsPage(testController) {
     await testController.click('#list-restaurant-nav');
   }
-  
-}
 
+}
 
 export const navBar = new NavBar();

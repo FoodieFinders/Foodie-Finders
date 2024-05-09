@@ -1,8 +1,8 @@
-import { Selector, t } from 'testcafe';
+import { Selector } from 'testcafe';
 
 class EditUserPage {
   constructor() {
-    this.pageId = '#edit-user-page'; 
+    this.pageId = '#edit-user-page';
     this.pageSelector = Selector(this.pageId);
     this.firstNameInput = Selector('input[name="firstName"]');
     this.lastNameInput = Selector('input[name="lastName"]');
@@ -19,9 +19,11 @@ class EditUserPage {
   async fillForm(testController, { firstName, lastName, title, picture }) {
     if (firstName) await testController.typeText(this.firstNameInput, firstName, { replace: true });
     if (lastName) await testController.typeText(this.lastNameInput, lastName, { replace: true });
-    if (title) await testController
-      .click(this.titleSelect)
-      .click(this.titleSelect.find('option').withText(title));
+    if (title) {
+      await testController
+        .click(this.titleSelect)
+        .click(this.titleSelect.find('option').withText(title));
+    }
     if (picture) await testController.typeText(this.pictureInput, picture, { replace: true });
     await testController.click(this.submitButton);
   }

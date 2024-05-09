@@ -29,10 +29,6 @@ const Home = () => {
   const navigate = useNavigate();
 
   // Function to navigate to the vendor dashboard
-  const goToVendorDashboard = () => navigate('/vendor-dashboard');
-
-  // Function to navigate to the leave review page
-  const goToLeaveReview = () => navigate('/leave-review');
 
   const goToTopPicks = () => navigate('top-picks');
 
@@ -43,7 +39,7 @@ const Home = () => {
           <Row className="justify-content-center">
             <Col md={8}>
               <div className="top-picks-header text-center">
-                <h1>Today's Top Picks</h1>
+                <h1>Today&apos;s Top Picks</h1>
               </div>
             </Col>
           </Row>

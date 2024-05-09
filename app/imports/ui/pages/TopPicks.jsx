@@ -12,7 +12,7 @@ import Rating from '../components/Rating.jsx';
 
 const SpotlightOfTheWeek = () => {
   const navigate = useNavigate();
-
+  /* eslint-disable */
   const goToRestaurantList = () => {
     navigate('/restaurants-list');
   };

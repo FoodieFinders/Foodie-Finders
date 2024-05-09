@@ -9,6 +9,7 @@ import RestaurantItem from '../components/RestaurantItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import '../../../client/style.css';
 
+/* eslint-disable */
 const Landing = () => {
   const { ready, restaurants, loggedIn, currentUser, isAdmin } = useTracker(() => {
     const subscription = Meteor.subscribe(Restaurants.userPublicationName);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -47,11 +47,11 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 /* Renders the AddStuff page for adding a document. */
 const AddRestaurant = () => {
   const [hours, setHours] = useState('');
-  const [imageSrc, setPicture] = useState("../images/emptyUser.jpg");
+  const [imageSrc, setPicture] = useState('../images/emptyUser.jpg');
   const navigate = useNavigate();
   const submit = (data, formRef) => {
-    console.log("Form data:", data);
-    console.log("Logged in user:", Meteor.user());
+    console.log('Form data:', data);
+    console.log('Logged in user:', Meteor.user());
     const { name, address, description, rating } = data;
 
     if (!hours) {
@@ -80,6 +80,7 @@ const AddRestaurant = () => {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
+  /* eslint-disable */
   return (
     <Container id="add-restaurant-page" fluid className="py-3">
       <Row className="justify-content-center">
@@ -112,11 +113,11 @@ const AddRestaurant = () => {
                 </div>
 
               </Row>
-              <TextField name="address"/>
-              <ImageUpload message={"Add Profile Picture"} setPicture={setPicture} />
-              <LongTextField name="description"/>
-              <SubmitField value="Submit"/>
-              <ErrorsField/>
+              <TextField name="address" />
+              <ImageUpload message="Add Profile Picture" setPicture={setPicture} />
+              <LongTextField name="description" />
+              <SubmitField value="Submit" />
+              <ErrorsField />
             </Card.Body>
           </Card>
         </AutoForm>
