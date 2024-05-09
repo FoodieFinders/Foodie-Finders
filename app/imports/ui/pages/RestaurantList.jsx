@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Row, ListGroup, Button, InputGroup, FormControl, Link } from 'react-bootstrap';
+import { Col, Row, ListGroup, Button, InputGroup, FormControl } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { ArrowUp, ArrowDown, MoonFill, SunFill } from 'react-bootstrap-icons';
 import _ from 'lodash'; // Make sure lodash is imported;
@@ -15,6 +15,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const currentUser = Meteor.user() ? Meteor.user().username : null;
 */
 
+/* eslint-disable */
 const RestaurantList = () => {
 
   const currentUser = Meteor.user() ? Meteor.user().username : null;

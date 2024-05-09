@@ -1,8 +1,8 @@
-import { Selector, t } from 'testcafe';
+import { Selector } from 'testcafe';
 
 class AddRestaurantPage {
   constructor() {
-    this.pageId = '#add-restaurant-page';  
+    this.pageId = '#add-restaurant-page';
     this.pageSelector = Selector(this.pageId);
     this.nameInput = Selector('input[name="name"]');
     this.hoursSelect = Selector('select[name="hours"]');

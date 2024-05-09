@@ -15,7 +15,7 @@ class LeaveReview {
   }
 
   async fillForm(testController, { comment }) {
-    await testController.click(this.starSelector)
+    await testController.click(this.starSelector);
     if (comment) await testController.typeText(this.commentSelector, comment, { replace: true });
     await testController.click(this.submitButton);
   }

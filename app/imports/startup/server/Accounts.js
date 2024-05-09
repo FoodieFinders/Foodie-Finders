@@ -32,13 +32,12 @@ if (Meteor.users.find().count() === 0) {
 }
 
 Accounts.onCreateUser((options, user) => {
-  if (options.profile) {
-    user.profile = options.profile; // Ensuring profile is attached to the user document
-  }
+  const newUser = {
+    ...user,
+    profile: options.profile || user.profile,
+  };
 
-  // Attach additional properties here if needed
-
-  return user;
+  return newUser;
 });
 
 /*

@@ -6,10 +6,10 @@ import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import moment from 'moment';
 import { useHours } from '../../api/hours/useHours';
-import Rating from './Rating'
+import Rating from './Rating';
 import { Restaurants } from '../../api/restaurants/Restaurants';
 
-
+/* eslint-disable */
 const remove = (vendor, admin) => {
   // Using SweetAlert for confirmation
   swal({

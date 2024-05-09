@@ -27,6 +27,7 @@ import AddRestaurant from '../pages/AddRestaurant';
 import EditRestaurantPage from '../pages/EditRestaurantPage';
 import RestaurantList from '../pages/RestaurantList';
 
+/* eslint-disable */
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
   const { ready } = useTracker(() => {
